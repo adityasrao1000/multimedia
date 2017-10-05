@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="image-upload-plugin/css/style.css">
+  <link rel="stylesheet" href="css/images.css">
+  <script src="js/loadImages.js"></script>
+
+</head>
+<body style="background-color:#444444">
+<div id="nav"></div>
+
+<div class="container-fluid">
+<br>
+<div style="100%">
+<p id="upload_a" onclick="uploadShow()"><b>Upload Images </b><i id="plus-minus" class="fa fa-plus-circle"></i></p>
+</div>
+<br><br>
+
+<div class="file-upload" id="img-upload">
+  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+  <div class="image-upload-wrap">
+    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+    <div class="drag-text">
+      <h3>Drag and drop a file or select add Image</h3>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#" alt="your image" />
+    <div class="image-title-wrap">
+      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+    </div>
+  </div>
+</div>
+  
+  <div id="img">
+  
+  </div>
+  
+  <!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+</div>
+<script>
+$( "#nav" ).load( "navbar.html", function() {
+	console.log("navbar loaded");
+	});
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+var modalImg = document.getElementById("img01");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+    modal.style.display = "none";
+}
+</script>
+<script  src="image-upload-plugin/js/index.js"></script>
+<script>
+function uploadShow(){
+	$("#img-upload").slideToggle();
+	$("#plus-minus").toggleClass("fa-minus-circle");
+}
+</script>
+</body>
+</html>

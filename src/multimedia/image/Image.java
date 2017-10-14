@@ -1,3 +1,4 @@
+package multimedia.image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,7 +31,8 @@ public class Image extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();	
 		response.addHeader("content-type" ,"application/json");
-		List<String> filelist = getFile("C:\\Users\\aditya\\Pictures\\img");
+		response.addHeader("Cache-Control" ,"must-revalidate");
+		List<String> filelist = getFile("C:\\Users\\Aditya rao\\Pictures\\img");
 		JSONArray list = new JSONArray();
 		for(String s:filelist){  
 			 list.add(encodeFileToBase64Binary(s));
@@ -54,7 +56,7 @@ public class Image extends HttpServlet {
 
 	    long length = file.length();
 	    if (length > Integer.MAX_VALUE) {
-	        // File is too large
+	        System.exit(0);
 	    }
 	    byte[] bytes = new byte[(int)length];
 	    
@@ -73,21 +75,20 @@ public class Image extends HttpServlet {
 	    is.close();
 	    return bytes;
     }
+	 
     //method to retrieve all the images in folder
 	private List<String> getFile(String dirPath) {
 	    File f = new File(dirPath);
-	    File[] files = f.listFiles();
-        int count = 0;
+	    File[] files = f.listFiles();        
         List<String> arr = new ArrayList<String>();
 	    if (files != null)
 	    for (int i = 0; i < files.length; i++) {
-	    	
-	        count++;
+	    		     
 	      arr.add(files[i].toString().replace("\\", "\\\\"));
 	        
 	    }
 	    
-	    System.out.println("number of records in file: "+ count);
+	    System.out.println("number of records in file: "+ files.length);
 	    return arr;
 	}
 	

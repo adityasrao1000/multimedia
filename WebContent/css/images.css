@@ -30,6 +30,14 @@
 
   }  
   
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) { 
+.images{
+       margin:3px;
+       width:31%;
+       height:90px;
+   }
+}
+  
 
 /* The Modal (background) */
 .modal {

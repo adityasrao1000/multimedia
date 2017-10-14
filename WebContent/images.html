@@ -9,14 +9,18 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="image-upload-plugin/css/style.css">
+    <script src="https://unpkg.com/vue@2.5.0/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
   <link rel="stylesheet" href="css/images.css">
+  <link rel="stylesheet" href="css/loader.css">
   <script src="js/loadImages.js"></script>
-
 </head>
 <body style="background-color:#444444">
-<div id="nav"></div>
-
-<div class="container-fluid">
+<div id="nav">
+  <my-navbar></my-navbar>
+</div>
+<div id="loader" style="display:none;"></div>
+<div class="container-fluid" id="images">
 <br>
 <div style="100%">
 <p id="upload_a" onclick="uploadShow()"><b>Upload Images </b><i id="plus-minus" class="fa fa-plus-circle"></i></p>
@@ -38,7 +42,11 @@
       <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
     </div>
   </div>
+  <button style="width:100%;text-align:center" type="button" id="upload" class="remove-image">Upload Image</button>
 </div>
+
+  
+  
   
   <div id="img">
   
@@ -51,11 +59,8 @@
   <div id="caption"></div>
 </div>
 </div>
-<script>
-$( "#nav" ).load( "navbar.html", function() {
-	console.log("navbar loaded");
-	});
-</script>
+<script src="js/navbar.js"></script>
+
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -74,6 +79,33 @@ function uploadShow(){
 	$("#img-upload").slideToggle();
 	$("#plus-minus").toggleClass("fa-minus-circle");
 }
+</script>
+<script>
+$('#upload').change(function(){
+    var frm = new FormData();
+    frm.append('imageInput', input.files[0]);
+    $.ajax({
+        method: 'POST',
+        address: 'C:\Users\Aditya rao\Pictures\img',
+        data: frm,
+        contentType: false,
+        processData: false,
+        cache: false
+    });
+});
+</script>
+<script>
+var vm = new Vue({
+	  el: '#index',
+	  data: {
+	    data: '',
+	    title: 'video title goes here'
+	  },
+	  methods: {
+	    
+	  }
+})
+
 </script>
 </body>
 </html>

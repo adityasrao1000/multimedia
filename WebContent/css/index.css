@@ -1,46 +1,44 @@
-#loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 9%;
-  height: 30%;
-  position: absolute;
-  bottom: 50%;
-  right:45%;
-  display: block;
-  display:none;
-  margin: auto;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+div.video-container{
+	
+	margin-bottom: 14px;
+	cursor: pointer;
 }
 
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 .fa-thumbs-down{
-  float: right;
-}
-.fa-thumbs-down,.fa-thumbs-up{
-  color: #d6d6d6;
+	float:right;
+	font-size:28px;
 }
 
-.fa-thumbs-down:hover,.fa-thumbs-up:hover{
-  color:black;
-  cursor: pointer;
+.fa-thumbs-up{
+	float:left;
+	font-size:28px;
 }
-
+#rating{
+	width:130px;
+	float:right;
+}
 @media only screen and (max-width: 600px) {
 h2{
-font-size: 1.4em;
+  font-size: 1.3em;
+}
+div.video-container b{
+	font-size:.7em;
 }
 .fa-thumbs-down,.fa-thumbs-up{
-font-size: .7rem;
+	font-size:20px;
+}
+.progress{
+	margin-top:-7px;
+}
+#rating{
+	width:30%;
+}
+div.video-container{
+	
+	margin-bottom: 5px;
 }
 }
+.video-container{
+    margin-bottom: 14px;
+	cursor: pointer;
+	}

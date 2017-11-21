@@ -11,12 +11,12 @@ Vue.component('my-navbar', {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="home">Home</a></li>
         <li><a href="#">videos</a></li>
-        <li><a href="images.html">images</a></li>
+        <li><a href="image">images</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><button  class="btn btn-danger btn-xs">Logout</button></a></li>
+        <li><a href="LogoutSessionInvalidate"><button  class="btn btn-danger btn-xs">Logout</button></a></li>
       </ul>
     </div>
   </div>
@@ -26,7 +26,6 @@ Vue.component('my-navbar', {
 new Vue({
   el: '#nav',
   mounted: function () {
-	    // `this` points to the vm instance
 	    console.log('navbar loaded');
 	  }
 })

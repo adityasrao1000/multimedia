@@ -22,7 +22,6 @@ public class Video extends HttpServlet {
 		PrintWriter out = response.getWriter();	
 		
 		response.addHeader("Content-Type", "video/mp4");
-		response.addHeader("Transfer-Encoding", "chunked");
 		out.print(encodeFileToBase64Binary("C:\\Users\\Aditya rao\\Pictures\\Saved Pictures\\Anime mix 10 seconds.mp4"));
 		
 	}

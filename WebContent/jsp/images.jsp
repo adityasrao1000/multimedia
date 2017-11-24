@@ -19,9 +19,7 @@ String email=(String)session.getAttribute("email");
 <div id="loader" style="display:none;"></div>
 <div class="container-fluid" id="images">
 <br>
-<div style="100%">
-<p id="upload_a"><b>Upload Images </b><i id="plus-minus" class="fa fa-plus-circle"></i></p>
-</div>
+<input type="file" accept="image/*">
 <br><br>
 
   <div id="img">

@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Login</title>
+<%
+
+  String email=(String)session.getAttribute("email");  
+  if (email != null) {
+	  response.sendRedirect("home");  
+  } 
+  
+  String status="";
+  if(request.getAttribute("status")!=null){
+	 status = (String)request.getAttribute("status");
+  }
+  
+%>
+<%@ include file="libraries.jsp" %>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -18,20 +27,20 @@
     </ul>
   </div>
 </nav>
-<br><br><br>
-<div class="container">
-
-  <form class="form-horizontal" method="post" action="loginValidation">
+<br><br><br><br>
+<div class="container-fluid">
+  <h5 style="color:red; text-align:center"><%=status %></h5>
+  <form class="form-horizontal" method="post" action="loginValidation" style="max-width:400px; display:block; margin:auto">
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control"   placeholder="Enter email" name="email" autofocus />
+      <label class="control-label" for="email">Email:</label>
+      <div>
+        <input type="email" class="form-control"   placeholder="Email" name="email" autofocus />
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control"   placeholder="Enter password" name="pwd">
+      <label class="control-label" for="pwd">Password:</label>
+      <div>          
+        <input type="password" class="form-control"   placeholder="Password" name="pwd">
       </div>
     </div>
     <div class="form-group">        
@@ -40,9 +49,15 @@
       </div>
     </div>
     <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
+      <div>
+        <button type="submit" class="btn btn-default" style="width:70%; display:block; margin:auto">Log In</button>
       </div>
+    </div>
+    <div class="col-xs-6">
+    <a>Forgot your password?</a>
+    </div>
+    <div class="col-xs-6">
+    <a>Don't have an account?</a>
     </div>
   </form>
 </div>

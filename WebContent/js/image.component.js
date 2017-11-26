@@ -1,15 +1,26 @@
-Vue.component('image-load', {
-	  template: '<div>A custom component!</div>'
-	})
+
 	
 var vm = new Vue({
 	  el: '#main',
 	  data: {
-	    data: '',
-	    title: 'video title goes here'
+	    data: ''
+	   
 	  },
 	  methods: {
-	    
+		  
+		getImages: function(userEmail){ 
+			     axios.post(`getImages/${userEmail}`, {
+				    userId: '1',
+				    title: todoTitle,
+				    completed: false
+				  })
+				  .then(function (response) {
+				    resultElement.innerHTML = generateSuccessHTMLOutput(response);
+				  })
+				  .catch(function (error) {
+				    resultElement.innerHTML = generateErrorHTMLOutput(error);
+				  });
+		}
 	  },
 	  mounted: function(){
 		// Get the modal

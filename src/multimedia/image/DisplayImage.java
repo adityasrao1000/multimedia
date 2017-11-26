@@ -46,7 +46,7 @@ public class DisplayImage {
 				if(rs.next()){//now on 1st row  
 		              
 					Blob b=rs.getBlob(1);//2 means 2nd column data  
-					byte barr[]=b.getBytes(1,(int)b.length());//1 means first image  
+					byte barr[]=b.getBytes(1,(int)b.length());
 			    ByteArrayInputStream bin = new ByteArrayInputStream(barr);  
 			    BufferedOutputStream bout = new BufferedOutputStream(out);  
 			    int ch =0; ;  

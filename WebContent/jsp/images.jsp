@@ -12,20 +12,41 @@ String email=(String)session.getAttribute("email");
   <link rel="stylesheet" href="css/images.css">
   <link rel="stylesheet" href="css/loader.css">
 </head>
-<body style="background-color:#444444" id="image">
+<body id="image">
 <div id="nav">
   <my-navbar></my-navbar>
 </div>
 <div id="loader" style="display:none;"></div>
 <div class="container-fluid" id="images">
 <br>
-<input type="file" accept="image/*">
+<button type="button" style="float:right" class="btn btn-default btn-sm" data-toggle="modal" data-target="#uploadImage">Upload an image</button>
+<br><br>
+<div class="row">
+  <div class="col-sm-3">
+  
+  </div>
+  <div class="col-sm-6">
+    <form action="UploadImage" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+	
+	  <input type="text" placeholder="Name" class="form-control" name="name" id="name" required>
+    </div>
+	 <input  type="file" name="photo" required>
+	  <br>
+	  <input type="submit" class="btn btn-default btn-sm" style="width:100%" value="Upload">
+   </form>
+  </div>
+  <div class="col-sm-3">
+  
+  </div>
+</div>
+
 <br><br>
 
   <div id="img">
   
   </div>
-  
+
   <!-- The Modal -->
 <div id="myModal" class="modal">
   <span class="close">&times;</span>

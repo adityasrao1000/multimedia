@@ -53,11 +53,13 @@
         <button type="submit" class="btn btn-default" style="width:70%; display:block; margin:auto">Log In</button>
       </div>
     </div>
+    <div style="font-size: .9em">
     <div class="col-xs-6">
     <a>Forgot your password?</a>
     </div>
     <div class="col-xs-6">
     <a>Don't have an account?</a>
+    </div>
     </div>
   </form>
 </div>

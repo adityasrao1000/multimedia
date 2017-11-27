@@ -1,9 +1,10 @@
 
 	
 var vm = new Vue({
-	  el: '#main',
+	  el: '#images',
 	  data: {
-	    data: ''
+	    data: '',
+	    imageName:''
 	   
 	  },
 	  methods: {
@@ -20,6 +21,22 @@ var vm = new Vue({
 				  .catch(function (error) {
 				    resultElement.innerHTML = generateErrorHTMLOutput(error);
 				  });
+		},
+		uploadImage: function(){
+			
+				  var preview = document.getElementById('uploadPreview');
+				  var file    = document.querySelector('input[type=file]').files[0];
+				  var reader  = new FileReader();
+				  this.imageName = file.name;
+				  reader.addEventListener("load", function () {
+				    preview.src = reader.result;
+				  }, false);
+				  if (file) {
+				    reader.readAsDataURL(file);
+				  }				
+		},
+		uploadShow: function(){
+			document.getElementById("uploadform").style.display ="block";
 		}
 	  },
 	  mounted: function(){

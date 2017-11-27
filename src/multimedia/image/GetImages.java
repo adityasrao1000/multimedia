@@ -2,12 +2,13 @@ package multimedia.image;
 
 import java.io.IOException;
 
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
 import org.json.simple.JSONArray;
 
 import javax.servlet.ServletContext;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -22,6 +23,7 @@ public class GetImages {
 	
 	@javax.ws.rs.core.Context 
 	ServletContext context;
+	@Context private HttpServletRequest httpRequest;
 	
 	@SuppressWarnings("unchecked")
 	@GET
@@ -33,12 +35,12 @@ public class GetImages {
 			String driverName = context.getInitParameter("databaseURL");  
 			String dbusername = context.getInitParameter("databaseUserName");
 			String dbpassword = context.getInitParameter("databasePassword");
-			
+			 
 		    try {
 
 				Class.forName("com.mysql.jdbc.Driver"); 
 				Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
-				PreparedStatement ps=con.prepareStatement("select image_name from imagetable where user_email=?");  
+				PreparedStatement ps=con.prepareStatement("select photo_name from imagetable where user_email=?");  
 				ps.setString(1,username);  
 				ResultSet rs=ps.executeQuery();  
 				

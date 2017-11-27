@@ -51,6 +51,14 @@
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>register</servlet-name>
+    <jsp-file>/jsp/registration.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>login</servlet-name>
     <jsp-file>/jsp/login.jsp</jsp-file>
   </servlet>
@@ -61,7 +69,7 @@
   
   <filter>  
   <filter-name>session</filter-name>  
-  <filter-class>multimedia.session.SessionCheck</filter-class>  
+  <filter-class>multimedia.session.SessionCheckFilter</filter-class>  
   </filter>  
   <filter-mapping>  
   <filter-name>session</filter-name>  

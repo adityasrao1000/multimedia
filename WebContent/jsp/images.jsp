@@ -19,20 +19,20 @@ String email=(String)session.getAttribute("email");
 <div id="loader" style="display:none;"></div>
 <div class="container-fluid" id="images">
 <br>
-<button type="button" style="float:right" class="btn btn-default btn-sm" data-toggle="modal" data-target="#uploadImage">Upload an image</button>
+<button type="button" style="float:right" class="btn btn-default btn-sm" @click="uploadShow">Upload an image</button>
 <br><br>
 <div class="row">
   <div class="col-sm-3">
   
   </div>
   <div class="col-sm-6">
-    <form action="UploadImage" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-	
-	  <input type="text" placeholder="Name" class="form-control" name="name" id="name" required>
+    <form action="UploadImage" method="post" enctype="multipart/form-data" id="uploadform" style="display:none">
+    <div class="form-group">	
+	  <input type="text" placeholder="Name" class="form-control" v-bind:value="imageName" id="name" required>
     </div>
-	 <input  type="file" name="photo" required>
+	 <input  type="file" name="photo" required @change="uploadImage">
 	  <br>
+	  <img class="img-responsive" id="uploadPreview" src="">
 	  <input type="submit" class="btn btn-default btn-sm" style="width:100%" value="Upload">
    </form>
   </div>

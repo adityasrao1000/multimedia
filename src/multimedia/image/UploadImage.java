@@ -51,7 +51,7 @@ public class UploadImage extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			String user_email = (String)session.getAttribute("email");
-			PreparedStatement ps=con.prepareStatement("insert into imagetable values(?,?,?)");  
+			PreparedStatement ps=con.prepareStatement("insert into imagetable(user_email,photo_name,photo) values(?,?,?)");  
 			ps.setString(1,user_email);  
 			ps.setString(2,fileName); 
 			 

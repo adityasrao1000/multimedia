@@ -39,27 +39,30 @@ public class DisplayImage {
 
 				Class.forName("com.mysql.jdbc.Driver"); 
 				Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
-				PreparedStatement ps=con.prepareStatement("select image from imagetable where image_name=?");  
+				PreparedStatement ps=con.prepareStatement("select photo from imagetable where photo_name=?");  
 				ps.setString(1,name);  
+			
 				ResultSet rs=ps.executeQuery();  
 				
-				if(rs.next()){//now on 1st row  
-		              
-					Blob b=rs.getBlob(1);//2 means 2nd column data  
+				if(rs.next())	     {         
+					Blob b=rs.getBlob(1);
 					byte barr[]=b.getBytes(1,(int)b.length());
-			    ByteArrayInputStream bin = new ByteArrayInputStream(barr);  
-			    BufferedOutputStream bout = new BufferedOutputStream(out);  
-			    int ch =0; ;  
-			    while((ch=bin.read())!=-1)  
-			    {  
-			    bout.write(ch);  
-			    }  
-				
-			    bin.close();  
-		        con.close();
-			    bout.close();  
-			    out.close();  
+				    ByteArrayInputStream bin = new ByteArrayInputStream(barr);  
+				    BufferedOutputStream bout = new BufferedOutputStream(out);  
+				    int ch =0; ;  
+				    while((ch=bin.read())!=-1)  
+				    {  
+				    bout.write(ch);  
+				    } 
+                    bin.close();  			        
+				    bout.close();  
+				}else {
+					return  Response.status(404).build();
 				}
+			  
+			    con.close();
+			    out.close();  
+					
 		    }catch(Exception e) {
 		    	e.printStackTrace();
 		    	return  Response.status(404).build();

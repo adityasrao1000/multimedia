@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.*;  
 import javax.servlet.http.*;
 
-public class SessionCheck implements Filter{  
+public class SessionCheckFilter implements Filter{  
   
 public void init(FilterConfig arg0) throws ServletException {}  
       

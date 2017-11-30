@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @WebServlet("/UploadImage")
@@ -28,6 +30,8 @@ public class UploadImage extends HttpServlet {
 		String dbusername = context.getInitParameter("databaseUserName");
 		String dbpassword = context.getInitParameter("databasePassword");
 		
+		 LocalDateTime currentTime = LocalDateTime.now();
+		 LocalDate date = currentTime.toLocalDate();
 		try {
 			
 			String fileName;
@@ -51,11 +55,12 @@ public class UploadImage extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			String user_email = (String)session.getAttribute("email");
-			PreparedStatement ps=con.prepareStatement("insert into imagetable(user_email,photo_name,photo) values(?,?,?)");  
+			PreparedStatement ps=con.prepareStatement("insert into imagetable(user_email,photo_name,photo,upload_date) values(?,?,?,?)");  
 			ps.setString(1,user_email);  
 			ps.setString(2,fileName); 
 			 
-			ps.setBinaryStream(3,inputStream,inputStream.available());  
+			ps.setBinaryStream(3,inputStream,inputStream.available()); 
+			ps.setDate(4,java.sql.Date.valueOf(date));
 			int i=ps.executeUpdate();  
 			System.out.println(i+" records affected");  
 			          

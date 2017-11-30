@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%
 
-String email=(String)session.getAttribute("email");  
-  if (email == null) {
-	  response.sendRedirect("login");  
-  } 
-%>
 <%@ include file="libraries.jsp" %>
 <link rel="stylesheet" href="css/index.css">
 </head>
-<body style="background-color:#444444; color:lightgrey">
+<body>
+<div id="index">
 <div id="nav">
   <my-navbar></my-navbar>
 </div>
 <div class="container-fluid" id="index">
-<h4>Welcome <%= email %></h4>
+<h4>Welcome {{username}}</h4>
 </div>
 
-
+</div>
 <script src="./js/navbar.js"></script>
-
+<script src="./js/index.component.js"></script>
 </body>
 </html>

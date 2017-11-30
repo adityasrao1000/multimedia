@@ -26,7 +26,7 @@ public class DisplayImage {
 	
 	@GET
 	@Path("/{param}")
-	public Response getMsg(@PathParam("param") String name) throws IOException, SQLException{
+	public Response getMsg(@PathParam("param") String id) throws IOException, SQLException{
 		
 		    ServletOutputStream out;  
 		    out = response.getOutputStream(); 
@@ -39,8 +39,8 @@ public class DisplayImage {
 
 				Class.forName("com.mysql.jdbc.Driver"); 
 				Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
-				PreparedStatement ps=con.prepareStatement("select photo from imagetable where photo_name=?");  
-				ps.setString(1,name);  
+				PreparedStatement ps=con.prepareStatement("select photo from imagetable where id=?");  
+				ps.setString(1,id);  
 			
 				ResultSet rs=ps.executeQuery();  
 				

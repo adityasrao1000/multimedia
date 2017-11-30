@@ -40,7 +40,7 @@ public class GetImages {
 
 				Class.forName("com.mysql.jdbc.Driver"); 
 				Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
-				PreparedStatement ps=con.prepareStatement("select photo_name from imagetable where user_email=?");  
+				PreparedStatement ps=con.prepareStatement("select id from imagetable where user_email=?");  
 				ps.setString(1,username);  
 				ResultSet rs=ps.executeQuery();  
 				

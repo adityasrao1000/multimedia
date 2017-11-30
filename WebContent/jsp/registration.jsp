@@ -6,11 +6,11 @@
 <%@ include file="libraries.jsp" %>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar">
   <div class="container-fluid">
-  
+    <a class="navbar-brand" href="#">Wallpapers</a>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="register"><button  class="btn btn-danger btn-sm" style="margin-top:-7px; float:right">login</button></a></li>
+      <li><a href="register"  style="float:right">login</a></li>
      
     </ul>
   </div>
@@ -51,7 +51,7 @@
       </div>
     </div>
     <div style="font-size: .9em; text-align:center">
-    Already Registered?<a> Click Here to login</a>
+    Already Registered?<a href="login"> Click Here to login</a>
     </div>
   </form>
 </div>

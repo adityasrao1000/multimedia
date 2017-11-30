@@ -2,24 +2,40 @@
 	
 var vm = new Vue({
 	  el: '#images',
-	  data: {
+	  data() {
+		  return{
 	    data: '',
-	    imageName:''
-	   
+	    imageName:'',
+	    userImages: []
+		  }
 	  },
 	  methods: {
-		  
-		getImages: function(userEmail){ 
-			     axios.post(`getImages/${userEmail}`, {
-				    userId: '1',
-				    title: todoTitle,
-				    completed: false
+		getSessionId: function(){
+			axios.post('getSessionDetails', {
+				  
+			  })
+			  .then(function (response) {
+				  let username = response.data;
+				  vm.getImages(username)
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
+		
+		},
+		getImages: function(username){ 
+			     axios.get('resources/getimages/'+username, {
+				  
 				  })
 				  .then(function (response) {
-				    resultElement.innerHTML = generateSuccessHTMLOutput(response);
+					  let arr=[];
+					  for(let i =0;i<response.data.length;i++){
+					    arr.push("resources/image/"+response.data[i]);
+					    vm.userImages =arr;
+					  }
 				  })
 				  .catch(function (error) {
-				    resultElement.innerHTML = generateErrorHTMLOutput(error);
+				    console.log(error);
 				  });
 		},
 		uploadImage: function(){
@@ -28,27 +44,41 @@ var vm = new Vue({
 				  var file    = document.querySelector('input[type=file]').files[0];
 				  var reader  = new FileReader();
 				  this.imageName = file.name;
+				  
 				  reader.addEventListener("load", function () {
 				    preview.src = reader.result;
 				  }, false);
+				  
 				  if (file) {
 				    reader.readAsDataURL(file);
 				  }				
 		},
+		imageModal: function(id){
+			let modal = document.getElementById('myModal');			
+			let modalImg = document.getElementById("img01");		
+			    modal.style.display = "block";
+			    modalImg.src = id;
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementById("closeModal");
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() { 
+			    modal.style.display = "none";
+			}
+		},
 		uploadShow: function(){
 			document.getElementById("uploadform").style.display ="block";
+		},
+		
+		submitform: function(event){
+     		document.getElementById("uploadform").submit();
 		}
-	  },
+		  },
+		  
 	  mounted: function(){
-		// Get the modal
-		  var modal = document.getElementById('myModal');
-		  var modalImg = document.getElementById("img01");
-		  // Get the <span> element that closes the modal
-		  var span = document.getElementsByClassName("close")[0];
-
-		  // When the user clicks on <span> (x), close the modal
-		  span.onclick = function() { 
-		      modal.style.display = "none";
-		  }
+		  this.getSessionId();
+		  
 	  }
+ 
 })

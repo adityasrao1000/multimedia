@@ -1,13 +1,13 @@
 Vue.component('my-navbar', {
-  template: `<nav class="navbar navbar-inverse" style="border: none; border-radius:0">
+  template: `<nav class="navbar" style="border: none; border-radius:0">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar" style="background-color:black"></span>
+        <span class="icon-bar" style="background-color:black"></span>
+        <span class="icon-bar" style="background-color:black"></span>                        
       </button>
-      <a class="navbar-brand" href="#"><span style="color:red;" class="glyphicon glyphicon-play "></span></a>
+      <a class="navbar-brand" href="#">Wallpapers</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -16,7 +16,7 @@ Vue.component('my-navbar', {
         <li><a href="image">images</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="LogoutSessionInvalidate"><button  class="btn btn-danger btn-xs">Logout</button></a></li>
+        <li><a href="LogoutSessionInvalidate">Logout</a></li>
       </ul>
     </div>
   </div>

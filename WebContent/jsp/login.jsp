@@ -18,11 +18,11 @@
 <%@ include file="libraries.jsp" %>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-  
+<nav class="navbar">
+  <div class="container-fluid">  
+    <a class="navbar-brand" href="#">Wallpapers</a>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="register"><button  class="btn btn-danger btn-sm" style="margin-top:-7px; float:right">sign up</button></a></li>
+      <li><a href="register" style="float:right">sign up</a></li>
      
     </ul>
   </div>
@@ -58,7 +58,7 @@
     <a>Forgot your password?</a>
     </div>
     <div class="col-xs-6">
-    <a>Don't have an account?</a>
+    <a href="register">Don't have an account?</a>
     </div>
     </div>
   </form>

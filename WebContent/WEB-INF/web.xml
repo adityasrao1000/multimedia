@@ -43,6 +43,14 @@
     <url-pattern>/image</url-pattern>
   </servlet-mapping>
   <servlet>
+  <servlet-name>GetSessionDetails</servlet-name>
+    <servlet-class>multimedia.session.GetSessionDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>GetSessionDetails</servlet-name>
+    <url-pattern>/getSessionDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>home</servlet-name>
     <jsp-file>/jsp/index.jsp</jsp-file>
   </servlet>
@@ -66,15 +74,15 @@
     <servlet-name>login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
-  <filter>  
-  <filter-name>session</filter-name>  
-  <filter-class>multimedia.session.SessionCheckFilter</filter-class>  
-  </filter>  
-  <filter-mapping>  
-  <filter-name>session</filter-name>  
-  <url-pattern>/resources/image/*</url-pattern>  
-  <url-pattern>/UploadImage</url-pattern> 
-  </filter-mapping>  
- 
+  <filter>
+    <filter-name>session</filter-name>
+    <filter-class>multimedia.session.SessionCheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>session</filter-name>
+    <url-pattern>/resources/image/*</url-pattern>
+    <url-pattern>/UploadImage</url-pattern>
+    <url-pattern>/home</url-pattern>
+    <url-pattern>/image</url-pattern>
+  </filter-mapping>
 </web-app>

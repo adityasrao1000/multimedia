@@ -100,6 +100,5 @@ var vm = new Vue({
 	  mounted: function(){
 		  this.getSessionId();
 		  
-	  }
- 
+	  } 
 })

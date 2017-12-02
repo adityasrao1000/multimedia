@@ -39,7 +39,7 @@ var vm = new Vue({
 				  });
 		},
 		uploadImage: function(){
-			
+			      var formData = new FormData();
 				  var preview = document.getElementById('uploadPreview');
 				  var file    = document.querySelector('input[type=file]').files[0];
 				  var reader  = new FileReader();
@@ -71,8 +71,29 @@ var vm = new Vue({
 			document.getElementById("uploadform").style.display ="block";
 		},
 		
-		submitform: function(event){
-     		document.getElementById("uploadform").submit();
+		submitform: function(){
+			let data = new FormData();
+			
+	          data.append('name', this.imageName);
+	          data.append('photo', document.querySelector('input[type=file]').files[0]);
+	          
+	          axios.post('UploadImage', data)
+	            .then(function (res) {
+	              console.log(res.status);
+	              if(res.data==="success"){
+	            	  document.getElementById("uploadButton").value= "";
+	            	  document.getElementById("uploadPreview").src= "";
+	            	  document.getElementById("name").value= "";
+	            	  alert("file successfully uploaded");
+	              }
+	              if(res.data==="failed"){
+	            	  alert("upload failed! please try again");
+	              }
+	            })
+	            .catch(function (err) {
+	              console.log(err.message);
+	            });
+     		//document.getElementById("uploadform").submit();
 		}
 		  },
 		  

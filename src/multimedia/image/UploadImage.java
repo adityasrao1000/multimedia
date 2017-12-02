@@ -24,7 +24,8 @@ public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    
+		
+		java.io.PrintWriter out = response.getWriter();				
 		ServletContext context = getServletContext();  
 		String driverName = context.getInitParameter("databaseURL");  
 		String dbusername = context.getInitParameter("databaseUserName");
@@ -63,16 +64,19 @@ public class UploadImage extends HttpServlet {
 			ps.setDate(4,java.sql.Date.valueOf(date));
 			int i=ps.executeUpdate();  
 			System.out.println(i+" records affected");  
-			          
+			out.print("success");
 			con.close();
 	        }
 		}catch(InvalidContentException ex) {
+			out.print("failed");
 			ex.printStackTrace();
 		
 		}catch(SQLException ex) {
+			out.print("failed");
 			ex.printStackTrace();
 		}
 		catch(ClassNotFoundException e) {
+			out.print("failed");
 			e.printStackTrace();
 		}
 	}

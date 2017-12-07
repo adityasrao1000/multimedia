@@ -16,11 +16,17 @@ public class LogoutSessionInvalidate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session!=null) {
-		if(session.getAttribute("email")!=null) {
-			System.out.println("invalidating session for: "+session.getAttribute("email"));
-			session.invalidate();
-			response.sendRedirect("login");
-		}}
+			if(session.getAttribute("email")!=null) {
+				
+				System.out.println("invalidating session for: "+session.getAttribute("email"));
+				session.invalidate();
+				response.sendRedirect("login");
+				
+			}
+			else{			
+				response.sendRedirect("login");
+			}
+		}
 		else {
 			response.sendRedirect("login");
 		}

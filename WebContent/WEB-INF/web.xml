@@ -43,11 +43,11 @@
     <url-pattern>/image</url-pattern>
   </servlet-mapping>
   <servlet>
-  <servlet-name>GetSessionDetails</servlet-name>
+    <servlet-name>GetSessionDetails</servlet-name>
     <servlet-class>multimedia.session.GetSessionDetails</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>GetSessionDetails</servlet-name>
+    <servlet-name>GetSessionDetails</servlet-name>
     <url-pattern>/getSessionDetails</url-pattern>
   </servlet-mapping>
   <servlet>

@@ -21,7 +21,6 @@ public class LoginValidation extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("pwd");
-		
 		ServletContext context = getServletContext();  
 		String driverName = context.getInitParameter("databaseURL");  
 		String dbusername = context.getInitParameter("databaseUserName");
@@ -41,13 +40,12 @@ public class LoginValidation extends HttpServlet {
 				
 				HttpSession session=request.getSession(true);  
 		        session.setAttribute("email",email); 
-		        response.sendRedirect("home");
+		        response.sendRedirect("home");  
 		        
 			}else {
-				
-				RequestDispatcher rd=request.getRequestDispatcher("login");  
-				request.setAttribute("status","The username or password is invalid");
-				rd.forward(request, response);
+				 request.setAttribute("status", "Your email or password is incorrect");		
+				 RequestDispatcher rd=request.getRequestDispatcher("login");  
+			     rd.forward(request, response);//method may be include or forward  
 				
 			}
 			con.close();

@@ -23,8 +23,8 @@ var vm = new Vue({
 			  });
 		
 		},
-		getImages: function(username){ 
-			     axios.get('resources/getimages/'+username, {
+		getImages: function(imageId){ 
+			     axios.get('resources/getimages/'+imageId, {
 				  
 				  })
 				  .then(function (response) {
@@ -93,8 +93,7 @@ var vm = new Vue({
 	            .catch(function (err) {
 	              console.log(err.message);
 	            });
-     		//document.getElementById("uploadform").submit();
-		}
+		    }
 		  },
 		  
 	  mounted: function(){

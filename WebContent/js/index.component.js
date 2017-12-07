@@ -4,7 +4,8 @@ var vm = new Vue({
 	  el: '#index',
 	  data() {
 		  return{
-	        username: ''
+	        username: '',
+	        userImages: []
 		  }
 	  },
 	  methods: {
@@ -19,11 +20,27 @@ var vm = new Vue({
 			  .catch(function (error) {
 			    console.log(error);
 			  });
-		}
 		},
+		getImages: function(){
+			 axios.get('resources/featuredimage', {
+				  
+			  })
+			  .then(function (response) {
+				  let arr=[];
+				  for(let i =0;i<response.data.length;i++){
+				    arr.push("resources/image/"+response.data[i]);
+				    vm.userImages =arr;
+				  }
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
+		}
+	  },
 		  
 	  mounted: function(){
 		  this.getSessionId();
+		  this.getImages();
 		  
 	  }
  

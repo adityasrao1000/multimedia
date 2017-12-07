@@ -1,4 +1,25 @@
-Vue.component('my-navbar', {
+var navbar=Vue.component('my-navbar', {
+	methods: {
+		session: function(){
+			
+			let session = localStorage.getItem("sessionset");
+			return session;
+		}
+		},
+		mounted: function () {
+		  console.log('navbar loaded');
+
+		   	  axios.post('CheckSessionValid', {
+		  		  
+		  	  })
+		  	  .then(function (response) {
+		  		  localStorage.setItem("sessionset", response.data );
+		  		  
+		  	  })
+		  	  .catch(function (error) {
+		  	    console.log(error);
+		  	  });
+		  	},
   template: `<nav class="navbar" style="border: none; border-radius:0">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -16,16 +37,16 @@ Vue.component('my-navbar', {
         <li><a href="image">images</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="LogoutSessionInvalidate">Logout</a></li>
+        <li v-if="session()"><a href="LogoutSessionInvalidate">Logout</a></li>
+        <li v-else><a href="register">Signup</a></li>
       </ul>
     </div>
   </div>
 </nav>`
+
 })
 // create a root instance
-new Vue({
+var nav=new Vue({
   el: '#nav',
-  mounted: function () {
-	    console.log('navbar loaded');
-	  }
+
 })

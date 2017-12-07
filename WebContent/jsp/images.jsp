@@ -22,7 +22,7 @@
   <div class="col-sm-6">
   
     <form @submit.prevent="submitform()" method="post" enctype="multipart/form-data" id="uploadform" style="display:none">
-	    <div style="padding:10px; border:1px solid lightgrey; border-radius:4px; background-color:#F5F5F5">
+	    <div id="imageUploadContainer">
 		    <div class="form-group">	
 			  <input type="text" placeholder="Image name" class="form-control" v-model="imageName" name="name" id="name" required>
 		    </div>

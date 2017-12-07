@@ -16,28 +16,28 @@
   </div>
 </nav>
 <br><br><br><br>
-<div class="container-fluid">
+<div class="container-fluid" id="register">
   <div style="max-width:420px; display:block; margin:auto">
   <h4>Registration Form</h4>
   <p>Hi there, please fill in the following fields to open your account.</p>
   </div>
-  <form class="form-horizontal" method="post" action="loginValidation" style="max-width:400px; display:block; margin:auto">
+  <form class="form-horizontal" v-on:submit.prevent="formsubmit" style="max-width:400px; display:block; margin:auto">
     <div class="form-group">
       <label class="control-label" for="email">Enter Your Email:</label>
       <div>
-        <input type="email" class="form-control"   placeholder="Email" name="email" autofocus />
+        <input type="email" class="form-control" v-model="email" @keyup="emailcheck()" placeholder="Email" name="email" required autofocus />
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label" for="pwd">Enter Password:</label>
+      <label class="control-label" for="pwd1">Enter Password:</label>
       <div>          
-        <input type="password" class="form-control"   placeholder="Password" name="pwd1">
+        <input type="password" class="form-control"  v-model="pwd1" placeholder="Password" required name="pwd1">
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label" for="pwd">Reenter Password:</label>
+      <label class="control-label" for="pwd2">Reenter Password:</label>
       <div>          
-        <input type="password" class="form-control"   placeholder="Password" name="pwd2">
+        <input type="password" class="form-control" v-model="pwd2"  placeholder="Password" required name="pwd2">
       </div>
     </div>
     <div class="form-group">        
@@ -51,10 +51,10 @@
       </div>
     </div>
     <div style="font-size: .9em; text-align:center">
-    Already Registered?<a href="login"> Click Here to login</a>
+      Already Registered?<a href="login"> Click Here to login</a>
     </div>
   </form>
 </div>
-
+<script src="./js/register.component.js"></script>
 </body>
 </html>

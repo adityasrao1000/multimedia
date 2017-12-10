@@ -1,9 +1,10 @@
-var login=new Vue({
+var register=new Vue({
 	
   el: '#register',
   data() {
 	  return{
     status: '',
+    emailStatus:'',
     email:'',
     pwd1: '',
     pwd2: ''
@@ -19,7 +20,11 @@ var login=new Vue({
 			   
 		      })
 			  .then(function (response) {
-				  alert(response.data.status)
+				  if(response.data.status==='true'){
+					  register.emailStatus="* This email already exists, please use a different email."; 
+				  }else{
+					  register.emailStatus =""; 
+				  }
 				  
 			  })
 			  .catch(function (error) {
@@ -33,9 +38,16 @@ var login=new Vue({
 				  
 		      })
 			  .then(function (response) {
-				  alert(response.data.status)
+				  
 				  if(response.data.status=="success"){
+					  
 					 let redirect= confirm("You have successfully created an account with us, would you like to login to your account now?");
+
+					 if(redirect===true){				
+						 window.location.href='login'
+					 }
+				  }else{
+					  alert("Pleace check the data you have entered and try again");
 				  }
 				  
 			  })

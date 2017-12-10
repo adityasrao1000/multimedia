@@ -1,18 +1,17 @@
 package multimedia.registration;
 
 import java.sql.*;
-
-
+import config.DatabaseVariables;
 
 public class EmailCheck {
 	
 	
 	public boolean checkIfEmailExists(String email) throws ClassNotFoundException {
-		
+
 		try {
 		
 		Class.forName("com.mysql.jdbc.Driver");  
-		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/multimedia","root","adi101992");  
+		Connection con=DriverManager.getConnection(DatabaseVariables.database_url,DatabaseVariables.database_username,DatabaseVariables.database_password);  
       
 		PreparedStatement stmt = con.prepareStatement("select * from users where user_email=? ");
 		

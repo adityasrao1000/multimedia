@@ -23,14 +23,12 @@ public class EmailCheckApi {
 		    	EmailCheck e = new EmailCheck();
 				if(e.checkIfEmailExists(email))	{ 
 					
-					return  Response.status(200).entity("{\"status\": \"success\"}").build();
+					return  Response.status(200).entity("{\"status\": \"true\"}").build();
 				     
 				}else {
 					
-					return  Response.status(200).entity("{\"status\": \"failed\"}").build();
-				}
-		
-			   
+					return  Response.status(200).entity("{\"status\": \"false\"}").build();
+				}			   
 					
 		    }catch(Exception e) {
 		    	e.printStackTrace();

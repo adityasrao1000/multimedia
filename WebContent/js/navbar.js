@@ -1,10 +1,11 @@
 var navbar=Vue.component('my-navbar', {
+ data() {
+	  return{
+        isActive:false
+	  }
+  },
 	methods: {
-		session: function(){
-			
-			let session = localStorage.getItem("sessionset");
-			return session;
-		}
+		
 		},
 		mounted: function () {
 		  console.log('navbar loaded');
@@ -13,7 +14,16 @@ var navbar=Vue.component('my-navbar', {
 		  		  
 		  	  })
 		  	  .then(function (response) {
-		  		  localStorage.setItem("sessionset", response.data );
+		  		 if(response.data===true){
+		  
+		  			document.getElementById("logout").style.display="block";
+		  			document.getElementById("signup").style.display="none";
+		  			
+		  		 }else{
+		  			document.getElementById("logout").style.display="none";
+		  			document.getElementById("signup").style.display="block";
+		  		
+		  		 }
 		  		  
 		  	  })
 		  	  .catch(function (error) {
@@ -24,9 +34,9 @@ var navbar=Vue.component('my-navbar', {
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar" style="background-color:black"></span>
-        <span class="icon-bar" style="background-color:black"></span>
-        <span class="icon-bar" style="background-color:black"></span>                        
+        <span class="icon-bar" ></span>
+        <span class="icon-bar" ></span>
+        <span class="icon-bar" ></span>                        
       </button>
       <a class="navbar-brand" href="#">Wallpapers</a>
     </div>
@@ -37,8 +47,16 @@ var navbar=Vue.component('my-navbar', {
         <li><a href="image">images</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li v-if="session()"><a href="LogoutSessionInvalidate">Logout</a></li>
-        <li v-else><a href="register">Signup</a></li>
+      
+        <li class="dropdown"  id="logout" style="cursor:pointer">
+          <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i> account <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="home">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
+            <li><a href="#">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a></li>
+            <li><a href="LogoutSessionInvalidate">logout <i class="fa fa-sign-out"></i></a></li>
+          </ul>
+        </li>
+        <li  id="signup"><a href="register">Signup</a></li>
       </ul>
     </div>
   </div>

@@ -27,13 +27,13 @@ String status="";
     <div class="form-group">
       <label class="control-label" for="email">Email:</label>
       <div>
-        <input type="email" class="form-control"  placeholder="Email" name="email" autofocus />
+        <input type="email" class="form-control"  placeholder="Email" name="email" autofocus required />
       </div>
     </div>
     <div class="form-group">
       <label class="control-label" for="pwd">Password:</label>
       <div>          
-        <input type="password"  class="form-control" name="pwd"  placeholder="Password" >
+        <input type="password"  class="form-control" name="pwd"  placeholder="Password" required />
       </div>
     </div>
     <div class="form-group">        
@@ -43,7 +43,7 @@ String status="";
     </div>
     <div class="form-group">        
       <div>
-        <button type="submit" class="btn btn-default" style="width:70%; display:block; margin:auto">Log In</button>
+        <button type="submit" class="btn btn-default"  style="width:70%; display:block; color:#E91E63; background:#212121; border:none; margin:auto">Log In</button>
       </div>
     </div>
     <div style="font-size: .9em">

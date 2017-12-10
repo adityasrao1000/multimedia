@@ -13,7 +13,7 @@
 <div id="loader" style="display:none;"></div>
 <div class="container-fluid" id="images">
 <br>
-<button type="button" style="float:right" class="btn btn-default btn-sm" @click="uploadShow">Upload an image <i class="fa fa-plus" style="font-size:15px;color:black" aria-hidden="true"></i></button>
+<button type="button" style="float:right; color:#E91E63; background:#212121; border:none" class="btn btn-default btn-sm" @click="uploadShow">Upload an image <i class="fa fa-plus" style="font-size:15px;" aria-hidden="true"></i></button>
 <br><br>
 <div class="row">
   <div class="col-sm-3">
@@ -30,7 +30,7 @@
 			 <input id="uploadButton" type="file" style="display:none" name="photo" required @change="uploadImage">
 			  <br>
 			  <img class="img-responsive" id="uploadPreview" style="margin-bottom:5px;" src="">	  
-			  <button  type="submit" class="btn btn-default btn-sm" style="color:white; background-color:#2196F3;width:50%;display:block; margin:auto" >Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
+			  <button  type="submit" class="btn btn-default btn-sm" style="color:#E91E63; background:#212121; border:2px solid steelblue;width:50%;display:block; margin:auto" >Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
 	     </div>
      </form>
 

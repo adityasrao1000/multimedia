@@ -5,7 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import javax.servlet.ServletContext;
+import multimedia.database.InitializeMySqlDb;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
@@ -21,8 +21,7 @@ public class DisplayImage {
 	
 	@Context
     HttpServletResponse response;
-	@javax.ws.rs.core.Context 
-	ServletContext context;
+	
 	
 	@GET
 	@Path("/{param}")
@@ -31,14 +30,11 @@ public class DisplayImage {
 		    ServletOutputStream out;  
 		    out = response.getOutputStream(); 
 		      
-			String driverName = context.getInitParameter("databaseURL");  
-			String dbusername = context.getInitParameter("databaseUserName");
-			String dbpassword = context.getInitParameter("databasePassword");
+			
 			
 		    try {
 
-				Class.forName("com.mysql.jdbc.Driver"); 
-				Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
+		    	Connection con = new InitializeMySqlDb().mySqlDao();
 				PreparedStatement ps=con.prepareStatement("select photo from imagetable where id=?");  
 				ps.setString(1,id);  
 			

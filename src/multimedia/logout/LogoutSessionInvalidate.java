@@ -23,7 +23,7 @@ public class LogoutSessionInvalidate extends HttpServlet {
 				response.sendRedirect("login");
 				
 			}
-			else{			
+			else {			
 				response.sendRedirect("login");
 			}
 		}

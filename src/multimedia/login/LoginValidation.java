@@ -3,14 +3,13 @@ import java.sql.*;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import multimedia.database.InitializeMySqlDb;
 
 @WebServlet("/loginValidation")
 public class LoginValidation extends HttpServlet {
@@ -21,15 +20,11 @@ public class LoginValidation extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("pwd");
-		ServletContext context = getServletContext();  
-		String driverName = context.getInitParameter("databaseURL");  
-		String dbusername = context.getInitParameter("databaseUserName");
-		String dbpassword = context.getInitParameter("databasePassword");
+	
 		
 		try {
 			
-			Class.forName("com.mysql.jdbc.Driver");  
-			Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
+			Connection con = new InitializeMySqlDb().mySqlDao();
 	
 			PreparedStatement stmt=con.prepareStatement("select * from users where user_email=? and user_password=?");
 			stmt.setString(1,email);  
@@ -48,10 +43,12 @@ public class LoginValidation extends HttpServlet {
 			     rd.forward(request, response);//method may be include or forward  
 				
 			}
+			stmt.close();
 			con.close();
 		}catch(SQLException e) {			
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {		
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

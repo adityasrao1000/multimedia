@@ -5,7 +5,8 @@ import java.io.InputStream;
 import java.sql.*;
 
 import custom.exceptions.InvalidContentException;
-import javax.servlet.ServletContext;
+import multimedia.database.InitializeMySqlDb;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,10 +27,7 @@ public class UploadImage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		java.io.PrintWriter out = response.getWriter();				
-		ServletContext context = getServletContext();  
-		String driverName = context.getInitParameter("databaseURL");  
-		String dbusername = context.getInitParameter("databaseUserName");
-		String dbpassword = context.getInitParameter("databasePassword");
+		
 		
 		 LocalDateTime currentTime = LocalDateTime.now();
 		 LocalDate date = currentTime.toLocalDate();
@@ -51,8 +49,7 @@ public class UploadImage extends HttpServlet {
 	            
 	        
 	        InputStream inputStream = filePart.getInputStream();
-			Class.forName("com.mysql.jdbc.Driver"); 
-			Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  			
+	        Connection con = new InitializeMySqlDb().mySqlDao();		
 			HttpSession session = request.getSession();
 			
 			String user_email = (String)session.getAttribute("email");
@@ -65,6 +62,7 @@ public class UploadImage extends HttpServlet {
 			int i=ps.executeUpdate();  
 			System.out.println(i+" records affected");  
 			out.print("success");
+			ps.close();
 			con.close();
 	        }
 		}catch(InvalidContentException ex) {

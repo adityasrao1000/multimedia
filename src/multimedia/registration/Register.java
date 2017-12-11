@@ -2,16 +2,15 @@ package multimedia.registration;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import multimedia.database.InitializeMySqlDb;
 
 
 @WebServlet("/Register")
@@ -20,17 +19,15 @@ public class Register extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		ServletContext context = getServletContext();  
-		String driverName = context.getInitParameter("databaseURL");  
-		String dbusername = context.getInitParameter("databaseUserName");
-		String dbpassword = context.getInitParameter("databasePassword");   
 	 
 		java.io.PrintWriter out = response.getWriter();
 		String email = request.getParameter("email");
 		response.setContentType("application/json");
+		
 		String password1 = request.getParameter("pwd1");
 		String password2 = request.getParameter("pwd2");
-
+		String username = request.getParameter("username");
+		
 		if(password1.length()< 6 || password2.length()< 6) {
 			
 			out.print("{\"status\": \"failed\"}");
@@ -39,7 +36,11 @@ public class Register extends HttpServlet {
 			
 			out.print("{\"status\": \"failed\"}");
 			
-		}else {
+		}else if(username ==null || username.length()<2){
+			out.print("{\"status\": \"failed\"}");
+		}
+		else {
+		}
 			
 		    EmailCheck emailcheck = new EmailCheck();
 	
@@ -52,12 +53,12 @@ public class Register extends HttpServlet {
                 }else {
                 	try {
             			
-            			Class.forName("com.mysql.jdbc.Driver");  
-            			Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
+                		Connection con = new InitializeMySqlDb().mySqlDao();
             	
-            			PreparedStatement stmt=con.prepareStatement("insert into users(user_email,user_password) values(?,?)");
+            			PreparedStatement stmt=con.prepareStatement("insert into users(user_email,user_password,user_name) values(?,?,?)");
             			stmt.setString(1,email);  
             			stmt.setString(2,password1);
+            			stmt.setString(3,username);
             			int rs=stmt.executeUpdate(); 
             			if(rs==1) {
             				System.out.println("registered");
@@ -78,6 +79,6 @@ public class Register extends HttpServlet {
 				
 			} 
 		}
-	}
-
 }
+
+

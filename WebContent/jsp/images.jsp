@@ -36,22 +36,11 @@
 
    <br><br>
    <!-- iterate all the images -->
-   <div class="row">
-    <div class="col-xs-4">
-      <div class="form-group">
-        
-        <div class="dropdown">
-		  <button class="btn-sm btn-default dropdown-toggle" style="border:1px solid lightgrey" type="button" data-toggle="dropdown">Filter <span class="caret"></span></button>
-		  <ul class="dropdown-menu">
-		    <li><a><input style="transform: scale(1.4); -ms-transform: scale(1.4); -webkit-transform: scale(1.4);" type="checkbox"> <b style="float:right;margin:auto">Date</b></a></li>		  
-		  </ul>
-	   </div> 
-      </div> 
-    </div>
-    <div class="col-xs-8">
-       <input class="form-control input-sm" id="search" placeholder="search" type="text">
-    </div>
+  
+   <div>
+      <input class="form-control input-sm" style="width:50%" id="search" placeholder="search" type="text">
    </div>
+   <br>
    
    <div>
    <img v-for="item in userImages" v-bind:src="item" @click="imageModal(item)" class="img-responsive" style="width:31%; margin:2px; height:120px; float:left">

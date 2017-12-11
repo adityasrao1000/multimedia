@@ -15,8 +15,9 @@ var vm = new Vue({
 				  
 			  })
 			  .then(function (response) {
-				  let username = response.data;
-				  vm.getImages(username)
+				  let useremail = response.data.email;
+				 
+				  vm.getImages(useremail)
 			  })
 			  .catch(function (error) {
 			    console.log(error);

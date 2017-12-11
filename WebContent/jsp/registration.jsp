@@ -25,6 +25,12 @@
       </div>
     </div>
     <div class="form-group">
+      <label class="control-label" for="username">Enter a user name:</label>
+      <div>
+        <input type="text" class="form-control" v-model="username" pattern=".{2,}"  placeholder="User Name" name="username"  required/>        
+      </div>
+    </div>
+    <div class="form-group">
       <label class="control-label" for="pwd1">Enter Password:</label>
       <div>          
         <input type="password" class="form-control" title="6 characters minimum" pattern=".{6,}" v-model="pwd1" placeholder="Password" required name="pwd1">

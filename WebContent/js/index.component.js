@@ -14,7 +14,7 @@ var vm = new Vue({
 				  
 			  })
 			  .then(function (response) {
-				  vm.username = response.data;
+				  vm.username = response.data.username;
 				  
 			  })
 			  .catch(function (error) {

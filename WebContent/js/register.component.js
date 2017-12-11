@@ -7,7 +7,8 @@ var register=new Vue({
     emailStatus:'',
     email:'',
     pwd1: '',
-    pwd2: ''
+    pwd2: '',
+    username: ''
 	  }
   },
   methods:{
@@ -34,7 +35,7 @@ var register=new Vue({
 	   },
 	   formsubmit(){
 	   
-		   axios.post('Register', `email=${this.email}&pwd1=${this.pwd1}&pwd2=${this.pwd2}`, {
+		   axios.post('Register', `email=${this.email}&pwd1=${this.pwd1}&pwd2=${this.pwd2}&username=${this.username}`, {
 				  
 		      })
 			  .then(function (response) {

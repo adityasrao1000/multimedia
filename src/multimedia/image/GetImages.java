@@ -1,13 +1,10 @@
 package multimedia.image;
 
 import java.io.IOException;
-
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-
 import org.json.simple.JSONArray;
-
-import javax.servlet.ServletContext;
+import multimedia.database.InitializeMySqlDb;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,25 +18,18 @@ import java.sql.*;
 public class GetImages {
 	
 	
-	@javax.ws.rs.core.Context 
-	ServletContext context;
 	@Context private HttpServletRequest httpRequest;
 	
 	@SuppressWarnings("unchecked")
 	@GET
 	@Path("/{param}")
 	public Response getMsg(@PathParam("param") String username) throws IOException, SQLException{
-		
-		    
+				    
 		    int count=0;
-			String driverName = context.getInitParameter("databaseURL");  
-			String dbusername = context.getInitParameter("databaseUserName");
-			String dbpassword = context.getInitParameter("databasePassword");
-			 
+					 
 		    try {
 
-				Class.forName("com.mysql.jdbc.Driver"); 
-				Connection con=DriverManager.getConnection(driverName,dbusername,dbpassword);  
+		    	Connection con = new InitializeMySqlDb().mySqlDao();
 				PreparedStatement ps=con.prepareStatement("select id from imagetable where user_email=?");  
 				ps.setString(1,username);  
 				ResultSet rs=ps.executeQuery();  
@@ -51,6 +41,7 @@ public class GetImages {
 					list.add(rs.getString(1));
                     count++;
 				}
+				ps.close();
 				con.close();
 				if(count>0) {
 				return  Response.status(200).entity(list.toJSONString()).build();

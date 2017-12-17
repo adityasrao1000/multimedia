@@ -29,7 +29,7 @@
 		     <input  type="button" class="btn btn-default btn-sm" value="Select a file" onclick="document.getElementById('uploadButton').click()">
 			 <input id="uploadButton" type="file" style="display:none" name="photo" required @change="uploadImage">
 			  <br>
-			  <img class="img-responsive" id="uploadPreview" style="margin-bottom:5px;" src="">	  
+			  <img  class="img-fluid"  id="uploadPreview" style="margin-bottom:5px;">	  
 			  <button  type="submit" class="btn btn-default btn-sm" style="color:#E91E63; background:#212121; border:2px solid steelblue;width:50%;display:block; margin:auto" >Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
 	     </div>
      </form>
@@ -43,7 +43,7 @@
    <br>
    
    <div>
-   <img v-for="item in userImages" v-bind:src="item" @click="imageModal(item)" class="img-responsive" style="width:31%; margin:2px; height:120px; float:left">
+   <img v-for="item in userImages" v-bind:src="item" @click="imageModal(item)" class="rounded float-left" style="width:31%; margin:2px; height:120px; float:left">
    
    </div>
   </div>

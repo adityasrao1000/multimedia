@@ -30,37 +30,40 @@ var navbar=Vue.component('my-navbar', {
 		  	    console.log(error);
 		  	  });
 		  	},
-  template: `<nav class="navbar" style="border: none; border-radius:0">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar" ></span>
-        <span class="icon-bar" ></span>
-        <span class="icon-bar" ></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Wallpapers</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="home">Home</a></li>
-        <li><a href="#">videos</a></li>
-        <li><a href="image">images</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      
-        <li class="dropdown"  id="logout" style="cursor:pointer">
-          <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle-o" aria-hidden="true"></i> account <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="home">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
-            <li><a href="#">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a></li>
-            <li><a href="LogoutSessionInvalidate">logout <i class="fa fa-sign-out"></i></a></li>
-          </ul>
-        </li>
-        <li  id="signup"><a href="register">Signup</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>`
+  template: `
+  <nav class="navbar navbar-expand-sm navbar-light bg-faded">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<!-- Brand -->
+	<a class="navbar-brand" href="#">Wallpapers</a>
+	
+	<!-- Links -->
+	<div class="collapse navbar-collapse" id="nav-content">   
+	<ul class="navbar-nav">
+	<li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">videos</a></li>
+    <li class="nav-item"><a class="nav-link" href="image">images</a></li>
+	
+	</ul>
+	<ul class="navbar-nav ml-auto">
+	<li class="nav-item dropdown" id="logout">
+	<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+	account
+	</a>
+	<div class="dropdown-menu" aria-labelledby="Preview">
+	    <li><a class="dropdown-item"  href="home">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
+        <li><a class="dropdown-item" href="usersettings">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a></li>
+        <li><a class="dropdown-item" href="LogoutSessionInvalidate">logout <i class="fa fa-sign-out"></i></a></li>
+	</div>
+	</li>
+	<li class="nav-item" id="signup"><a class="nav-link" href="register">Signup</a></li>
+	</ul>
+</div>
+</nav>
+
+`
 
 })
 // create a root instance

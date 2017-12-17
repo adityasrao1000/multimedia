@@ -7,6 +7,10 @@ body{
 	color:#E91E63;
 }
 
+button{
+	cursor:pointer;
+}
+
 .navbar{
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(171,171,171,1);
 	-moz-box-shadow: 0px 3px 5px 0px rgba(171,171,171,1);
@@ -14,15 +18,16 @@ body{
 	background: rgb(33, 33, 33);
 	
 }
-.icon-bar{
+.navbar-toggler{
 	background-color: #E91E63;
 }
-.navbar li a{
+.collapse .nav-item .nav-link{
 	color: #E91E63;
+	
 }
-.navbar-brand{
+.navbar .navbar-brand{
 	font-family: 'Tangerine', cursive;
-	font-size:40px;
+	font-size: 1.3em;
 	color:grey;
 }
 .dropdown-menu{
@@ -32,6 +37,7 @@ body{
 .dropdown-menu li a{
 	font-size: 1em;
 	color:#E91E63;
+	padding-left:10%;
 }
 .form-control{
 	border:none;

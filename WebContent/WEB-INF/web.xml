@@ -62,6 +62,14 @@
     <servlet-name>login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>usersettings</servlet-name>
+    <jsp-file>/jsp/usersettings.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>usersettings</servlet-name>
+    <url-pattern>/usersettings</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>session</filter-name>
     <filter-class>multimedia.session.SessionCheckFilter</filter-class>
@@ -72,5 +80,6 @@
     <url-pattern>/UploadImage</url-pattern>
     <url-pattern>/home</url-pattern>
     <url-pattern>/image</url-pattern>
+    <url-pattern>/usersettings</url-pattern>
   </filter-mapping>
 </web-app>

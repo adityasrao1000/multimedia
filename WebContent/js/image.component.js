@@ -44,10 +44,12 @@ var vm = new Vue({
 				  var preview = document.getElementById('uploadPreview');
 				  var file    = document.querySelector('input[type=file]').files[0];
 				  var reader  = new FileReader();
-				  this.imageName = file.name;
+				  var filename = file.name + "";
+				  this.imageName = filename.substr(0, filename.lastIndexOf("."));
 				  
 				  reader.addEventListener("load", function () {
 				    preview.src = reader.result;
+					
 				  }, false);
 				  
 				  if (file) {

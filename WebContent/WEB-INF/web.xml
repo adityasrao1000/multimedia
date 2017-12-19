@@ -39,6 +39,14 @@
     <url-pattern>/getSessionDetails</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>uploadprofilepic</servlet-name>
+    <servlet-class>multimedia.registration.UploadProfilePic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>uploadprofilepic</servlet-name>
+    <url-pattern>/uploadProfilePic</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>home</servlet-name>
     <jsp-file>/jsp/index.jsp</jsp-file>
   </servlet>
@@ -81,5 +89,6 @@
     <url-pattern>/home</url-pattern>
     <url-pattern>/image</url-pattern>
     <url-pattern>/usersettings</url-pattern>
+    <url-pattern>/uploadProfilePic</url-pattern>
   </filter-mapping>
 </web-app>

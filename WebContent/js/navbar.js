@@ -1,15 +1,17 @@
 var navbar=Vue.component('my-navbar', {
  data() {
 	  return{
-        isActive:false
+        isActive:false,
+        profile:''
 	  }
   },
 	methods: {
 		
+	
 		},
 		mounted: function () {
 		  console.log('navbar loaded');
-
+             
 		   	  axios.post('CheckSessionValid', {
 		  		  
 		  	  })
@@ -37,7 +39,7 @@ var navbar=Vue.component('my-navbar', {
 	</button>
 	
 	<!-- Brand -->
-	<a class="navbar-brand" href="#">Wallpapers</a>
+	<a class="navbar-brand" >Wallpapers</a>
 	
 	<!-- Links -->
 	<div class="collapse navbar-collapse" id="nav-content">   
@@ -50,7 +52,7 @@ var navbar=Vue.component('my-navbar', {
 	<ul class="navbar-nav ml-auto">
 	<li class="nav-item dropdown" id="logout">
 	<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-	account
+	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px"> account 
 	</a>
 	<div class="dropdown-menu" aria-labelledby="Preview">
 	    <li><a class="dropdown-item"  href="home">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
@@ -69,5 +71,29 @@ var navbar=Vue.component('my-navbar', {
 // create a root instance
 var nav=new Vue({
   el: '#nav',
+  data(){
+	  return{
+	    profile:''
+	  }
+  },
+  methods:{
+	  getSessionId: function(){
+			axios.post('getSessionDetails', {
+				  
+			  })
+			  .then(function (response) {
+				  nav.profile = "resources/displayProfilePic/" + response.data.email;
+				  document.getElementById("profile").src=nav.profile
+				  
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
+		}
+  },
+  mounted:function(){
+	  this.getSessionId()
+  }
+
 
 })

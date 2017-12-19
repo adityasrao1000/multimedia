@@ -6,6 +6,7 @@ var vm = new Vue({
 		  return{
 	    data: '',
 	    imageName:'',
+	    useremail:'',
 	    userImages: []
 		  }
 	  },
@@ -16,7 +17,7 @@ var vm = new Vue({
 			  })
 			  .then(function (response) {
 				  let useremail = response.data.email;
-				 
+				  
 				  vm.getImages(useremail)
 			  })
 			  .catch(function (error) {

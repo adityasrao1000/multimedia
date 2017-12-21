@@ -52,8 +52,14 @@
     </div>
     </div>
   </form>
+  <br><br><br>
+</div>
+
+<div id="footer">
+<my-footer></my-footer>
 </div>
 <script src="./js/navbar.js"></script>
+<script src="./js/footer.component.js"></script>
 <script src="./js/login.component.js"></script>
 </body>
 </html>

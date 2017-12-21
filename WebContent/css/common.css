@@ -11,8 +11,9 @@ button{
 	cursor:pointer;
 }
 .navbar-nav a.nav-link:hover{
-	background:lightgrey;
+	background:#575859;
 	border-radius:9px;
+	color:white;
 }
 .navbar{
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(171,171,171,1);

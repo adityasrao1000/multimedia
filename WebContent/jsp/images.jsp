@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <%@ include file="libraries.jsp" %>
 <link rel="stylesheet" href="css/images.css">
 <link rel="stylesheet" href="css/loader.css">
@@ -52,8 +52,6 @@
   </div>
 </div>
 
-<br><br>
-
   <!-- The Modal -->
 <div id="myModal" class="modal">
   <span class="close" id="closeModal">&times;</span>
@@ -61,7 +59,12 @@
   <div id="image_info"></div>
 </div>
 </div>
+
+<div id="footer">
+<my-footer></my-footer>
+</div>
 <script src="./js/navbar.js"></script>
+<script src="./js/footer.component.js"></script>
 <script src="./js/image.component.js"></script>
 </body>
 </html>

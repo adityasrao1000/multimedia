@@ -34,7 +34,6 @@ var vm = new Vue({
 			  .then(function (response) {
 				  vm.username = response.data.username;
 				  vm.pp = vm.pp + response.data.email;
-				  localStorage.setItem("useremail",response.data.email);
 			  })
 			  .catch(function (error) {
 			    console.log(error);

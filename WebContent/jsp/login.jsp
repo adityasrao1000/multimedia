@@ -3,10 +3,7 @@
 <head>
 <title>Login</title>
 <%
-String status="";
-  if(request.getAttribute("status")!=null){
-	  status=(String)request.getAttribute("status");
-  }
+
   String email=(String)session.getAttribute("email");  
   if (email != null) {
 	  response.sendRedirect("home");  
@@ -22,18 +19,18 @@ String status="";
 </div>
 <br><br><br><br>
 <div class="container-fluid" id="login">
-  <h5 style="color:red; text-align:center"><%= status%></h5>
-  <form class="form-horizontal" action="loginValidation" method="post"  style="max-width:400px; display:block; margin:auto">
+  <h5 style="color:red; text-align:center">{{status}}</h5>
+  <form class="form-horizontal" @submit.prevent="loginValidate" action="loginValidation" method="post"  style="max-width:400px; display:block; margin:auto">
     <div class="form-group">
       <label class="control-label" for="email">Email:</label>
       <div>
-        <input type="email" class="form-control"  placeholder="Email" name="email" autofocus required />
+        <input type="email" class="form-control" v-model="email" placeholder="Email" name="email" autofocus required />
       </div>
     </div>
     <div class="form-group">
       <label class="control-label" for="pwd">Password:</label>
       <div>          
-        <input type="password"  class="form-control" name="pwd"  placeholder="Password" required />
+        <input type="password"  class="form-control" v-model="pwd" name="pwd"  placeholder="Password" required />
       </div>
     </div>
     <div class="form-group">        

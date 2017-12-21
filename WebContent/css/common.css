@@ -11,7 +11,7 @@ button{
 	cursor:pointer;
 }
 .navbar-nav a.nav-link:hover{
-	background:white;
+	background:lightgrey;
 	border-radius:9px;
 }
 .navbar{

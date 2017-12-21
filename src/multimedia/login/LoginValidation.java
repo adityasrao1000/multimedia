@@ -1,8 +1,6 @@
 package multimedia.login;
 import java.sql.*; 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,10 +18,9 @@ public class LoginValidation extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("pwd");
-	
 		
 		try {
-			
+			java.io.PrintWriter out = response.getWriter();
 			Connection con = new InitializeMySqlDb().mySqlDao();
 	
 			PreparedStatement stmt=con.prepareStatement("select * from users where user_email=? and user_password=?");
@@ -35,13 +32,12 @@ public class LoginValidation extends HttpServlet {
 				
 				HttpSession session=request.getSession(true);  
 		        session.setAttribute("email",email); 
-		        response.sendRedirect("home");  
+		        out.print("valid");   
 		        
 			}else {
-				 request.setAttribute("status", "Your email or password is incorrect");		
-				 RequestDispatcher rd=request.getRequestDispatcher("login");  
-			     rd.forward(request, response);//method may be include or forward  
-				
+					
+			    out.print("invalid");  
+			 			
 			}
 			stmt.close();
 			con.close();

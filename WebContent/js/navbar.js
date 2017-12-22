@@ -52,7 +52,7 @@ var navbar=Vue.component('my-navbar', {
 	<ul class="navbar-nav ml-auto">
 	<li class="nav-item dropdown" id="logout">
 	<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px"> account 
+	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
 	</a>
 	<div class="dropdown-menu" aria-labelledby="Preview">
 	    <li><a class="dropdown-item"  href="home">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>

@@ -1,0 +1,24 @@
+.footer{
+	background:black;
+	floaat:bottom;
+	display:block;
+	margin-top:70px
+}
+
+#footer-bar{
+	height:10px;
+	background:#f44336;
+}
+
+#footer-social{
+	max-width: 160px;
+	display:block;
+	margin:auto;
+	margin-top:11px;
+}
+#footer-copyrights{
+	text-align:center;
+	font-size:.9em;
+	margin-top:10px;
+	margin-bottom:0px ;
+}

@@ -97,6 +97,9 @@ var vm = new Vue({
 	            .catch(function (err) {
 	              console.log(err.message);
 	            });
+		    },
+		    triggerupload: function(){
+		    	document.getElementById('uploadButton').click()
 		    }
 		  },
 		  

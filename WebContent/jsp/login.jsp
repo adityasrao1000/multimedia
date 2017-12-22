@@ -14,6 +14,7 @@
 <%@ include file="libraries.jsp" %>
 </head>
 <body>
+<div id="login-body">
 <div id="nav">
   <my-navbar></my-navbar>
 </div>
@@ -54,7 +55,7 @@
   </form>
   <br><br><br>
 </div>
-
+</div>
 <div id="footer">
 <my-footer></my-footer>
 </div>

@@ -26,7 +26,7 @@
 		    <div class="form-group">	
 			  <input type="text" placeholder="Image name" class="form-control" v-model="imageName" name="name" id="name" required>
 		    </div>
-		     <input  type="button" class="btn btn-default btn-sm" value="Select a file" onclick="document.getElementById('uploadButton').click()">
+		     <button class="btn btn-default btn-sm" type="button" style="color:#E91E63; background:#212121; border:2px solid steelblue;" @click="triggerupload">Select a file</button>
 			 <input id="uploadButton" type="file" style="display:none" name="photo" required @change="uploadImage">
 			  <br>
 			  <img  class="img-fluid"  id="uploadPreview" style="margin-bottom:5px;">	  

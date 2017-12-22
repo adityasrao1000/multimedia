@@ -1,3 +1,4 @@
+
 var login=new Vue({
   el: '#login',
   data() {
@@ -30,4 +31,4 @@ var login=new Vue({
 	    }
 	  }  
 
-})
+});

@@ -19,7 +19,7 @@ public class CompressImage {
 		
 		InputStream os = b.getBinaryStream();
 		BufferedImage image = ImageIO.read(os);
-		Iterator<ImageWriter>writers =  ImageIO.getImageWritersByFormatName("jpg");
+		Iterator<ImageWriter> writers =  ImageIO.getImageWritersByFormatName("jpg");
 	    ImageWriter writer = (ImageWriter) writers.next();
 	
 	    ImageOutputStream ios = ImageIO.createImageOutputStream(out);
@@ -29,7 +29,6 @@ public class CompressImage {
 	    param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
 	    param.setCompressionQuality(quality);
 	    writer.write(null, new IIOImage(image, null, null), param);
-	    
 	    
 	    os.close();
 	    ios.close();

@@ -3,10 +3,8 @@ package multimedia.image;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-
 import custom.exceptions.InvalidContentException;
 import multimedia.database.InitializeMySqlDb;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,16 +36,15 @@ public class UploadImage extends HttpServlet {
 	        if (filePart != null) {
 	            // prints out some information for debugging
 	            fileName = request.getParameter("name");
-	            System.out.println(filePart.getName());
-	            System.out.println(filePart.getSize());
-	            System.out.println(filePart.getContentType());
+	            
+	            ImageDetails img = new ImageDetails();
+	            img.printDetails(filePart);
+	            
 	            if(!filePart.getContentType().contains("image")) {
 	            	throw new InvalidContentException("The request does not contain an image type.");
 	            	
 	            }
 	            // obtains input stream of the upload file
-	            
-	        
 	        InputStream inputStream = filePart.getInputStream();
 	        Connection con = new InitializeMySqlDb().mySqlDao();		
 			HttpSession session = request.getSession();

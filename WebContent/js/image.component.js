@@ -7,7 +7,9 @@ var vm = new Vue({
 	    data: '',
 	    imageName:'',
 	    useremail:'',
-	    userImages: []
+	    userImages: [],
+	    tag:'',
+	    tags:[]
 		  }
 	  },
 	  methods: {
@@ -74,7 +76,23 @@ var vm = new Vue({
 		uploadShow: function(){
 			document.getElementById("uploadform").style.display ="block";
 		},
+		entertag: function(){
+			if(this.tags.length<10){
+				
+				this.tag= this.tag.trim();
+				this.tag = this.tag.replace(/\s+/g, ' ');
+	
+				if(this.tag.length<=30 && this.tag.length>=2){
+				this.tag = this.tag.toLowerCase();
+				  vm.tags.push(this.tag);				
+				}
+				this.tag='';
+			}
 		
+		},
+		removetag: function(index){
+			vm.tags.splice(index, 1);
+		},
 		submitform: function(){
 			let data = new FormData();
 			

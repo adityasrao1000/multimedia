@@ -14,3 +14,5 @@ public class ClassConflictsJhades {
 		new JHades().multipleClassVersionsReport().overlappingJarsReport();
 	}
 }
+
+ 

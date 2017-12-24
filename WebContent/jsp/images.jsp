@@ -21,16 +21,33 @@
   </div>
   <div class="col-sm-6">
   
-    <form @submit.prevent="submitform()" method="post" enctype="multipart/form-data" id="uploadform" style="display:none">
+    <form  method="post" enctype="multipart/form-data" id="uploadform" style="display:none">
 	    <div id="imageUploadContainer">
 		    <div class="form-group">	
 			  <input type="text" placeholder="Image name" class="form-control" v-model="imageName" name="name" id="name" required>
 		    </div>
-		     <button class="btn btn-default btn-sm" type="button" style="color:#E91E63; background:#212121; border:2px solid steelblue;" @click="triggerupload">Select a file</button>
+		     <button class="btn btn-default btn-sm" type="button" id="selectfile" @click="triggerupload">Select a file</button>
 			 <input id="uploadButton" type="file" style="display:none" name="photo" required @change="uploadImage">
+			  <br>		  
+			  <img  class="img-fluid"  id="uploadPreview" style="margin-bottom:5px; width:100%">
+			  
+			  <ul class="tags">
+				  <li><p v-for="(item, index) in tags" class="tag"><span class="cut"><i class="fa fa-times" aria-hidden="true" @click="removetag(index)"></i></span> <a href="#">{{item}}</a></p></li>				  
+			  </ul>	  
+			  
+			  <label style="font-size: .9em; margin-bottom:-5px">tag name:</label>
 			  <br>
-			  <img  class="img-fluid"  id="uploadPreview" style="margin-bottom:5px;">	  
-			  <button  type="submit" class="btn btn-default btn-sm" style="color:#E91E63; background:#212121; border:2px solid steelblue;width:50%;display:block; margin:auto" >Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
+			  
+			  <div class="row">
+			    <div class="col-8">
+			      <input id="taginput" @keyup.enter="entertag" class="form-control input-sm" v-model="tag" placeholder="tag name" type="text" name="tags" maxlength="30">			 
+			    </div>
+			    <div class="col-4">
+			      <button type="button" @click="entertag" class="btn btn-default btn-sm" style="margin-left:-31px; color:#E91E63; background:#212121; height:37px;">tag <i  style="font-size:14px" class="fa fa-plus-circle" aria-hidden="true"></i></button>
+			    </div>
+			  </div>
+			  <br>
+			  <button  type="button" @click="submitform()" class="btn btn-default btn-sm" id="submitbtn" >Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
 	     </div>
      </form>
 

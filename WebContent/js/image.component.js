@@ -62,8 +62,8 @@ var vm = new Vue({
 		imageModal: function(id){
 			let modal = document.getElementById('myModal');			
 			let modalImg = document.getElementById("img01");		
-			    modal.style.display = "block";
-			    modalImg.src = id;
+		    modal.style.display = "block";
+		    modalImg.src = id;
 
 			// Get the <span> element that closes the modal
 			var span = document.getElementById("closeModal");
@@ -94,11 +94,13 @@ var vm = new Vue({
 			vm.tags.splice(index, 1);
 		},
 		submitform: function(){
-			let data = new FormData();
 			
+			let data = new FormData();
+			let tags = this.tags;
+			tags=JSON.stringify(tags);
 	          data.append('name', this.imageName);
 	          data.append('photo', document.querySelector('input[type=file]').files[0]);
-	          
+	          data.append('tags',tags);
 	          axios.post('UploadImage', data)
 	            .then(function (res) {
 	              console.log(res.status);
@@ -106,6 +108,7 @@ var vm = new Vue({
 	            	  document.getElementById("uploadButton").value= "";
 	            	  document.getElementById("uploadPreview").src= "";
 	            	  document.getElementById("name").value= "";
+	            	  vm.tags= [];
 	            	  alert("file successfully uploaded");
 	              }
 	              if(res.data==="failed"){

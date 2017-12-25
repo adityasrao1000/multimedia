@@ -39,6 +39,14 @@
     <url-pattern>/getSessionDetails</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>uploadimage</servlet-name>
+    <servlet-class>multimedia.image.UploadImage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>uploadimage</servlet-name>
+    <url-pattern>/UploadImage</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>uploadprofilepic</servlet-name>
     <servlet-class>multimedia.registration.UploadProfilePic</servlet-class>
   </servlet>

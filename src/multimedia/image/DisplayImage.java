@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.sql.*;
 
 
-
 @Path("/image")
 @Produces("image/jpg")
 public class DisplayImage {
@@ -28,8 +27,7 @@ public class DisplayImage {
 		
 		    ServletOutputStream out;  
 		    out = response.getOutputStream(); 
-		      
-			
+		      	
 			
 		    try {
 

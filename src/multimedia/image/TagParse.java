@@ -12,8 +12,7 @@ public class TagParse{
 	
 	String[] extract(String tags) throws IOException, ParseException {
 		
-		String[] s = new String[10];
-		int i=0;
+		String s = "";
 		JSONParser parser = new JSONParser();
 		Reader reader = new StringReader(tags);
 		Object jsonObj = parser.parse(reader);
@@ -23,10 +22,12 @@ public class TagParse{
 		Iterator<String> it = tagarr.iterator();
 		System.out.println("tag:");
 		while (it.hasNext()) {
-			s[i]=it.next();
-			i++;
+			s+=" "+it.next();
+		
 		}
+		s = s.trim();
+		String[] arr = s.split(" ");
 		reader.close(); 
-		return s;
+		return arr;
 	}
 }

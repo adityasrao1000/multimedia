@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.sql.*;
 import custom.exceptions.InvalidContentException;
 import multimedia.database.InitializeMySqlDb;
+import multimedia.session.RandomToken;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,15 +57,22 @@ public class UploadImage extends HttpServlet {
 			String[] tagarr = tp.extract(tags);
 			Arrays.stream(tagarr).forEach(tag -> System.out.println(tag));
 			
+			//generate token for uniquely identifying image
+			String token = RandomToken.getToken(35);
+
+			
 			String user_email = (String)session.getAttribute("email");
-			PreparedStatement ps=con.prepareStatement("insert into imagetable(user_email,photo_name,photo,upload_date) values(?,?,?,?)");  
+			PreparedStatement ps=con.prepareStatement("insert into imagetable(user_email,photo_name,photo,upload_date,id) values(?,?,?,?,?)");  
 			ps.setString(1,user_email);  
 			ps.setString(2,fileName); 
 			 
 			ps.setBinaryStream(3,inputStream,inputStream.available()); 
 			ps.setDate(4,java.sql.Date.valueOf(date));
+			ps.setString(5,token);
+			
 			int i=ps.executeUpdate();  
 			System.out.println(i+" records affected");  
+			
 			out.print("success");
 			ps.close();
 			con.close();

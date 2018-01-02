@@ -1,7 +1,6 @@
 package multimedia.image;
 
 import java.io.IOException;
-
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import org.json.simple.JSONArray;

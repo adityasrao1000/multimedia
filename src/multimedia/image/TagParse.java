@@ -27,7 +27,11 @@ public class TagParse{
 		}
 		s = s.trim();
 		String[] arr = s.split(" ");
+		if(arr.length<=10) {
 		reader.close(); 
 		return arr;
+		}
+		reader.close(); 
+		return new String[0];
 	}
 }

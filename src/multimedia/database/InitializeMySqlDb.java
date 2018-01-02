@@ -10,6 +10,7 @@ public class InitializeMySqlDb {
   String password = DatabaseVariables.database_password;
   
   public Connection mySqlDao() throws SQLException, ClassNotFoundException {
+	  
 	  Class.forName("com.mysql.cj.jdbc.Driver");  
 	  Connection con=DriverManager.getConnection(url,username,password);
 	  return con;

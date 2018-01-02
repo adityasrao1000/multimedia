@@ -201,12 +201,12 @@
 }
 #imageUploadContainer{
 	padding:10px;
-    border:1px solid lightgrey;
     border-radius:4px;
-    background-color:grey;
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(207,203,207,1);
-	-moz-box-shadow: 0px 0px 5px 1px rgba(207,203,207,1);
-	box-shadow: 0px 0px 5px 1px rgba(207,203,207,1);
+    background-color:#33363d;
+    -webkit-box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+	box-shadow: -2px 2px 18px 0px rgba(0,0,0,0.75);
+    
 }
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
@@ -260,7 +260,7 @@
 }
 
 .tag::after {
-  background: grey;
+  background: #33363d;
   border-bottom: 13px solid transparent;
   border-left: 10px solid black;
   border-top: 13px solid transparent;

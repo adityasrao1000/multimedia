@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.json.simple.parser.ParseException;
 import javax.servlet.annotation.MultipartConfig;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 
@@ -27,8 +25,6 @@ public class UploadImage extends HttpServlet {
 		
 		 java.io.PrintWriter out = response.getWriter();				
 				
-		 LocalDateTime currentTime = LocalDateTime.now();
-		 LocalDate date = currentTime.toLocalDate();
 		try {
 			
 			String fileName;
@@ -55,6 +51,7 @@ public class UploadImage extends HttpServlet {
 			//parse and extract tags
 			TagParse tp =  new TagParse();
 			String[] tagarr = tp.extract(tags);
+			//printing tags on the output screen
 			Arrays.stream(tagarr).forEach(tag -> System.out.println(tag));
 			
 			//generate token for uniquely identifying image
@@ -62,16 +59,30 @@ public class UploadImage extends HttpServlet {
 
 			
 			String user_email = (String)session.getAttribute("email");
-			PreparedStatement ps=con.prepareStatement("insert into imagetable(user_email,photo_name,photo,upload_date,id) values(?,?,?,?,?)");  
+			PreparedStatement ps=con.prepareStatement("insert into imagetable(user_email,photo_name,photo,id) values(?,?,?,?)");  
 			ps.setString(1,user_email);  
-			ps.setString(2,fileName); 
-			 
+			ps.setString(2,fileName); 		 
 			ps.setBinaryStream(3,inputStream,inputStream.available()); 
-			ps.setDate(4,java.sql.Date.valueOf(date));
-			ps.setString(5,token);
+			ps.setString(4,token);
 			
 			int i=ps.executeUpdate();  
 			System.out.println(i+" records affected");  
+			
+			//if image inserted then insert tags
+			if(i>0) {
+				try {
+				ps=con.prepareStatement("insert into tags(id,tag,upload_date) values(?,?,(select upload_date from imagetable where id=?))");
+				for(int k=0;k<tagarr.length;k++) {
+					ps.setString(1, token);
+					ps.setString(2, tagarr[k]);
+					ps.setString(3, token);
+					ps.addBatch();
+				}
+				ps.executeBatch();
+				}catch(SQLException e) {
+					
+				}
+			}
 			
 			out.print("success");
 			ps.close();

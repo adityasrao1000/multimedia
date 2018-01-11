@@ -1,5 +1,3 @@
-
-	
 var vm = new Vue({
 	  el: '#images',
 	  data() {

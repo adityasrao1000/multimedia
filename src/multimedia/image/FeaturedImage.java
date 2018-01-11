@@ -14,8 +14,7 @@ import java.sql.*;
 
 @Path("/featuredimage")
 public class FeaturedImage {
-	
-	
+		
 	
 	@Context private HttpServletRequest httpRequest;
 	

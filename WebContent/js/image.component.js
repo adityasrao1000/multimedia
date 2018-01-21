@@ -124,6 +124,8 @@ var vm = new Vue({
 			  .catch(function (error) {
 			    console.log(error);
 			  });
+			}else{
+		       document.getElementById('loader-container').style.display="none";
 			}
 		},
 		submitform: function(){

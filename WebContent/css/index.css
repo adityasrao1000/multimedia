@@ -17,6 +17,42 @@ div.video-container{
 	width:130px;
 	float:right;
 }
+
+.video-container{
+    margin-bottom: 14px;
+	cursor: pointer;
+}
+.modal-content {
+	background-color:#424242;
+	color:#E91E63;
+}
+.modal-body{
+	border:none;
+}
+.card{
+	width:48%;
+	margin:3px;
+	display:inline-block;
+	background:#263238;
+}
+
+.img-options{
+  height:35px;
+  width:100%; 
+  position:relative; 
+  float:left; 
+  margin-bottom:-60px;
+  z-index:2;
+  display:none;
+}
+.img-cont:hover .img-options{
+  display:block;
+}
+.img-cont:hover img{
+  opacity:.8;
+  cursor:pointer;
+}
+
 @media only screen and (max-width: 600px) {
 h2{
   font-size: 1.3em;
@@ -37,16 +73,7 @@ div.video-container{
 	
 	margin-bottom: 5px;
 }
+.card{
+	width:98%;
 }
-.video-container{
-    margin-bottom: 14px;
-	cursor: pointer;
 }
-.modal-content {
-	background-color:#424242;
-	color:#E91E63;
-}
-.modal-body{
-	border:none;
-}
-	

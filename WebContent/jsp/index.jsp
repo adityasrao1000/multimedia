@@ -17,13 +17,55 @@
 <p>uploads <span style="color:white; font-size:.8em">{{uploads}}</span></p>
 <br><br><br><br>
 <div class="row">
-	<div class="col-sm-3">
+	<div class="col-sm-2">
 	
 	</div>
-	<div class="col-sm-6 col-xs-12 ">
-	  <img v-for="item in userImages" v-bind:src="item"  class="rounded float-left" style="width:31%; margin:2px; height:120px; float:left">
+	<div class="col-sm-8 col-xs-12 ">
+	  <div style="display:block">
+	  <div v-for="item in userImages" class="card">
+	    <div class="row">
+	      <div class="col-7">
+		      <!-- Left-aligned media object -->
+			  <div class="media" style="margin-top:8px; margin-left:10px;margin-bottom:-6px;">
+			    <div class="media-left">
+			      <img src="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png" class="media-object" style="width:40px; margin-right:7px">
+			    </div>
+			    <div class="media-body">
+			      <b class="media-heading">John Doe</b>
+			      <p style="font-size:.9em; color:red"><i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i></p>
+			    </div>
+			  </div>
+	      </div>
+	      <div class="col-5">
+	        <div style="display:block; text-align:right">
+	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px">Download</button>
+			 
+		    </div>
+	      </div>
+	    </div>
+		  
+		  <div class="img-cont">
+		    <img v-bind:src="item"  class="img-fluid" style="width:100%; height:200px;">
+		  </div>
+	  </div>
+	  </div>
+	  <br><br>
+	  <nav aria-label="Page navigation example" style="float:left; margin-left:4px">
+		  <ul class="pagination justify-content-end">
+		    <li class="page-item disabled"  style="color:#E91E63; background:black">
+		      <a class="page-link"  style="color:#E91E63; background:black" href="#" tabindex="-1">Previous</a>
+		    </li>
+		    <li class="page-item" ><a  style="color:#E91E63; background:black" class="page-link" href="#">1</a></li>
+		    <li class="page-item"><a  style="color:#E91E63; background:black" class="page-link" href="#">2</a></li>
+		    <li class="page-item"><a  style="color:#E91E63; background:black" class="page-link" href="#">3</a></li>
+		    <li class="page-item">
+		      <a class="page-link" href="#"  style="color:#E91E63; background:black">Next</a>
+		    </li>
+		  </ul>
+	  </nav>
+	  
 	</div>
-	<div class="col-sm-3">
+	<div class="col-sm-2">
 	
 	</div>
 </div> 

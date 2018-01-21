@@ -88,6 +88,10 @@ public class UploadImage extends HttpServlet {
 			ps.close();
 			con.close();
 	        }
+		}catch(NullPointerException ex) {
+			out.print("failed");
+			ex.printStackTrace();
+		
 		}catch(InvalidContentException ex) {
 			out.print("failed");
 			ex.printStackTrace();

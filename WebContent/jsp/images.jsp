@@ -13,7 +13,7 @@
 <div id="loader" style="display:none;"></div>
 <div class="container-fluid" id="images">
 <br>
-<button type="button" style="float:right; color:#E91E63; background:#212121; border:none" class="btn btn-default btn-sm" @click="uploadShow">Upload an image <i class="fa fa-plus" style="font-size:15px; float:right; margin-left:5px;margin-top:3px;" aria-hidden="true"></i></button>
+<button type="button" style="float:right; color:#E91E63; background:#212121; border:none" class="btn btn-default btn-sm" @click="uploadShow">Upload an image <i class="fa fa-plus" style="font-size:15px;  margin-left:5px; margin-top:4px;" aria-hidden="true"></i></button>
 <br><br>
 <div class="row">
   <div class="col-sm-3">
@@ -68,12 +68,19 @@
   
   </div>
 </div>
-
-  <!-- The Modal -->
+<div id="loader-container">
+  <div class="loader"></div>
+</div>
+<!-- The Modal -->
 <div id="myModal" class="modal">
   <span class="close" id="closeModal">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="image_info"></div>
+  <div class="img-modal-container">
+      <button type="button" @click="deleteImage" style="float:right" class="btn btn-outline-danger">Delete <i class="fa fa-times-circle" aria-hidden="true"></i></button>
+	  <img class="modal-content" id="img01">
+	  <div id="image_info"></div>
+	  <br>	 
+	  
+  </div>
 </div>
 </div>
 

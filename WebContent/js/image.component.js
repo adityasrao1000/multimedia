@@ -2,12 +2,13 @@ var vm = new Vue({
 	  el: '#images',
 	  data() {
 		  return{
-	    data: '',
-	    imageName:'',
-	    useremail:'',
-	    userImages: [],
-	    tag:'',
-	    tags:[]
+		    data: '',
+		    imageName:'',
+		    useremail:'',
+		    userImages: [],
+		    tag:'',
+		    tags:[],
+		    currentImgId:''
 		  }
 	  },
 	  methods: {
@@ -62,7 +63,7 @@ var vm = new Vue({
 			let modalImg = document.getElementById("img01");		
 		    modal.style.display = "block";
 		    modalImg.src = id;
-
+		    this.currentImgId = id;
 			// Get the <span> element that closes the modal
 			var span = document.getElementById("closeModal");
 
@@ -100,6 +101,31 @@ var vm = new Vue({
 		removetag: function(index){
 			vm.tags.splice(index, 1);
 		},
+		deleteImage: function(){
+		  let confirm = window.confirm("Are you sure you want to delete this image permanently?");
+		  document.getElementById('loader-container').style.display="block";
+		  if(confirm===true){
+			let currentImg =  this.currentImgId;
+			let id = this.currentImgId.split('/')
+			id = id[id.length-1];
+			axios.delete(`resources/deleteImage/${id}`, {
+				  
+			  })
+			  .then(function (response) {
+				 if(response.data==='success'){
+					
+					 let index = vm.userImages.indexOf(currentImg);
+					 vm.userImages.splice(index, 1);
+					 this.currentImgid='';					 
+					 document.getElementById('myModal').style.display = 'none';
+					 document.getElementById('loader-container').style.display="none";
+				 }
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
+			}
+		},
 		submitform: function(){
 			
 			let data = new FormData();
@@ -108,7 +134,9 @@ var vm = new Vue({
 	          data.append('name', this.imageName);
 	          data.append('photo', document.querySelector('input[type=file]').files[0]);
 	          data.append('tags',tags);
-	          axios.post('UploadImage', data)
+	          
+	          document.getElementById('loader-container').style.display="block";
+	          axios.post('UploadImage', data)	        
 	            .then(function (res) {
 	              console.log(res.status);
 	              if(res.data==="success"){
@@ -116,9 +144,10 @@ var vm = new Vue({
 	            	  document.getElementById("uploadPreview").src= "";
 	            	  document.getElementById("name").value= "";
 	            	  vm.tags= [];
-	            	  alert("file successfully uploaded");
+	            	  window.location.reload();
 	              }
 	              if(res.data==="failed"){
+	            	  document.getElementById('loader-container').style.display="none";
 	            	  alert("upload failed! please try again");
 	              }
 	            })

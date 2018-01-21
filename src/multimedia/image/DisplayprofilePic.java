@@ -1,6 +1,5 @@
 package multimedia.image;
 
-
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;

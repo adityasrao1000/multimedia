@@ -22,8 +22,7 @@ public class TagParse{
 		Iterator<String> it = tagarr.iterator();
 		System.out.println("tag:");
 		while (it.hasNext()) {
-			s+=" "+it.next();
-		
+			s+=" "+it.next();		
 		}
 		s = s.trim();
 		String[] arr = s.split(" ");

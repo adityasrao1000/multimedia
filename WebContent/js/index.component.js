@@ -67,10 +67,15 @@ var vm = new Vue({
 				  
 			  })
 			  .then(function (response) {
-				  let arr=[];
+				
 				  for(let i =0;i<response.data.length;i++){
-				    arr.push("resources/image/"+response.data[i]);
-				    vm.userImages =arr;
+					var obj = new Object();
+                    obj.id= "resources/image/"+response.data[i].id;
+                    obj.email = response.data[i].email;
+                    obj.username = response.data[i].username;
+                    obj.profilepic = "resources/displayProfilePic/"+response.data[i].email;
+					vm.userImages.push(obj);
+				    
 				  }
 			  })
 			  .catch(function (error) {

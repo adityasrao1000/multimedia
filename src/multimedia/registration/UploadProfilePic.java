@@ -38,7 +38,6 @@ public class UploadProfilePic extends HttpServlet {
 	            	throw new InvalidContentException("The request does not contain an image type.");
 	            	
 	            }
-	            // obtains input stream of the upload file
 	        
 	        
 	        InputStream inputStream = filePart.getInputStream();

@@ -29,8 +29,7 @@ public class GetSessionDetails extends HttpServlet {
 				
 				try {
 					
-					Connection con = new InitializeMySqlDb().mySqlDao();
-			
+					Connection con = new InitializeMySqlDb().mySqlDao();			
 					PreparedStatement stmt=con.prepareStatement("select user_name from users where user_email=?");
 					stmt.setString(1,email);  
 				

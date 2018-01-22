@@ -28,24 +28,23 @@
 		      <!-- Left-aligned media object -->
 			  <div class="media" style="margin-top:8px; margin-left:10px;margin-bottom:-6px;">
 			    <div class="media-left">
-			      <img src="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png" class="media-object" style="width:40px; margin-right:7px">
+			      <img v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
 			    </div>
 			    <div class="media-body">
-			      <b class="media-heading">John Doe</b>
+			      <b class="media-heading" style="cursor:pointer">{{item.username}}</b>
 			      <p style="font-size:.9em; color:red"><i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i></p>
 			    </div>
 			  </div>
 	      </div>
 	      <div class="col-5">
-	        <div style="display:block; text-align:right">
+	        <div style="display:block; text-align:right">	            
 	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px">Download</button>
-			 
 		    </div>
 	      </div>
 	    </div>
 		  
 		  <div class="img-cont">
-		    <img v-bind:src="item"  class="img-fluid" style="width:100%; height:200px;">
+		    <img v-bind:src="item.id"  class="img-fluid" style="width:100%; height:200px;">
 		  </div>
 	  </div>
 	  </div>

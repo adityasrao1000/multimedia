@@ -48,7 +48,7 @@ public class DisplayprofilePic {
 				    int ch =0; ;  
 				    while((ch=bin.read())!=-1)  
 				    {  
-				    bout.write(ch);  
+				        bout.write(ch);  
 				    } 
                     bin.close();  			        
 				    bout.close();  
@@ -60,28 +60,27 @@ public class DisplayprofilePic {
 			    out.close();  
 					
 		    }catch(NullPointerException e) {
-		    	e.printStackTrace();
-		    	FileInputStream fi = new FileInputStream("C:\\Users\\Aditya rao\\Pictures\\default.jpg");
+		    	System.out.println("NullPointerException: Loading default profile picture");
+		    	FileInputStream fi = new FileInputStream("C:\\Users\\Aditya\\Pictures\\Saved Pictures\\default.png");
 		    	byte[] b = new byte[fi.available()];
 		    	int i;
 		    	int j =0;
 		    	while((i =fi.read())!=-1) {
 		    		b[j]=(byte)i;
-		    		j++;
-		    		
+		    		j++;		    		
 		    	}
 		    	ByteArrayInputStream bin = new ByteArrayInputStream(b);  
 			    BufferedOutputStream bout = new BufferedOutputStream(out);  
 			    int ch =0; ;  
 			    while((ch=bin.read())!=-1)  
 			    {  
-			    bout.write(ch);  
+			        bout.write(ch);  
 			    } 
 			    fi.close();
                 bin.close();  			        
-			    bout.close();
-	
+			    bout.close();	
 		    	out.close();
+		    	
 		    	return  Response.status(200).build();
 		    }
 		    catch(Exception e) {
@@ -90,9 +89,6 @@ public class DisplayprofilePic {
 		    }
 		    
           return  Response.status(200).build();
-	  }    
-	
-        
-		
+	  }    		
 }
 	

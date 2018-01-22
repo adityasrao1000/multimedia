@@ -53,12 +53,8 @@ public class DisplayImage {
 		    }catch(Exception e) {
 		    	e.printStackTrace();
 		    	return  Response.status(404).build();
-		    }
-		    
+		    }		    
           return  Response.status(200).build();
-	  }    
-	
-        
-		
+	  }    		
 }
 	

@@ -8,7 +8,8 @@ var vm = new Vue({
 	        pp: 'resources/displayProfilePic/',
 	        imagename: '',
 	        email:'',
-	        uploads: 0
+	        uploads: 0,
+	        tags:new Array()
 		  }
 	  },
 	  methods: {
@@ -72,17 +73,16 @@ var vm = new Vue({
 					var obj = new Object();
                     obj.id= "resources/image/"+response.data[i].id;
                     obj.email = response.data[i].email;
-                    obj.username = response.data[i].username;
-                    obj.profilepic = "resources/displayProfilePic/"+response.data[i].email;
-					vm.userImages.push(obj);
-				    
+                    obj.username = response.data[i].username; 
+                    obj.tags = response.data[i].tags;
+                    obj.profilepic = "resources/displayProfilePic/"+response.data[i].email;                    
+                    vm.userImages.push(obj);                     
 				  }
 			  })
 			  .catch(function (error) {
 			    console.log(error);
 			  });
-		}
-		  
+		}		  
 	  },
 	  mounted: function(){
 		  this.getSessionId();

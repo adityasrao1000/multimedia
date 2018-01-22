@@ -77,3 +77,53 @@ div.video-container{
 	width:98%;
 }
 }
+
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden; 
+  padding: 0;
+  display:block;
+  margin-top:9px;
+  padding:5px;
+}
+
+.tags li {
+  float: left; 
+}
+
+.tag {
+  white-space: pre;
+  background: black;
+  border-radius: 3px 0 0 3px;
+  color: white;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 20px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag .cut{
+  color:#E91E63;
+  margin-left:-13px;
+  cursor:pointer; 
+}
+
+.tag::after {
+  background: #263238;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid black;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover::after {
+   border-left-color: black; 
+}

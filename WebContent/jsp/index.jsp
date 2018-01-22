@@ -20,7 +20,7 @@
 	<div class="col-sm-2">
 	
 	</div>
-	<div class="col-sm-8 col-xs-12 ">
+	<div class="col-sm-8 col-xs-12">
 	  <div style="display:block">
 	  <div v-for="item in userImages" class="card">
 	    <div class="row">
@@ -35,6 +35,7 @@
 			      <p style="font-size:.9em; color:red"><i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i></p>
 			    </div>
 			  </div>
+			  
 	      </div>
 	      <div class="col-5">
 	        <div style="display:block; text-align:right">	            
@@ -45,7 +46,10 @@
 		  
 		  <div class="img-cont">
 		    <img v-bind:src="item.id"  class="img-fluid" style="width:100%; height:200px;">
-		  </div>
+		  </div>		 
+		  <ul class="tags">
+			  <li><p v-for="t in item.tags" class="tag"><span class="cut">{{t}}</span></p></li>				  
+		  </ul>	
 	  </div>
 	  </div>
 	  <br><br>

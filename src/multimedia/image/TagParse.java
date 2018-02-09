@@ -19,7 +19,11 @@ public class TagParse{
 		JSONArray tagarr = (JSONArray) jsonObj;
 		ArrayList<String> n = tagarr;
 	
-		String[] result = n.stream().filter(tag ->tag.trim().length()> 0).map(s ->s.trim()).toArray(String[]::new);
+		String[] result = n.stream()
+				.filter(tag ->tag.trim().length()> 0)				
+				.map(s ->s.trim()).limit(10)
+				.distinct()
+				.toArray(String[]::new);
 				
 		reader.close(); 
 		return result;

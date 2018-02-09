@@ -107,5 +107,9 @@ public class UploadImage extends HttpServlet {
 			out.print("failed");
 			e.printStackTrace();
 		}
+		catch(IllegalStateException e) {
+			System.out.println("file size exceeds 16mb");
+			out.print("failed");
+		}
 	}
 }

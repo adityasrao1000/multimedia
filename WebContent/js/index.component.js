@@ -5,6 +5,7 @@ var vm = new Vue({
 		  return{
 	        username: '',
 	        userImages: [],
+	        userImages1: [],
 	        pp: 'resources/displayProfilePic/',
 	        imagename: '',
 	        email:'',
@@ -70,13 +71,17 @@ var vm = new Vue({
 			  .then(function (response) {
 				
 				  for(let i =0;i<response.data.length;i++){
-					var obj = new Object();
+					let obj = new Object();
                     obj.id= "resources/image/featured/"+response.data[i].id;
                     obj.email = response.data[i].email;
                     obj.username = response.data[i].username; 
                     obj.tags = response.data[i].tags;
-                    obj.profilepic = "resources/displayProfilePic/"+response.data[i].email;                    
-                    vm.userImages.push(obj);                     
+                    obj.profilepic = "resources/displayProfilePic/"+response.data[i].email; 
+                    if(i%2==0){
+                      vm.userImages.push(obj);
+                    }else{
+                      vm.userImages1.push(obj);	
+                    }
 				  }
 			  })
 			  .catch(function (error) {

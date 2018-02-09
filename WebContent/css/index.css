@@ -30,9 +30,8 @@ div.video-container{
 	border:none;
 }
 .card{
-	width:48%;
-	margin:3px;
-	display:inline-block;
+	
+	margin-bottom:10px;
 	background:#263238;
 }
 

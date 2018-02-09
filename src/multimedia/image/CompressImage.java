@@ -44,7 +44,7 @@ public class CompressImage {
 		try{
 			InputStream os = b.getBinaryStream();
 			BufferedImage originalImage = ImageIO.read(os);
-			System.out.println((float)((float)b.length()/1000000)+"mb");
+			
 			IMG_HEIGHT = IMG_WIDTH*((float)originalImage.getHeight()/(float)originalImage.getWidth());
 			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
 

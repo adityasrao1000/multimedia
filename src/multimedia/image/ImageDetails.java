@@ -12,6 +12,7 @@ public class ImageDetails {
 		 System.out.println(f.getName());
          System.out.println(f.getSize());
          System.out.println(f.getContentType());
+         
          BufferedImage img = ImageIO.read(f.getInputStream());
          int width          = img.getWidth();
          int height         = img.getHeight();

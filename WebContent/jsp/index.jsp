@@ -40,7 +40,7 @@
 	      </div>
 	      <div class="col-5">
 	        <div style="display:block; text-align:right">	            
-	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px">Download</button>
+	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px" @click="download(item)">Download</button>
 		    </div>
 	      </div>
 	    </div>
@@ -71,7 +71,7 @@
 	      </div>
 	      <div class="col-5">
 	        <div style="display:block; text-align:right">	            
-	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px">Download</button>
+	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px" @click="download(item)">Download</button>
 		    </div>
 	      </div>
 	    </div>

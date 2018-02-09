@@ -11,6 +11,7 @@ public class TagParser {
 
 	@Test
 	public void test() throws IOException, ParseException {
+		
 	    TagParse t1 = new TagParse();
         
 	    //white spaces before or after the string are trimmed

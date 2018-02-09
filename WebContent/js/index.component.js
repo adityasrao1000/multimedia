@@ -87,7 +87,12 @@ var vm = new Vue({
 			  .catch(function (error) {
 			    console.log(error);
 			  });
-		}		  
+		},
+		download: function(image){
+			
+			let id= image.id.slice(image.id.lastIndexOf("/")+1,image.id.length);			
+	        window.location = `resources/download/${id}`;	      
+		}
 	  },
 	  mounted: function(){
 		  this.getSessionId();

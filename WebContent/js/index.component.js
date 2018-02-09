@@ -71,7 +71,7 @@ var vm = new Vue({
 				
 				  for(let i =0;i<response.data.length;i++){
 					var obj = new Object();
-                    obj.id= "resources/image/"+response.data[i].id;
+                    obj.id= "resources/image/featured/"+response.data[i].id;
                     obj.email = response.data[i].email;
                     obj.username = response.data[i].username; 
                     obj.tags = response.data[i].tags;

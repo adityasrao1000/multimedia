@@ -12,26 +12,58 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageOutputStream;
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
 
 public class CompressImage {
 	
+	private  float IMG_WIDTH = 500;
+	private  float IMG_HEIGHT;
+	
+	
+	private BufferedImage resizeImageWithHint(BufferedImage originalImage, int type){
+
+		BufferedImage resizedImage = new BufferedImage((int)IMG_WIDTH, (int)IMG_HEIGHT, type);
+		Graphics2D g = resizedImage.createGraphics();
+		g.drawImage(originalImage, 0, 0, (int)IMG_WIDTH, (int)IMG_HEIGHT, null);
+		g.dispose();
+		g.setComposite(AlphaComposite.Src);
+
+		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+		RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g.setRenderingHint(RenderingHints.KEY_RENDERING,
+		RenderingHints.VALUE_RENDER_QUALITY);
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		RenderingHints.VALUE_ANTIALIAS_ON);
+
+		return resizedImage;
+	}
 	void Compress(OutputStream out,float quality,Blob b) throws IOException, SQLException {
-		
-		InputStream os = b.getBinaryStream();
-		BufferedImage image = ImageIO.read(os);
-		Iterator<ImageWriter> writers =  ImageIO.getImageWritersByFormatName("jpg");
-	    ImageWriter writer = (ImageWriter) writers.next();
-	
-	    ImageOutputStream ios = ImageIO.createImageOutputStream(out);
-	    writer.setOutput(ios);
-	
-	    ImageWriteParam param = writer.getDefaultWriteParam();
-	    param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-	    param.setCompressionQuality(quality);
-	    writer.write(null, new IIOImage(image, null, null), param);
-	    
-	    os.close();
-	    ios.close();
-	    writer.dispose(); 
+		try{
+			InputStream os = b.getBinaryStream();
+			BufferedImage originalImage = ImageIO.read(os);
+			System.out.println((float)((float)b.length()/1000000)+"mb");
+			IMG_HEIGHT = IMG_WIDTH*((float)originalImage.getHeight()/(float)originalImage.getWidth());
+			int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+
+			BufferedImage resizeImageHintPng = resizeImageWithHint(originalImage, type);
+			ImageOutputStream ios = ImageIO.createImageOutputStream(out);
+			Iterator<ImageWriter> writers =  ImageIO.getImageWritersByFormatName("png");
+			ImageWriter writer = (ImageWriter) writers.next();	
+		    writer.setOutput(ios);
+						
+			ImageWriteParam param = writer.getDefaultWriteParam();
+			writer.write(null, new IIOImage(resizeImageHintPng, null, null), param);
+		    
+		    os.close();
+		    ios.close();
+		    writer.dispose(); 
+		}catch(IOException e){
+			System.out.println(e.getMessage());
+		}		
 	}
 }
+
+

@@ -45,7 +45,7 @@
 	    </div>
 		  
 		  <div class="img-cont">
-		    <img v-bind:src="item.id"  class="img-fluid" style="width:100%; height:200px;">
+		    <img v-bind:src="item.id" type="image" class="img-fluid" style="width:100%;">
 		  </div>		 
 		  <ul class="tags">
 			  <li><p v-for="t in item.tags" class="tag"><span class="cut">{{t}}</span></p></li>				  

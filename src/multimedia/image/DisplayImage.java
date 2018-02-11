@@ -3,6 +3,12 @@ package multimedia.image;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import multimedia.database.InitializeMySqlDb;
+
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
@@ -10,10 +16,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.Iterator;
 
 
 @Path("/image")
@@ -43,12 +51,21 @@ public class DisplayImage {
 					Blob b=rs.getBlob(1);
 				
 					BufferedOutputStream bout = new BufferedOutputStream(out);  
-				    int ch =0; ; 
+			
 				    InputStream os = b.getBinaryStream();
-				    while((ch=os.read())!=-1)  
-				    {  
-				    bout.write(ch);  
-				    } 
+				    BufferedImage image = ImageIO.read(os);
+				    
+				    ImageOutputStream ios = ImageIO.createImageOutputStream(bout);
+					Iterator<ImageWriter> writers =  ImageIO.getImageWritersByFormatName("png");
+					ImageWriter writer = (ImageWriter) writers.next();	
+				    writer.setOutput(ios);
+				    
+				    ImageWriteParam param = writer.getDefaultWriteParam();
+					writer.write(null, new IIOImage(image, null, null), param);
+				    
+				    os.close();
+				    ios.close();
+				    writer.dispose(); 
 					
 				      
 				}else {
@@ -85,7 +102,7 @@ public class DisplayImage {
 					Blob b=rs.getBlob(1);
 				
 				    CompressImage com = new CompressImage();
-				    com.Compress(out, .4f, b);
+				    com.Compress(out, b);
 					
 				      
 				}else {

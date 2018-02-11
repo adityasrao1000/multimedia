@@ -40,7 +40,7 @@ public class CompressImage {
 
 		return resizedImage;
 	}
-	void Compress(OutputStream out,float quality,Blob b) throws IOException, SQLException {
+	void Compress(OutputStream out,Blob b) throws IOException, SQLException {
 		try{
 			InputStream os = b.getBinaryStream();
 			BufferedImage originalImage = ImageIO.read(os);

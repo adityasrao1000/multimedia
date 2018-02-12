@@ -257,12 +257,12 @@
 .tag {
   white-space: pre;
   background: black;
-  border-radius: 3px 0 0 3px;
+  border-radius: 3px;
   color: white;
   display: inline-block;
   height: 26px;
   line-height: 26px;
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0 10px;
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
@@ -271,21 +271,16 @@
 
 .tag .cut{
   color:red;
-  margin-left:-13px;
-  cursor:pointer; 
 }
 
-.tag::after {
-  background: #33363d;
-  border-bottom: 13px solid transparent;
-  border-left: 10px solid black;
-  border-top: 13px solid transparent;
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
+.tagImg{
+	padding: 12px;
+	border:2px solid #E91E63;
 }
-
+.tagImg p {
+	display:block;
+	margin-top:-13px;
+}
 .tag:hover::after {
    border-left-color: black; 
 }

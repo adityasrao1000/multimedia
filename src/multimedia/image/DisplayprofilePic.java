@@ -2,7 +2,6 @@ package multimedia.image;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -65,6 +64,7 @@ public class DisplayprofilePic {
 			    out.close();  
 					
 		    }catch(NullPointerException e) {
+		    	
 		    	System.out.println("NullPointerException: Loading default profile picture");
 		    	FileInputStream fi = new FileInputStream("C:\\Users\\Aditya\\Pictures\\Saved Pictures\\default.png");
 		    	BufferedOutputStream bout = new BufferedOutputStream(out);  
@@ -73,7 +73,8 @@ public class DisplayprofilePic {
 			    ImageIO.write(image, "png", ios);
 			    
 			    fi.close();		        
-			    bout.close();	
+			    bout.close();
+			    ios.close();
 		    	out.close();
 		    	
 		    	return  Response.status(200).build();

@@ -98,12 +98,10 @@ var vm = new Vue({
 				     vm.tags.push(this.tag);
 				  }else{
 					  
-				  }
-				  
+				  }				  
 				}
 				this.tag='';
-			}
-		
+			}		
 		},
 		removetag: function(index){
 			vm.tags.splice(index, 1);
@@ -168,15 +166,23 @@ var vm = new Vue({
 		    	document.getElementById('uploadButton').click()
 		    },
 		    getTags: function(){
-		    	axios.delete('resources/tags/${this.currentImgId}', {
+		    	vm.newtags= [];
+		    	let id = this.currentImgId.slice(this.currentImgId.lastIndexOf('/')+1,this.currentImgId.length);
+		    	axios.get(`resources/tags/${id}`, {
 					  
 				  })
 				  .then(function (response) {
-					 alert(response.data)
+					  if(response.status===200){
+						  vm.newtags= response.data;
+					  }
+
 				  })
 				  .catch(function (error) {
 				    console.log(error);
 				  });
+		    },
+		    deleteTag: function(){
+		    	
 		    },
 		    addNewTag: function(){
 		            

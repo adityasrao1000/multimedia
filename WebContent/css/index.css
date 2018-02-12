@@ -95,12 +95,12 @@ div.video-container{
 .tag {
   white-space: pre;
   background: black;
-  border-radius: 3px 0 0 3px;
+  border-radius: 3px;
   color: white;
   display: inline-block;
   height: 26px;
   line-height: 26px;
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0 10px;
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
@@ -109,20 +109,11 @@ div.video-container{
 
 .tag .cut{
   color:#E91E63;
-  margin-left:-13px;
+  font-size:.83em;
   cursor:pointer; 
 }
 
-.tag::after {
-  background: #263238;
-  border-bottom: 13px solid transparent;
-  border-left: 10px solid black;
-  border-top: 13px solid transparent;
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-}
+
 
 .tag:hover::after {
    border-left-color: black; 

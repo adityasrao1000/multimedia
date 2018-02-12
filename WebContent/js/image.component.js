@@ -6,9 +6,12 @@ var vm = new Vue({
 		    imageName:'',
 		    useremail:'',
 		    userImages: [],
-		    tag:'',
+		    tag:'',		    
 		    tags:[],
-		    currentImgId:''
+		    newtags:[],
+		    newtag:'',
+		    currentImgId:'',
+		    tags_image_specific: []
 		  }
 	  },
 	  methods: {
@@ -64,6 +67,10 @@ var vm = new Vue({
 		    modal.style.display = "block";
 		    modalImg.src = id;
 		    this.currentImgId = id;
+		    
+		    //get the tags of the image
+		    this.getTags();
+		    
 			// Get the <span> element that closes the modal
 			var span = document.getElementById("closeModal");
 
@@ -159,6 +166,37 @@ var vm = new Vue({
 		    },
 		    triggerupload: function(){
 		    	document.getElementById('uploadButton').click()
+		    },
+		    getTags: function(){
+		    	axios.delete('resources/tags/${this.currentImgId}', {
+					  
+				  })
+				  .then(function (response) {
+					 alert(response.data)
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
+		    },
+		    addNewTag: function(){
+		            
+					this.newtag= this.newtag.trim();
+					this.newtag = this.newtag.replace(/\s+/g, ' ');
+		
+					if(this.newtag.length<=30 && this.newtag.length>=2){
+						
+					  this.newtag = this.newtag.toLowerCase();
+					  if(vm.newtags.length==0){
+						  vm.newtags.push(this.tag); 
+					  }
+					  else if(vm.newtags.length>0 && vm.newtags.indexOf(this.newtag)<0){
+					     vm.newtags.push(this.newtag);
+					  }else{
+						  
+					  }
+					  
+					}
+					this.newtag='';				
 		    }
 		  },
 		  

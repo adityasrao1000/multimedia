@@ -1,12 +1,16 @@
 package multimedia.image;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import multimedia.database.InitializeMySqlDb;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
@@ -17,7 +21,7 @@ import java.sql.*;
 
 
 @Path("/displayProfilePic")
-@Produces("image/jpg")
+@Produces("image/png")
 public class DisplayprofilePic {
 	
 	@Context
@@ -40,18 +44,19 @@ public class DisplayprofilePic {
 			
 				ResultSet rs=ps.executeQuery();  
 				
-				if(rs.next())	     {         
+				if(rs.next())	     {       
+										
 					Blob b=rs.getBlob(1);
-					byte barr[]=b.getBytes(1,(int)b.length());
-				    ByteArrayInputStream bin = new ByteArrayInputStream(barr);  
-				    BufferedOutputStream bout = new BufferedOutputStream(out);  
-				    int ch =0; ;  
-				    while((ch=bin.read())!=-1)  
-				    {  
-				        bout.write(ch);  
-				    } 
-                    bin.close();  			        
-				    bout.close();  
+					BufferedOutputStream bout = new BufferedOutputStream(out);  
+					
+				    InputStream os = b.getBinaryStream();
+				    BufferedImage image = ImageIO.read(os);
+				    ImageOutputStream ios = ImageIO.createImageOutputStream(bout);
+				    ImageIO.write(image, "png", ios);
+							    
+				    os.close();
+				    bout.close();
+				    ios.close(); 							    
 				}else {
 					return  Response.status(404).build();
 				}
@@ -62,22 +67,12 @@ public class DisplayprofilePic {
 		    }catch(NullPointerException e) {
 		    	System.out.println("NullPointerException: Loading default profile picture");
 		    	FileInputStream fi = new FileInputStream("C:\\Users\\Aditya\\Pictures\\Saved Pictures\\default.png");
-		    	byte[] b = new byte[fi.available()];
-		    	int i;
-		    	int j =0;
-		    	while((i =fi.read())!=-1) {
-		    		b[j]=(byte)i;
-		    		j++;		    		
-		    	}
-		    	ByteArrayInputStream bin = new ByteArrayInputStream(b);  
-			    BufferedOutputStream bout = new BufferedOutputStream(out);  
-			    int ch =0; ;  
-			    while((ch=bin.read())!=-1)  
-			    {  
-			        bout.write(ch);  
-			    } 
-			    fi.close();
-                bin.close();  			        
+		    	BufferedOutputStream bout = new BufferedOutputStream(out);  
+				BufferedImage image = ImageIO.read(fi);
+			    ImageOutputStream ios = ImageIO.createImageOutputStream(bout);
+			    ImageIO.write(image, "png", ios);
+			    
+			    fi.close();		        
 			    bout.close();	
 		    	out.close();
 		    	

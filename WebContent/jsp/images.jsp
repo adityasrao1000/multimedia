@@ -79,7 +79,7 @@
 	  <img class="modal-content" id="img01">
 	  <div id="image_info"></div>
 	  <br>	 
-	  
+	  <input class="form-control input" style="max-width:200px;float:left; height:30px" v-model="newtag" @keyup.enter="addNewTag" id="add-tag" placeholder="enter a tag" type="text" maxlength="30"><i style="font-size:30px; margin-left:10px;" @click="addNewTag" class="fa fa-plus"></i>
   </div>
 </div>
 </div>

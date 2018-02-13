@@ -18,8 +18,8 @@ public class RemoveTag {
 	@Context HttpServletRequest request;
 	
 	@DELETE
-	@Path("/{param}/{tag}")
-	public Response getMsg(@PathParam("param") String id, @PathParam("tag") String tag) throws IOException, SQLException{
+	@Path("/{image_id}/{tag}")
+	public Response getMsg(@PathParam("image_id") String id, @PathParam("tag") String tag) throws IOException, SQLException{
 			
 	    	HttpSession session = request.getSession();
 	    	String email = (String)session.getAttribute("email");

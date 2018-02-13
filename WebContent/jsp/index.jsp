@@ -23,7 +23,7 @@
 	<div class="col-sm-8 col-xs-12">
 	  <div class="row">
 		  <div class="col-sm-6 ">
-		   <div v-for="item in userImages" class="card">
+	  <div v-for="item in userImages" class="card">
 	    <div class="row">
 	      <div class="col-7">
 		      <!-- Left-aligned media object -->
@@ -39,7 +39,7 @@
 			  
 	      </div>
 	      <div class="col-5">
-	        <div style="display:block; text-align:right">	            
+	        <div style="display:block; text-align:right">	           
 	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px" @click="download(item)">Download</button>
 		    </div>
 	      </div>

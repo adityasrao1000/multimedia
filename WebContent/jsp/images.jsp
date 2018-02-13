@@ -32,7 +32,7 @@
 			  <img  class="img-fluid"  id="uploadPreview" style="margin-bottom:5px; width:100%">
 			  
 			  <ul class="tags">
-				  <li><p v-for="(item, index) in tags" class="tag"><span class="cut"><i class="fa fa-times" aria-hidden="true" @click="removetag(index)"></i></span> <a href="#">{{item}}</a></p></li>				  
+				  <li><p v-for="(item, index) in tags" class="tag"><span class="cut"><i class="fa fa-times" aria-hidden="true" @click="removetag(index)"></i></span> <a >{{item}}</a></p></li>				  
 			  </ul>	  
 			  
 			  <label style="font-size: .9em; margin-bottom:-5px">tag name:</label>
@@ -79,6 +79,7 @@
 	  <img class="modal-content" id="img01">
 	  <div id="image_info"></div>
 	  <br>
+	  <p style="float:left; margin-right:7px;">Tags:</p>
 	  <ul class="tags">
 		 <li><div v-for="(item, index) in newtags" class="tag tagImg"><p><span class="cut"><i class="fa fa-times" aria-hidden="true" @click="deleteTag(index)"></i></span> {{item}}</p></div></li>				  
 	  </ul>	

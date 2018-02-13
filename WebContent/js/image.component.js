@@ -181,8 +181,23 @@ var vm = new Vue({
 				    console.log(error);
 				  });
 		    },
-		    deleteTag: function(){
+		    deleteTag: function(index){
 		    	
+		    	let id = this.currentImgId.slice(this.currentImgId.lastIndexOf('/')+1,this.currentImgId.length);
+		    	let name = this.newtags[index];
+		    	axios.delete(`resources/deleteTag/${id}/${name}`, {
+					  
+				  })
+				  .then(function (response) {
+					  if(response.status===200){
+						  vm.newtags.splice(index, 1);
+					  }
+					  console.log("tag removed");
+
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
 		    },
 		    addNewTag: function(){
 		            

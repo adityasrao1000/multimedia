@@ -11,7 +11,7 @@ var vm = new Vue({
 		    newtags:[],
 		    newtag:'',
 		    currentImgId:'',
-		    tags_image_specific: []
+		    edit:false
 		  }
 	  },
 	  methods: {
@@ -133,6 +133,10 @@ var vm = new Vue({
 		       document.getElementById('loader-container').style.display="none";
 			}
 		},
+		editImage: function(){
+			vm.edit=true;
+			document.getElementById('mark').scrollIntoView();
+		},
 		submitform: function(){
 			
 			let data = new FormData();
@@ -198,6 +202,10 @@ var vm = new Vue({
 				  .catch(function (error) {
 				    console.log(error);
 				  });
+		    },
+		    closeImageModal: function(){
+		    	vm.edit=false;
+		    	vm.newtags=[];
 		    },
 		    addNewTag: function(){
 		            

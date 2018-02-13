@@ -73,19 +73,22 @@
 </div>
 <!-- The Modal -->
 <div id="myModal" class="modal">
-  <span class="close" id="closeModal">&times;</span>
-  <div class="img-modal-container">
+  <span class="close" id="closeModal" @click="closeImageModal">&times;</span>
+  <div class="img-modal-container">    
       <button type="button" @click="deleteImage" style="float:right" class="btn btn-outline-danger">Delete <i class="fa fa-times-circle" aria-hidden="true"></i></button>
+	  <button type="button" @click="editImage" class="btn btn-outline-warning" style="float:right; margin-right:10px">Edit <i class="fa fa-pencil" aria-hidden="true"></i></button>
 	  <img class="modal-content" id="img01">
 	  <div id="image_info"></div>
 	  <br>
 	  <p style="float:left; margin-right:7px;">Tags:</p>
 	  <ul class="tags">
-		 <li><div v-for="(item, index) in newtags" class="tag tagImg"><p><span class="cut"><i class="fa fa-times" aria-hidden="true" @click="deleteTag(index)"></i></span> {{item}}</p></div></li>				  
+		 <li><div v-for="(item, index) in newtags" class="tag tagImg"><p><span class="cut"><i v-if="edit" class="fa fa-times" aria-hidden="true" @click="deleteTag(index)"></i></span> {{item}}</p></div></li>				  
 	  </ul>	
-	  <br>	 
-	  <input class="form-control input" style="max-width:200px;float:left; height:30px" v-model="newtag" @keyup.enter="addNewTag" id="add-tag" placeholder="enter a tag" type="text" maxlength="30"><i style="font-size:30px; margin-left:10px;" @click="addNewTag" class="fa fa-plus"></i>
-      <br><br>
+	  <br>
+	  <div style="display:block; width:100%">
+	    <input v-if="edit" class="form-control input" style="max-width:200px;float:left; height:30px" v-model="newtag" @keyup.enter="addNewTag" id="add-tag" placeholder="enter a tag" type="text" maxlength="30"><i v-if="edit" style="font-size:30px; margin-left:10px;" @click="addNewTag" class="fa fa-plus"></i>
+      </div>
+      <br><br style="float:bottom" id="mark">
   </div>
 </div>
 </div>

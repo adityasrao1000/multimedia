@@ -28,7 +28,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>image</servlet-name>
-    <url-pattern>/image</url-pattern>
+    <url-pattern>/profile</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>GetSessionDetails</servlet-name>
@@ -95,7 +95,7 @@
     <url-pattern>/resources/image/*</url-pattern>
     <url-pattern>/UploadImage</url-pattern>
     <url-pattern>/home</url-pattern>
-    <url-pattern>/image</url-pattern>
+    <url-pattern>/profile</url-pattern>
     <url-pattern>/usersettings</url-pattern>
     <url-pattern>/uploadProfilePic</url-pattern>
   </filter-mapping>

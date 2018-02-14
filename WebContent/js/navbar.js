@@ -44,10 +44,7 @@ var navbar=Vue.component('my-navbar', {
 	<!-- Links -->
 	<div class="collapse navbar-collapse" id="nav-content">   
 	<ul class="navbar-nav">
-	<li class="nav-item"><a class="nav-link" href="home">Home</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">videos</a></li>
-    <li class="nav-item"><a class="nav-link" href="image">images</a></li>
-	
+	  <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
 	</ul>
 	<ul class="navbar-nav ml-auto">
 	<li class="nav-item dropdown" id="logout">
@@ -55,7 +52,7 @@ var navbar=Vue.component('my-navbar', {
 	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
 	</a>
 	<div class="dropdown-menu" aria-labelledby="Preview">
-	    <li><a class="dropdown-item"  href="home">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
+	    <li><a class="dropdown-item"  href="profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
         <li><a class="dropdown-item" href="usersettings">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a></li>
         <li><a class="dropdown-item" href="LogoutSessionInvalidate">logout <i class="fa fa-sign-out"></i></a></li>
 	</div>

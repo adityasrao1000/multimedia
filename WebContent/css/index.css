@@ -1,27 +1,4 @@
-div.video-container{
-	
-	margin-bottom: 14px;
-	cursor: pointer;
-}
 
-.fa-thumbs-down{
-	float:right;
-	font-size:28px;
-}
-
-.fa-thumbs-up{
-	float:left;
-	font-size:28px;
-}
-#rating{
-	width:130px;
-	float:right;
-}
-
-.video-container{
-    margin-bottom: 14px;
-	cursor: pointer;
-}
 .modal-content {
 	background-color:#424242;
 	color:#E91E63;
@@ -32,7 +9,7 @@ div.video-container{
 .card{
 	
 	margin-bottom:10px;
-	background:#263238;
+	background:rgb(33, 33, 33);
 
 }
 
@@ -60,9 +37,7 @@ h2{
 div.video-container b{
 	font-size:.7em;
 }
-.fa-thumbs-down,.fa-thumbs-up{
-	font-size:20px;
-}
+
 .progress{
 	margin-top:-7px;
 }

@@ -19,7 +19,7 @@ var login=new Vue({
 
 		  		if(response.data =="valid"){
 		  			localStorage.setItem("useremail",useremail.trim());
-		  			window.location = "home";
+		  			window.location = "profile";
 		  		}else{
 		  			login.status= 'Your email or password is incorrect';
 		  		}

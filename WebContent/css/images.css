@@ -291,3 +291,23 @@
 .tag:hover::after {
    border-left-color: black; 
 }
+
+ #ppUploadModal{
+     width:100%;  
+     height:100%;
+     position:fixed;
+     display:none;
+     top:0;
+     background: rgba(0, 0, 0, 0.6);
+   }
+   #ppUploadModal div:first-child{
+   max-width:400px;
+   max-height:230px;
+   background-color:black;
+   display:block;
+   position:relative;
+   top:37%;
+   margin:auto;
+   border-radius: 3px;
+   
+   }

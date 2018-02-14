@@ -24,7 +24,7 @@
 	    <div class="row" style="margin-bottom:-62px; width:100%; background: rgba(0, 0, 0, 0.3); z-index:1; margin-left:0px;">
 	      <div class="col-7">
 		      <!-- Left-aligned media object -->
-			  <div class="media" style="margin-top:8px; margin-left:10px;margin-bottom:-6px;">
+			  <div class="media" style="margin-top:8px; margin-bottom:-6px;">
 			    <div class="media-left">
 			      <img v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
 			    </div>
@@ -37,7 +37,7 @@
 	      </div>
 	      <div class="col-5">
 	        <div style="display:block; text-align:right">	           
-	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px" @click="download(item)">Download</button>
+	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px;" @click="download(item)">Download</button>
 		    </div>
 	      </div>
 	    </div>
@@ -55,7 +55,7 @@
 	    <div class="row" style="margin-bottom:-62px; width:100%; background: rgba(0, 0, 0, 0.3); z-index:1; margin-left:0px;">
 	      <div class="col-7">
 		      <!-- Left-aligned media object -->
-			  <div class="media" style="margin-top:8px; margin-left:10px;margin-bottom:-6px;">
+			  <div class="media" style="margin-top:8px;margin-bottom:-6px;">
 			    <div class="media-left">
 			      <img v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
 			    </div>
@@ -68,7 +68,7 @@
 	      </div>
 	      <div class="col-5">
 	        <div style="display:block; text-align:right">	            
-	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px; margin-right:8px" @click="download(item)">Download</button>
+	            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px;" @click="download(item)">Download</button>
 		    </div>
 	      </div>
 	    </div>

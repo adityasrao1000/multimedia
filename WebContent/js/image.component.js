@@ -48,12 +48,12 @@ var vm = new Vue({
 			  });		
 	    },
 		uploaded: function(){
-			this.imagename_profilePic = document.querySelector('#profilePicUpload').files[0].name;
+			this.imagename_profilePic = document.querySelectorAll('input[type="file"]')[1].files[0].name;
 		},
 		uploadProfile: function(){
 			let data = new FormData();
 			
-	          data.append('photo', document.querySelector('#profilePicUpload').files[0]);
+	          data.append('photo', document.querySelectorAll('input[type="file"]')[1].files[0]);
 	          
 	          axios.post('uploadProfilePic', data)
 	            .then(function (res) {
@@ -266,6 +266,12 @@ var vm = new Vue({
 					  
 					}
 					this.newtag='';				
+		    },
+		    openModal: function(){
+		    	document.getElementById("ppUploadModal").style.display="block";
+		    },
+		    closeModal: function(){
+		    	document.getElementById("ppUploadModal").style.display="none";
 		    }
 		  },
 		  

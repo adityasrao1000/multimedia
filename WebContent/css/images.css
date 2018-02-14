@@ -4,6 +4,13 @@
 	cursor: pointer;
 	color: black;
 }
+.modal-content {
+	background-color:#424242;
+	color:#E91E63;
+}
+.modal-body{
+	border:none;
+}
 .fa-plus-circle{
 	color: red;
     font-size: 20px;

@@ -6,7 +6,6 @@ var vm = new Vue({
 	        username: '',
 	        userImages: [],
 	        userImages1: [],
-	        pp: 'resources/displayProfilePic/',
 	        imagename: '',
 	        email:'',
 	        uploads: 0,
@@ -23,7 +22,7 @@ var vm = new Vue({
 					  
 				  })
 				  .then(function (response) {
-					 vm.uploads = response.data.uploads;
+					
 				  })
 				  .catch(function (error) {
 				    console.log(error);
@@ -42,28 +41,7 @@ var vm = new Vue({
 			  });
 			this.userUploads();
 		},
-		uploaded: function(){
-			this.imagename = document.querySelector('input[type=file]').files[0].name;
-		},
-		uploadProfile: function(){
-			let data = new FormData();
-			
-	          data.append('photo', document.querySelector('input[type=file]').files[0]);
-	          
-	          axios.post('uploadProfilePic', data)
-	            .then(function (res) {
-	              console.log(res.status);
-	              if(res.data==="success"){
-	            	  location.reload();
-	              }
-	              if(res.data==="failed"){
-	            	  alert("upload failed! please try again");
-	              }
-	            })
-	            .catch(function (err) {
-	              console.log(err.message);
-	            });
-		    },
+		
 		getImages: function(){
 			 axios.get('resources/featuredimage', {
 				  

@@ -6,13 +6,18 @@
 <link rel="stylesheet" href="css/images.css">
 <link rel="stylesheet" href="css/loader.css">
 </head>
-<body id="image">
+<body>
+<div id="images">
 <div id="nav">
   <my-navbar></my-navbar>
 </div>
 <div id="loader" style="display:none;"></div>
-<div class="container-fluid" id="images">
+<div class="container-fluid">
 <br>
+<img data-toggle="modal" data-target="#profilepic" style="max-width:100px; float:left; margin-right:12px; cursor:pointer" v-bind:src="pp" class="img-fluid rounded" alt="profile pic">
+<h5>{{username}}</h5>
+<p>uploads <span style="color:white; font-size:.8em">{{uploads}}</span></p>
+<br><br>
 <button type="button" style="float:right; color:#E91E63; background:#212121; border:none" class="btn btn-default btn-sm" @click="uploadShow">Upload an image <i class="fa fa-plus" style="font-size:15px;  margin-left:5px; margin-top:4px;" aria-hidden="true"></i></button>
 <br><br>
 <div class="row">
@@ -91,10 +96,36 @@
       <br><br style="float:bottom" id="mark">
   </div>
 </div>
-</div>
 
+<!-- The Modal -->
+  <div class="modal fade" id="profilepic">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+          <h5 class="modal-title" style="max-width:90%">Change Profile Picture</h5>
+          
+          <br>
+          <input type="file" accept="image/*" @change="uploaded" id="uploadProfilePic" style="display:none; float:left">
+          <button type="button" style=" display:block; color:#E91E63; background:#212121; border:none; float:left" class="btn btn-sm" onclick="document.getElementById('uploadProfilePic').click()">Select <i class="fa fa-picture-o" aria-hidden="true"></i></button>
+          <p style="float:left; margin-left:6px;">{{imagename_profilePic}}</p>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm" style=" display:block; color:#E91E63; background:#212121; border:none;" @click="uploadProfile">Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 <div id="footer">
 <my-footer></my-footer>
+</div>
 </div>
 <script src="./js/navbar.js"></script>
 <script src="./js/footer.component.js"></script>

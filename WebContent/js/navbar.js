@@ -57,7 +57,7 @@ var navbar=Vue.component('my-navbar', {
         <li><a class="dropdown-item" href="LogoutSessionInvalidate">logout <i class="fa fa-sign-out"></i></a></li>
 	</div>
 	</li>
-	<li class="nav-item" id="signup"><a class="nav-link" href="register">Signup</a></li>
+	<li class="nav-item" id="signup"><div style="width:160px"><a style="max-width:85px;float:left" class="nav-link" href="register">Signup /</a><a style="max-width:63px; float:left" class="nav-link" href="login"> Login</a></div></li>
 	</ul>
 </div>
 </nav>

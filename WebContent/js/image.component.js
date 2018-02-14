@@ -4,12 +4,16 @@ var vm = new Vue({
 		  return{
 		    data: '',
 		    imageName:'',
+		    username:'',
 		    useremail:'',
+		    uploads: '',
+		    imagename_profilePic:'',
 		    userImages: [],
 		    tag:'',		    
 		    tags:[],
 		    newtags:[],
 		    newtag:'',
+		    pp: 'resources/displayProfilePic/',
 		    currentImgId:'',
 		    edit:false
 		  }
@@ -21,6 +25,8 @@ var vm = new Vue({
 			  })
 			  .then(function (response) {
 				  let useremail = response.data.email;
+				  vm.username = response.data.username;
+				  vm.pp = vm.pp + response.data.email;
 				  
 				  vm.getImages(useremail)
 			  })
@@ -29,6 +35,40 @@ var vm = new Vue({
 			  });
 		
 		},
+		userUploads: function(){
+		     let useremail=localStorage.getItem("useremail");
+			 axios.get(`resources/totalUserUploads/${useremail}`, {
+				  
+			  })
+			  .then(function (response) {
+				 vm.uploads = response.data.uploads;
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });		
+	    },
+		uploaded: function(){
+			this.imagename_profilePic = document.querySelector('#profilePicUpload').files[0].name;
+		},
+		uploadProfile: function(){
+			let data = new FormData();
+			
+	          data.append('photo', document.querySelector('#profilePicUpload').files[0]);
+	          
+	          axios.post('uploadProfilePic', data)
+	            .then(function (res) {
+	              console.log(res.status);
+	              if(res.data==="success"){
+	            	  location.reload();
+	              }
+	              if(res.data==="failed"){
+	            	  alert("upload failed! please try again");
+	              }
+	            })
+	            .catch(function (err) {
+	              console.log(err.message);
+	            });
+		    },
 		getImages: function(imageId){ 
 			     axios.get('resources/getimages/'+imageId, {
 				  
@@ -231,6 +271,7 @@ var vm = new Vue({
 		  
 	  mounted: function(){
 		  this.getSessionId();
+		  this.userUploads();
 		  
 	  } 
 })

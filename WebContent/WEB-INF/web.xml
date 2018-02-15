@@ -23,11 +23,11 @@
     <url-pattern>/resources/*</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>image</servlet-name>
-    <jsp-file>/jsp/images.jsp</jsp-file>
+    <servlet-name>profile</servlet-name>
+    <jsp-file>/jsp/profile.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>image</servlet-name>
+    <servlet-name>profile</servlet-name>
     <url-pattern>/profile</url-pattern>
   </servlet-mapping>
   <servlet>

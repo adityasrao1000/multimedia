@@ -3,11 +3,11 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <%@ include file="libraries.jsp" %>
-<link rel="stylesheet" href="css/images.css">
+<link rel="stylesheet" href="css/profile.css">
 <link rel="stylesheet" href="css/loader.css">
 </head>
 <body>
-<div id="images">
+<div id="profile">
 <div id="nav">
   <my-navbar></my-navbar>
 </div>
@@ -122,6 +122,6 @@
 </div>
 <script src="./js/navbar.js"></script>
 <script src="./js/footer.component.js"></script>
-<script src="./js/image.component.js"></script>
+<script src="./js/profile.component.js"></script>
 </body>
 </html>

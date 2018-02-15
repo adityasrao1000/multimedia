@@ -1,5 +1,5 @@
 var vm = new Vue({
-	  el: '#images',
+	  el: '#profile',
 	  data() {
 		  return{
 		    data: '',

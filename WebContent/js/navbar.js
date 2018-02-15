@@ -45,6 +45,7 @@ var navbar=Vue.component('my-navbar', {
 	<div class="collapse navbar-collapse" id="nav-content">   
 	<ul class="navbar-nav">
 	  <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+	  <li class="nav-item"><a class="nav-link" href="images">Browse</a></li>
 	</ul>
 	<ul class="navbar-nav ml-auto">
 	<li class="nav-item dropdown" id="logout">

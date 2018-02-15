@@ -86,6 +86,14 @@
     <servlet-name>usersettings</servlet-name>
     <url-pattern>/usersettings</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>images</servlet-name>
+    <jsp-file>/jsp/images.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>images</servlet-name>
+    <url-pattern>/images</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>session</filter-name>
     <filter-class>multimedia.session.SessionCheckFilter</filter-class>

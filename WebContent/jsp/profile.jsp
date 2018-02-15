@@ -5,6 +5,7 @@
 <%@ include file="libraries.jsp" %>
 <link rel="stylesheet" href="css/profile.css">
 <link rel="stylesheet" href="css/loader.css">
+<title>Profile</title>
 </head>
 <body>
 <div id="profile">

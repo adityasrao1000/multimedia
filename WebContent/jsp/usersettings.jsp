@@ -4,6 +4,7 @@
 
 <%@ include file="libraries.jsp" %>
 <link rel="stylesheet" href="css/usersettings.css">
+<title>Settings</title>
 </head>
 <body>
 <div id="index">

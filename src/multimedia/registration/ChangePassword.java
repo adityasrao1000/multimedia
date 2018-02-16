@@ -36,7 +36,7 @@ import multimedia.database.InitializeMySqlDb;
  				PreparedStatement ps=con.prepareStatement("update users set user_password=? where user_email=? and user_password=?");  
  				ps.setString(1, password);
  				ps.setString(2, email);
- 				ps.setString(2, password_old);
+ 				ps.setString(3, password_old);
  				ResultSet rs=ps.executeQuery();  
  				
  								

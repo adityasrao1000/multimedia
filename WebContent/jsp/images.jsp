@@ -3,11 +3,6 @@
 <head>
 <title>Images</title>
 <%@ include file="libraries.jsp" %>
-<style>
- .dropdown-menu{
-   opacity:1;
- }
-</style>
 </head>
 <body>
 <div id="nav">

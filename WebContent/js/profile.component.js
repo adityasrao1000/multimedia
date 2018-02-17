@@ -128,7 +128,7 @@ var vm = new Vue({
 				this.tag= this.tag.trim();
 				this.tag = this.tag.replace(/\s+/g, ' ');
 	
-				if(this.tag.length<=30 && this.tag.length>=2){
+				if(this.tag.length<=30 && this.tag.length>=2 && this.tag.indexOf("/")===-1){
 					
 				  this.tag = this.tag.toLowerCase();
 				  if(vm.tags.length==0){

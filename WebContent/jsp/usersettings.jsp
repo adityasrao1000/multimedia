@@ -7,7 +7,7 @@
 <title>Settings</title>
 </head>
 <body>
-<div id="index">
+<div id="usersettings">
 <div id="nav">
   <my-navbar></my-navbar>
 </div>
@@ -26,13 +26,13 @@
 	    </div>
 	    <div id="collapseOne" class="collapse">
 	      <div class="card-body">
-	        <input type="text" placeholder="enter your old password" class="form-control"  name="oldpwd" id="oldpwd" required>
+	        <input type="text" placeholder="enter your old password" class="form-control"  v-model="oldpwd" name="oldpwd" id="oldpwd" required>
 	        <br>
-	        <input type="text" placeholder="enter your new password" class="form-control"  name="newpwd" id="newpwd" required>
+	        <input type="text" placeholder="enter your new password" class="form-control"  v-model="newpwd1" name="newpwd1" id="newpwd1" required>
 	        <br>
-	        <input type="text" placeholder="re-enter your new password" class="form-control"  name="newpwd1" id="newpwd1" required>
+	        <input type="text" placeholder="re-enter your new password" class="form-control" v-model="newpwd2" name="newpwd2" id="newpwd2" required>
 	        <br>
-	        <button  type="button" @click="submitform()" style="background-color:black; color:white"  class="btn btn-sm" id="submitbtn" >Change</button>
+	        <button  type="button" @click="changePassword" style="background-color:black; color:#E91E63;"  class="btn btn-sm" id="submitbtn" >Change</button>
 	      </div>
 	    </div>
 	  </div>
@@ -40,12 +40,14 @@
 	  <div class="card">
 	    <div class="card-header">
 	      <a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-	        change your username
+	       <b>change your username</b>
 	      </a>
 	    </div>
 	    <div id="collapseTwo" class="collapse">
 	      <div class="card-body">
-	        Lorem ipsum..
+	        <input type="text" placeholder="enter your username" class="form-control"  v-model="username" name="username" id="username" required>
+	        <p></p>
+	        <button  type="button" @click="" style="background-color:black; color:#E91E63;"  class="btn btn-sm" id="submitbtn" >Change</button>
 	      </div>
 	    </div>
 	  </div>
@@ -53,7 +55,7 @@
 	  <div class="card">
 	    <div class="card-header">
 	      <a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-	        change you profile picture
+	       <b>change you profile picture</b>
 	      </a>
 	    </div>
 	    <div id="collapseThree" class="collapse">
@@ -92,6 +94,6 @@
 </div>
 <script src="./js/navbar.js"></script>
 <script src="./js/footer.component.js"></script>
-
+<script src="./js/usersettings.component.js"></script>
 </body>
 </html>

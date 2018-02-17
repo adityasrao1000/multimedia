@@ -2,7 +2,6 @@ package multimedia.registration;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.PUT;
@@ -15,7 +14,7 @@ import multimedia.database.InitializeMySqlDb;
 
 
 @Path("/changePassword")
- public class ChangePassword {
+public class ChangePassword {
  		
  	
  	@Context private HttpServletRequest request;
@@ -28,7 +27,7 @@ import multimedia.database.InitializeMySqlDb;
  			if(!PasswordValidate.isValid(password)) {
  				return  Response.status(404).build();
  			}
- 			
+ 		
  			HttpSession session = request.getSession(false);
  			String email = (String)session.getAttribute("email");
  		    try {
@@ -37,13 +36,16 @@ import multimedia.database.InitializeMySqlDb;
  				ps.setString(1, password);
  				ps.setString(2, email);
  				ps.setString(3, password_old);
- 				ResultSet rs=ps.executeQuery();  
+ 				int i=ps.executeUpdate();  
  				
  								
- 				if(rs.next()){ 
+ 				if(i==1){ 
  					return  Response.status(200).build();
  					
- 				}else {
+ 				}if(i>1) {
+ 					return  Response.status(500).build();
+ 				}
+ 				else {
  					return  Response.status(404).build();
  				}
  		    }catch(Exception e) {

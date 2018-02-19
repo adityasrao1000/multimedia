@@ -17,4 +17,16 @@ public class InitializeMySqlDb {
 		
   }
   
+  public void close(PreparedStatement ps,ResultSet rs, Connection con) {
+	  try {
+		ps.close();
+		rs.close();
+		con.close();
+		System.out.println("database connections closed");
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	  
+  }
+  
 }

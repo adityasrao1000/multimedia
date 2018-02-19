@@ -107,5 +107,6 @@
     <url-pattern>/resources/deleteTag/*</url-pattern>
     <url-pattern>/resources/verifyPassword/*</url-pattern>
     <url-pattern>/resources/changePassword/*</url-pattern>
+    <url-pattern>/resources/addTag/*</url-pattern>
   </filter-mapping>
 </web-app>

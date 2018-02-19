@@ -24,8 +24,8 @@ public class AddTag {
 	    	HttpSession session = request.getSession();
 	    	String email = (String)session.getAttribute("email");
 		    try {
-                
-		    	Connection con = new InitializeMySqlDb().mySqlDao();
+		    	InitializeMySqlDb db = new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao();
 		    
 				PreparedStatement ps=con.prepareStatement("select * from tags where id=? limit 1");  
 				ps.setString(1,id);  
@@ -47,26 +47,35 @@ public class AddTag {
 							
 							if(rs.next())
 							if(rs.getString(1).equals(email)) {
+								
+								tag = tag.trim().toLowerCase();
+								tag = tag.replaceAll("\\s"," "); 
+								if(tag.length()>30 && tag.length()>=2) {
+									return  Response.status(400).entity("failed").build();
+								}
 								ps=con.prepareStatement("insert into tags(id,tag,upload_date) values(?,?,(select upload_date from imagetable where id=?))");
 								ps.setString(1, id);
 								ps.setString(2, tag);
 								ps.setString(3, id);
 								int i = ps.executeUpdate();
 								
-						
-								
+													
 								if(i==1) {
+									System.out.println(i+" tag added");
+									db .close(ps,rs,con);
 									return  Response.status(200).entity("success").build();
 								}
-								
+								db .close(ps,rs,con);
 								return  Response.status(404).entity("failed").build();
 							}
 							
+							db .close(ps,rs,con);
 							return  Response.status(404).entity("failed").build();
 						}
 					}
 				}
 				
+				db .close(ps,rs,con);
 				return  Response.status(404).entity("failed").build();
 		    }catch(Exception e) {
 		    	e.printStackTrace();

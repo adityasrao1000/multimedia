@@ -251,18 +251,28 @@ var vm = new Vue({
 		            
 					this.newtag= this.newtag.trim();
 					this.newtag = this.newtag.replace(/\s+/g, ' ');
-		
+					this.newtag = this.newtag.toLowerCase();
+					let tag= this.newtag;
+					
+				
 					if(this.newtag.length<=30 && this.newtag.length>=2){
+					
+						let id = this.currentImgId.slice(this.currentImgId.lastIndexOf('/')+1,this.currentImgId.length);
+						axios.get(`resources/addTag/${id}?tag=${tag}`)	        
+			            .then(function (res) {
+			              console.log(res.status);
+			              if(res.data==="success"){
+			
+						     vm.newtags.push(tag); 
 						
-					  this.newtag = this.newtag.toLowerCase();
-					  if(vm.newtags.length==0){
-						  vm.newtags.push(this.tag); 
-					  }
-					  else if(vm.newtags.length>0 && vm.newtags.indexOf(this.newtag)<0){
-					     vm.newtags.push(this.newtag);
-					  }else{
-						  
-					  }
+			              }
+			              if(res.data==="failed"){
+			            	 
+			              }
+			            })
+			            .catch(function (err) {
+			              console.log(err.message);
+			            });
 					  
 					}
 					this.newtag='';				

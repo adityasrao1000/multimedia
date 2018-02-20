@@ -16,7 +16,7 @@ public class ForgotPassword {
  	
  	@PUT
  	@Path("/{email}")
-	public Response changePassword(@PathParam("old_password") String email){
+	public Response changePassword(@PathParam("email") String email){
  		     		    
  		    //generate 4 digit token
  		    int token = token();

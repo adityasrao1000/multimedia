@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <%@ include file="libraries.jsp" %>
 <link rel="stylesheet" href="css/profile.css">
 <link rel="stylesheet" href="css/loader.css">
@@ -117,9 +116,9 @@
         </div>
 	</div>
 </div>
+</div>
 <div id="footer">
 <my-footer></my-footer>
-</div>
 </div>
 <script src="./js/navbar.js"></script>
 <script src="./js/footer.component.js"></script>

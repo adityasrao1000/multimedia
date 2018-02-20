@@ -2,12 +2,32 @@ var navbar=Vue.component('my-navbar', {
  data() {
 	  return{
         isActive:false,
-        profile:''
+        profile:'',
+        email:'',
+        pwd:''
 	  }
   },
 	methods: {
-		
-	
+		loginValidate: function(){
+	    	 let useremail = this.email;
+	    	
+	    	 axios.post('loginValidation', "email="+ this.email+"&pwd="+this.pwd,{
+		  		  
+		  	  })
+		  	  .then(function (response) {
+
+		  		if(response.data =="valid"){
+		  			localStorage.setItem("useremail",useremail.trim());
+		  			window.location = "profile";
+		  		}else{
+		  			
+		  		}
+		  		  
+		  	  })
+		  	  .catch(function (error) {
+		  	    console.log(error);
+		  	  });
+	    }
 		},
 		mounted: function () {
 		  console.log('navbar loaded');
@@ -58,7 +78,27 @@ var navbar=Vue.component('my-navbar', {
         <li><a class="dropdown-item" href="LogoutSessionInvalidate">logout <i class="fa fa-sign-out"></i></a></li>
 	</div>
 	</li>
-	<li class="nav-item" id="signup"><div style="width:160px"><a style="max-width:85px;float:left" class="nav-link" href="register">Signup /</a><a style="max-width:63px; float:left" class="nav-link" href="login"> Login</a></div></li>
+	<li class="nav-item" id="signup">
+	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+	  <div class="btn-group" role="group">
+	    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	      login
+	    </button>
+	    <div class="dropdown-menu" style="padding:6px;" aria-labelledby="btnGroupDrop1">
+	      <div class="form-group">
+			  <label for="usr">Name:</label>
+			  <input type="text" v-model="email" class="form-control-sm" style="width:100%" id="nav-login-usr">
+		  </div>
+		  <div class="form-group">
+			  <label for="pwd">Password:</label>
+			  <input type="password" v-model="pwd" class="form-control-sm" style="width:100%" id="nav-login-pwd">
+		  </div>
+		  <button @click="loginValidate" type="submit" class="btn btn-default btn-sm"  style="width:70%; display:block; color:#E91E63; background:#212121; border:none; margin:auto">Log In</button>
+	    </div>
+	  </div>
+	  <button type="button" class="btn btn-secondary" onclick="window.location='register'">sign up</button>
+	</div>
+	</li>
 	</ul>
 </div>
 </nav>

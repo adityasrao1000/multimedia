@@ -21,6 +21,16 @@ button{
 	border-bottom:4px solid #D50000;
 	
 }
+.navbar .btn-group button{
+	background: rgb(33, 33, 33);
+	border:none;
+	color: #E91E63;
+}
+
+.navbar .btn-group label{
+	font-size:.85em;
+	margin-bottom:0px;
+}
 .navbar-toggler{
 	background-color: #E91E63;
 }

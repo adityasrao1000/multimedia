@@ -5,7 +5,8 @@ var vm = new Vue({
 		  return{
 	        oldpwd:'',
 	        newpwd1:'',
-	        newpwd2:''
+	        newpwd2:'',
+	        username:''
 		  }
 	  },
 	  methods: {

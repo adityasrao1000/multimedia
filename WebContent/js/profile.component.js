@@ -20,11 +20,13 @@ var vm = new Vue({
 	  },
 	  methods: {
 		getSessionId: function(){
+			
 			axios.post('getSessionDetails', {
 				  
 			  })
 			  .then(function (response) {
 				  let useremail = response.data.email;
+				  
 				  vm.username = response.data.username;
 				  vm.pp = vm.pp + response.data.email;
 				  

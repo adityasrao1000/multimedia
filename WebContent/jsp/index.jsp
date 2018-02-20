@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<div id="index">
 <div id="nav">
   <my-navbar></my-navbar>
 </div>
+<div id="index">
 <div class="container-fluid" id="index">
 <br>
 

@@ -94,6 +94,14 @@
     <servlet-name>images</servlet-name>
     <url-pattern>/images</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>resetpassword</servlet-name>
+    <jsp-file>/jsp/resetpassword.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>resetpassword</servlet-name>
+    <url-pattern>/resetpassword</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>session</filter-name>
     <filter-class>multimedia.session.SessionCheckFilter</filter-class>

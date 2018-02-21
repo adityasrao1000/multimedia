@@ -45,10 +45,11 @@ public class SendEmail {
 				message.setText("your one time token is "+token);
 
 				Transport.send(message);
-
+   
 				return true;
 
 			} catch (MessagingException e) {
+				e.printStackTrace();
 				return false;
 			}
 		}

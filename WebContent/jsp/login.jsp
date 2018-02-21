@@ -46,7 +46,7 @@
     </div>
     <div class="row" style="font-size: .9em">
     <div class="col-6">
-    <a>Forgot your password?</a>
+    <a href="resetpassword">Forgot your password?</a>
     </div>
     <div class="col-6">
     <a href="register">Don't have an account?</a>

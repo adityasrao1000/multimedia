@@ -22,18 +22,21 @@ public class ForgotPassword {
  		    int token = token();
  		    try {
  		    	Connection con = new InitializeMySqlDb().mySqlDao(); 
- 				PreparedStatement ps=con.prepareStatement("insert into resetpassword(email,token) values(?,?)");  
+ 				PreparedStatement ps=con.prepareStatement("insert into resetpassword(user_email,token) values(?,?)");  
  				
  				ps.setString(1, email);
  				ps.setInt(2, token);
  				
- 				int i=ps.executeUpdate();  
- 				
+ 				int i =ps.executeUpdate();  
+ 			  
  				if(i==1) {
  					SendEmail msg = new SendEmail(token);
- 					if(msg.toAddress(email)) {
- 						Response.status(200).entity("success").build();
+ 					
+ 					if(msg.toAddress(email))
+ 					{
+ 					 return Response.status(200).entity("success").build();
  					}
+ 					
  				}
  				return  Response.status(500).entity("failed").build();
  				

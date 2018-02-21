@@ -26,57 +26,42 @@ public class AddTag {
 		    try {
 		    	InitializeMySqlDb db = new InitializeMySqlDb();
 		    	Connection con = db.mySqlDao();
-		    
-				PreparedStatement ps=con.prepareStatement("select * from tags where id=? limit 1");  
+	
+				PreparedStatement ps=con.prepareStatement("SELECT count(t.id), i.user_email from tags t INNER JOIN imagetable i ON t.id=i.id where t.id=?");  
 				ps.setString(1,id);  
 				ResultSet rs = ps.executeQuery(); 
 				
-				if(rs.next()){
-					
-					ps=con.prepareStatement("select count(*) from tags where id=?");
-					ps.setString(1, id);
-					rs = ps.executeQuery();
-					
-					if(rs.next()) {
-					
-						if(rs.getInt(1)<10) {
+				if(rs.next()) {
+				
+					if(rs.getInt(1)<10 && rs.getString(2).equals(email)) {
 							
-							ps=con.prepareStatement("select user_email from imagetable where id=?");
-							ps.setString(1, id);
-							rs = ps.executeQuery();
+							tag = tag.trim().toLowerCase();
+							tag = tag.replaceAll("\\s"," "); 
 							
-							if(rs.next())
-							if(rs.getString(1).equals(email)) {
-								
-								tag = tag.trim().toLowerCase();
-								tag = tag.replaceAll("\\s"," "); 
-								if(tag.length()>30 && tag.length()>=2) {
-									return  Response.status(400).entity("failed").build();
-								}
-								ps=con.prepareStatement("insert into tags(id,tag,upload_date) values(?,?,(select upload_date from imagetable where id=?))");
-								ps.setString(1, id);
-								ps.setString(2, tag);
-								ps.setString(3, id);
-								int i = ps.executeUpdate();
-								
-													
-								if(i==1) {
-									System.out.println(i+" tag added");
-									db .close(ps,rs,con);
-									return  Response.status(200).entity("success").build();
-								}
-								db .close(ps,rs,con);
-								return  Response.status(404).entity("failed").build();
+							if(tag.length()>30 && tag.length()>=2) {
+								return  Response.status(400).entity("failed").build();
 							}
 							
-							db .close(ps,rs,con);
-							return  Response.status(404).entity("failed").build();
+							ps=con.prepareStatement("insert into tags(id,tag,upload_date) values(?,?,(select upload_date from imagetable where id=?))");
+							ps.setString(1, id);
+							ps.setString(2, tag);
+							ps.setString(3, id);
+							int i = ps.executeUpdate();
+							
+							//if one row updated then tag has been successfully inserted into the database					
+							if(i==1) {
+								System.out.println(i+" tag added");
+								db .close(ps,rs,con);
+								return  Response.status(200).entity("success").build();
+							}						
+						
 						}
+						
 					}
-				}
+				
 				
 				db .close(ps,rs,con);
-				return  Response.status(404).entity("failed").build();
+				return  Response.status(400).entity("failed").build();
 		    }catch(Exception e) {
 		    	e.printStackTrace();
 		    	return  Response.status(404).build();

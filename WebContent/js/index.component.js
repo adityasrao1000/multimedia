@@ -22,7 +22,7 @@ var vm = new Vue({
 					  
 				  })
 				  .then(function (response) {
-					
+
 				  })
 				  .catch(function (error) {
 				    console.log(error);

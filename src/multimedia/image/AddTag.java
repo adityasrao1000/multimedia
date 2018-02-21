@@ -64,7 +64,7 @@ public class AddTag {
 				return  Response.status(400).entity("failed").build();
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(404).build();
+		    	return  Response.status(500).entity("failed").build();
 		    }
 		    
 	  }    

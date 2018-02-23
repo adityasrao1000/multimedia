@@ -1,13 +1,15 @@
 var navbar=Vue.component('my-navbar', {
  data() {
 	  return{
-		logout:`${servletContextPath}LogoutSessionInvalidate`,
+	    home: `${servletContextPath}home`,
+		images: `${servletContextPath}images`,
+		logout: `${servletContextPath}LogoutSessionInvalidate`,
 		usersettings: `${servletContextPath}usersettings`,
 		profile: `${servletContextPath}profile`,
-        isActive:false,
-        profile:'',
-        email:'',
-        pwd:''
+        isActive: false,
+        profile: '',
+        email: '',
+        pwd: ''
 	  }
   },
 	methods: {
@@ -67,8 +69,8 @@ var navbar=Vue.component('my-navbar', {
 	<!-- Links -->
 	<div class="collapse navbar-collapse" id="nav-content">   
 	<ul class="navbar-nav">
-	  <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
-	  <li class="nav-item"><a class="nav-link" href="images">Browse</a></li>
+	  <li class="nav-item"><a class="nav-link" v-bind:href="home">Home</a></li>
+	  <li class="nav-item"><a class="nav-link" v-bind:href="images">Browse</a></li>
 	</ul>
 	<ul class="navbar-nav ml-auto">
 	<li class="nav-item dropdown" id="logout">

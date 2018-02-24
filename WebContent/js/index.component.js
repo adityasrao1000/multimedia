@@ -1,7 +1,5 @@
-
-var vm = new Vue({
-	  el: '#index',
-	  data() {
+const index = {
+	data() {
 		  return{
 	        username: '',
 	        userImages: [],
@@ -11,8 +9,8 @@ var vm = new Vue({
 	        uploads: 0,
 	        tags:new Array()
 		  }
-	  },
-	  methods: {
+	},
+	methods: {
 		  getemail: function(){
 			  return this.email;
 		  },
@@ -33,8 +31,8 @@ var vm = new Vue({
 				  
 			  })
 			  .then(function (response) {
-				  vm.username = response.data.username;
-				  vm.pp = vm.pp + response.data.email;
+				  this.username = response.data.username;
+				  this.pp = this.pp + response.data.email;
 			  })
 			  .catch(function (error) {
 			    console.log(error);
@@ -43,6 +41,8 @@ var vm = new Vue({
 		},
 		
 		getImages: function(){
+			 let userImages=this.userImages;
+			 let userImages1=this.userImages1;
 			 axios.get('resources/featuredimage', {
 				  
 			  })
@@ -50,16 +50,16 @@ var vm = new Vue({
 				
 				  for(let i =0;i<response.data.length;i++){
 					let obj = new Object();
-                    obj.id= "resources/image/featured/"+response.data[i].id;
-                    obj.email = response.data[i].email;
-                    obj.username = response.data[i].username; 
-                    obj.tags = response.data[i].tags;
-                    obj.profilepic = "resources/displayProfilePic/"+response.data[i].email; 
-                    if(i%2==0){
-                      vm.userImages.push(obj);
-                    }else{
-                      vm.userImages1.push(obj);	
-                    }
+                  obj.id= "resources/image/featured/"+response.data[i].id;
+                  obj.email = response.data[i].email;
+                  obj.username = response.data[i].username; 
+                  obj.tags = response.data[i].tags;
+                  obj.profilepic = "resources/displayProfilePic/"+response.data[i].email; 
+                  if(i%2==0){
+                    userImages.push(obj);
+                  }else{
+                	  userImages1.push(obj);	
+                  }
 				  }
 			  })
 			  .catch(function (error) {
@@ -75,6 +75,86 @@ var vm = new Vue({
 	  mounted: function(){
 		  this.getSessionId();
 		  this.getImages();
-	  }
- 
-})
+	  },
+	template:`<div class="container-fluid" id="index">
+	<br>
+	
+	<div class="row">
+		<div class="col-sm-2">
+		
+		</div>
+		<div class="col-sm-8 col-xs-12">
+		  <div class="row">
+			  <div class="col-sm-6 ">
+		  <div v-for="item in userImages" class="card">
+		    <div class="row" style="margin-bottom:-62px; width:100%; background: rgba(0, 0, 0, 0.3); z-index:1; margin-left:0px;">
+		      <div class="col-7">
+			      <!-- Left-aligned media object -->
+				  <div class="media" style="margin-top:8px; margin-bottom:-6px;">
+				    <div class="media-left">
+				      <img v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
+				    </div>
+				    <div class="media-body">
+				      <b class="media-heading" style="cursor:pointer">{{item.username}}</b>
+				      <p style="font-size:.9em; color:red"><i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i></p>
+				    </div>
+				  </div>
+				  
+		      </div>
+		      <div class="col-5">
+		        <div style="display:block; text-align:right">	           
+		            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px;" @click="download(item)">Download</button>
+			    </div>
+		      </div>
+		    </div>
+			  
+			  <div class="img-cont">
+			    <img v-bind:src="item.id" type="image" class="img-fluid" style="width:100%;">
+			  </div>		 
+			  <ul class="tags">
+				  <li><p v-for="t in item.tags" class="tag"><span class="cut">{{t}}</span></p></li>				  
+			  </ul>	
+		  </div>
+			  </div>
+			  <div class="col-sm-6 ">
+		    <div v-for="item in userImages1" class="card">
+		    <div class="row" style="margin-bottom:-62px; width:100%; background: rgba(0, 0, 0, 0.3); z-index:1; margin-left:0px;">
+		      <div class="col-7">
+			      <!-- Left-aligned media object -->
+				  <div class="media" style="margin-top:8px;margin-bottom:-6px;">
+				    <div class="media-left">
+				      <img v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
+				    </div>
+				    <div class="media-body">
+				      <b class="media-heading" style="cursor:pointer">{{item.username}}</b>
+				      <p style="font-size:.9em; color:red"><i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i> <i class="fa fa-heart" aria-hidden="true"></i></p>
+				    </div>
+				  </div>
+				  
+		      </div>
+		      <div class="col-5">
+		        <div style="display:block; text-align:right">	            
+		            <button type="button" class="btn btn-outline-danger btn-sm" style="margin-top:12px;" @click="download(item)">Download</button>
+			    </div>
+		      </div>
+		    </div>
+			  
+			  <div class="img-cont">
+			    <img v-bind:src="item.id" type="image" class="img-fluid" style="width:100%;">
+			  </div>		 
+			  <ul class="tags">
+				  <li><p v-for="t in item.tags" class="tag"><span class="cut">{{t}}</span></p></li>				  
+			  </ul>	
+		  </div>
+		  </div>
+		  </div>
+		  
+		  
+		</div>
+		<div class="col-sm-2">
+		
+		</div>
+	</div> 
+	</div>`,
+	  
+}

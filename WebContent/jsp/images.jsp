@@ -12,7 +12,7 @@
 <br><br>
 <div class="row">
   <div class="col-sm-1"></div>
-  <div class="col-sm-10">
+  <div class="col-sm-10"  style="min-height:400px;">
    <div class="row">
      <div class="col-7">
        <input class="form-control input-sm"  id="search" placeholder="search" type="text">
@@ -33,6 +33,21 @@
      
      </div>
    </div>
+    <div  style=" display:block;float:bottom; float:left; margin-left:4px; height:50px;">
+    <nav aria-label="Page navigation example">
+		  <ul class="pagination justify-content-end">
+		    <li class="page-item disabled"  style="color:#E91E63; background:black">
+		      <a class="page-link"  style="color:#E91E63; background:black" href="#" tabindex="-1">Previous</a>
+		    </li>
+		    <li class="page-item" ><a  style="color:#E91E63; background:black" class="page-link" href="#">1</a></li>
+		    <li class="page-item"><a  style="color:#E91E63; background:black" class="page-link" href="#">2</a></li>
+		    <li class="page-item"><a  style="color:#E91E63; background:black" class="page-link" href="#">3</a></li>
+		    <li class="page-item">
+		      <a class="page-link" href="#"  style="color:#E91E63; background:black">Next</a>
+		    </li>
+		  </ul>
+    </nav>
+    </div>
   </div>
   <div class="col-sm-1"></div>
 </div>

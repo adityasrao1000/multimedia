@@ -1,3 +1,11 @@
+/**
+* <h4>The UploadImages class uploads user images to the mysql database</h4>
+* <h4>size of uploads is restricted to 16mb</h4>
+*
+* @author  Aditya Rao
+* @since   2017-12-05
+*/
+
 package multimedia.image;
 
 import java.io.IOException;
@@ -16,7 +24,7 @@ import javax.servlet.annotation.MultipartConfig;
 import java.util.Arrays;
 
 
-@MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
+@MultipartConfig(maxFileSize = 16177215)    
 public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

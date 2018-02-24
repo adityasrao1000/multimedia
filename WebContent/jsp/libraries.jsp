@@ -16,5 +16,8 @@
   <script src="js/config.js"></script>
   <!-- Vuejs library -->  
   <script src="https://unpkg.com/vue@2.5.0/dist/vue.js"></script>
+  <!-- Vuejs router -->  
+  <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js">
   <!-- Axios library -->
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>

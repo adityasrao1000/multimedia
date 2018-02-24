@@ -2,16 +2,19 @@
 <!DOCTYPE html">
 <html>
 <head>
-<%@ include file="libraries.jsp" %>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>resource not found</title>
 </head>
 <body>
-
+<br><br>
 <div class="container-fluid">
 <br>
-  <h1 style="text-align:center">The resource does not exist</h1>
+  <h1 style="text-align:center;">The resource does not exist</h1>
+  <h1 style="text-align:center; color:red">404</h1>
 </div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
 
 </body>
 </html>

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import org.json.simple.parser.ParseException;
 import javax.servlet.annotation.MultipartConfig;
 import java.util.Arrays;
 
@@ -51,6 +50,13 @@ public class UploadImage extends HttpServlet {
 			//parse and extract tags
 			TagParse tp =  new TagParse();
 			String[] tagarr = tp.extract(tags);
+			
+			//it should at least contain 1 tag
+			if(tagarr.length<1) {
+				System.out.println("image does not contain any tags");
+				out.print("failed");
+				return;
+			}
 			//printing tags on the output screen
 			Arrays.stream(tagarr).forEach(tag -> System.out.println(tag));
 			
@@ -88,28 +94,11 @@ public class UploadImage extends HttpServlet {
 			ps.close();
 			con.close();
 	        }
-		}catch(NullPointerException ex) {
+		}
+		catch(Exception ex) {
 			out.print("failed");
 			ex.printStackTrace();
 		
-		}catch(InvalidContentException ex) {
-			out.print("failed");
-			ex.printStackTrace();
-		
-		}catch(SQLException ex) {
-			out.print("failed");
-			ex.printStackTrace();
-		}
-		catch(ClassNotFoundException e) {
-			out.print("failed");
-			e.printStackTrace();
-		} catch (ParseException e) {
-			out.print("failed");
-			e.printStackTrace();
-		}
-		catch(IllegalStateException e) {
-			System.out.println("file size exceeds 16mb");
-			out.print("failed");
 		}
 	}
 }

@@ -163,7 +163,8 @@ var vm = new Vue({
 					
 					 let index = vm.userImages.indexOf(currentImg);
 					 vm.userImages.splice(index, 1);
-					 this.currentImgid='';					 
+					 this.currentImgid='';	
+					 vm.uploads = vm.uploads-1
 					 document.getElementById('myModal').style.display = 'none';
 					 document.getElementById('loader-container').style.display="none";
 				 }

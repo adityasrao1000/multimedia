@@ -5,7 +5,6 @@ var navbar=Vue.component('my-navbar', {
 		images: `images`,
 		logout: `LogoutSessionInvalidate`,
 		usersettings: `usersettings`,
-		profile: `profile`,
         isActive: false,
         profile: '',
         email: '',
@@ -78,7 +77,7 @@ var navbar=Vue.component('my-navbar', {
 	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
 	</a>
 	<div class="dropdown-menu" aria-labelledby="Preview">
-	    <li><a class="dropdown-item" v-bind:href="profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
+	    <li><a class="dropdown-item" href="profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
         <li><a class="dropdown-item" v-bind:href="usersettings">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a></li>
         <li><a class="dropdown-item" v-bind:href="logout">logout <i class="fa fa-sign-out"></i></a></li>
 	</div>

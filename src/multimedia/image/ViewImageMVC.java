@@ -1,25 +1,27 @@
 package multimedia.image;
 
-/*
-import multimedia.database.InitializeMySqlDb;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
-*/
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import multimedia.database.InitializeMySqlDb;
 
-//@Path("/viewimage")
-//@Produces("image/png")
+
+@Controller
+@RequestMapping("/viewimage")
 public class ViewImageMVC {
 	
 
 	
-	/*@GET
-	@Path("/{param}")
-	public Response getMsg1(@PathParam("param") String id, @Context HttpServletResponse response,@Context HttpServletRequest request) throws IOException, SQLException{
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String ModelAndView(@PathVariable("id") String id,ModelMap model) throws IOException, SQLException{
 		      	
-			
 		    try {
 		    	InitializeMySqlDb db = new InitializeMySqlDb();
 		    	Connection con = db.mySqlDao();
@@ -27,23 +29,20 @@ public class ViewImageMVC {
 				ps.setString(1,id);  
 			
 				ResultSet rs=ps.executeQuery();  
-				
+				model.addAttribute("id", id);
 				if(rs.next()) {   
-					request.setAttribute("id", id);
-					RequestDispatcher rd=request.getRequestDispatcher("/imagedetails");  
-		            rd.forward(request, response);  
-					db.close(ps, rs, con); 	
-					return  Response.status(200).build();
+					db.close(ps, rs, con);
+					return "imagedetails";
 				}else {
 					db.close(ps, rs, con); 
-					return  Response.status(404).build();
+					return "404";
+					
 				}
 			  
 					
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(404).build();
+		    	return "404";
 		    }		    
 	  }
-*/
 }

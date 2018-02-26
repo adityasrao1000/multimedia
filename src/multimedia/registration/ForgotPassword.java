@@ -18,7 +18,7 @@ import multimedia.registration.SendEmail;
 public class ForgotPassword {
 
  	
-	@RequestMapping(value = "/{email}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{email:.+}", method = RequestMethod.PUT)
 	@ResponseBody
 	public ResponseEntity<String> findOne(@PathVariable("email") String email){
  		     		    

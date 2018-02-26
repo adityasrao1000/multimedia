@@ -1,11 +1,11 @@
 var navbar=Vue.component('my-navbar', {
  data() {
 	  return{
-	    home: `${servletContextPath}home`,
-		images: `${servletContextPath}images`,
-		logout: `${servletContextPath}LogoutSessionInvalidate`,
-		usersettings: `${servletContextPath}usersettings`,
-		profile: `${servletContextPath}profile`,
+	    home: `home`,
+		images: `images`,
+		logout: `LogoutSessionInvalidate`,
+		usersettings: `usersettings`,
+		profile: `profile`,
         isActive: false,
         profile: '',
         email: '',
@@ -16,14 +16,14 @@ var navbar=Vue.component('my-navbar', {
 		loginValidate: function(){
 	    	 let useremail = this.email;
 	    	
-	    	 axios.post(`${servletContextPath}loginValidation`, "email="+ this.email+"&pwd="+this.pwd,{
+	    	 axios.post(`loginValidation`, "email="+ this.email+"&pwd="+this.pwd,{
 		  		  
 		  	  })
 		  	  .then(function (response) {
 
 		  		if(response.data =="valid"){
 		  			localStorage.setItem("useremail",useremail.trim());
-		  			window.location = `${servletContextPath}profile`;
+		  			window.location = `profile`;
 		  		}else{
 		  			
 		  		}
@@ -37,7 +37,7 @@ var navbar=Vue.component('my-navbar', {
 		mounted: function () {
 		  console.log('navbar loaded');
              
-		   	  axios.post(`${servletContextPath}CheckSessionValid`, {
+		   	  axios.post(`CheckSessionValid`, {
 		  		  
 		  	  })
 		  	  .then(function (response) {
@@ -124,11 +124,11 @@ var nav=new Vue({
   },
   methods:{
 	  getSessionId: function(){
-			axios.post(`${servletContextPath}getSessionDetails`, {
+			axios.post(`getSessionDetails`, {
 				  
 			  })
 			  .then(function (response) {
-				  nav.profile = `${servletContextPath}resources/displayProfilePic/` + response.data.email;
+				  nav.profile = `resources/displayProfilePic/` + response.data.email;
 				  document.getElementById("profile").src=nav.profile
 				  
 			  })

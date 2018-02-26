@@ -24,28 +24,27 @@ import java.sql.*;
 public class GetImages {
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/{param}", produces={"application/json"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/{param:.+}",method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<String> findOne(@PathVariable("param") String username, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
 			
 		    final HttpHeaders httpHeaders= new HttpHeaders();
 		    httpHeaders.setContentType(MediaType.APPLICATION_JSON);    
-		    int count=0;
-					 
+		    
 		    try {
-
 		    	Connection con = new InitializeMySqlDb().mySqlDao();
 				PreparedStatement ps=con.prepareStatement("select id from imagetable where user_email=?");  
 				ps.setString(1,username);  
 				ResultSet rs=ps.executeQuery();  
 				
 				JSONArray list = new JSONArray();
-				
+				int count=0;
 				while(rs.next()){  
 					 
 					list.add(rs.getString(1));
                     count++;
 				}
+				
 				ps.close();
 				con.close();
 				if(count>0) {

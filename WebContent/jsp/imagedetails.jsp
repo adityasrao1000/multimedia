@@ -2,14 +2,14 @@
 <!DOCTYPE html">
 <html>
 <head>
-<%@ include file="librariesMVC.jsp" %>
+<%@ include file="libraries.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <% 
 String img = request.getContextPath()+"/resources/image/"+(String)request.getAttribute("id");
 %>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/footer.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 <div id="nav">
@@ -21,8 +21,8 @@ String img = request.getContextPath()+"/resources/image/"+(String)request.getAtt
 <div id="footer">
 <my-footer></my-footer>
 </div>
-<script src="<%=request.getContextPath() %>/js/navbar.js"></script>
-<script src="<%=request.getContextPath() %>/js/footer.component.js"></script>
-<script src="<%=request.getContextPath() %>/js/imagedetails.component.js"></script>
+<script src="./js/navbar.js"></script>
+<script src="./js/footer.component.js"></script>
+<script src="./js/imagedetails.component.js"></script>
 </body>
 </html>

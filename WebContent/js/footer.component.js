@@ -1,9 +1,7 @@
 var footer=Vue.component('my-footer', {
  data(){
 	 return{
-	  instagram:`${servletContextPath}assets/social/instagram.svg`,
-	  googleplus:`${servletContextPath}assets/social/google-plus-symbol.svg`,
-	  facebook:`${servletContextPath}assets/social/facebook-logo.svg`
+	  
 	 }
   },
 	methods: {
@@ -18,13 +16,13 @@ var footer=Vue.component('my-footer', {
 	   <p style="font-size:.60em;color:white;">Follow and like us on social media:</p>
 	   <div class="row">
 	     <div class="col-4">
-	       <object v-bind:data="facebook" style="margin:auto" class="embed-responsive"></object>
+	       <object data="assets/social/facebook-logo.svg" style="margin:auto" class="embed-responsive"></object>
 	     </div>
 	     <div class="col-4">
-	       <object v-bind:data="googleplus" style="margin:auto" class="embed-responsive"></object>
+	       <object data="assets/social/google-plus-symbol.svg" style="margin:auto" class="embed-responsive"></object>
 	     </div>
 	     <div class="col-4">
-	       <object v-bind:data="instagram" style="margin:auto" class="embed-responsive"></object>
+	       <object data="assets/social/instagram.svg" style="margin:auto" class="embed-responsive"></object>
 	     </div>
 	   </div>
    </div>

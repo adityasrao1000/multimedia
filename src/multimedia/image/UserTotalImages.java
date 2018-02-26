@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/totalUserUploads")
 public class UserTotalImages {
 		
-	@RequestMapping(value = "/{param}",produces= {"application/json"},  method = RequestMethod.GET)
+	@RequestMapping(value = "/{param:.+}",  method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> findOne(@PathVariable("param") String username) throws IOException, SQLException{
 		

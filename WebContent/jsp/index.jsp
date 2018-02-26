@@ -26,7 +26,7 @@
 		      <!-- Left-aligned media object -->
 			  <div class="media" style="margin-top:8px; margin-bottom:-6px;">
 			    <div class="media-left">
-			      <img v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
+			      <img accept="image/png" v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
 			    </div>
 			    <div class="media-body">
 			      <b class="media-heading" style="cursor:pointer">{{item.username}}</b>
@@ -57,7 +57,7 @@
 		      <!-- Left-aligned media object -->
 			  <div class="media" style="margin-top:8px;margin-bottom:-6px;">
 			    <div class="media-left">
-			      <img v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
+			      <img type="image" v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
 			    </div>
 			    <div class="media-body">
 			      <b class="media-heading" style="cursor:pointer">{{item.username}}</b>

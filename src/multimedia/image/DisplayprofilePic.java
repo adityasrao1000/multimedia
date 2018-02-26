@@ -6,9 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +24,9 @@ import java.sql.*;
 @RequestMapping("/displayProfilePic")
 public class DisplayprofilePic {
 	
-	@RequestMapping(value = "/{param}", produces={"image/png"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/{param:.+}",  method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> findOne(@PathVariable("param") String id, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
+    public void findOne(@PathVariable("param") String id, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
 		
 		    ServletOutputStream out;  
 		    out = response.getOutputStream(); 
@@ -56,8 +54,6 @@ public class DisplayprofilePic {
 				    os.close();
 				    bout.close();
 				    ios.close(); 							    
-				}else {
-					return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 				}
 			  
 			    con.close();
@@ -77,14 +73,11 @@ public class DisplayprofilePic {
 			    ios.close();
 		    	out.close();
 		    	
-		    	return new ResponseEntity<String>("success",httpHeaders, HttpStatus.OK);
 		    }
 		    catch(Exception e) {
 		    	e.printStackTrace();
-		    	return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 		    }
 		    
-		    return new ResponseEntity<String>("success",httpHeaders, HttpStatus.OK);
 	  }    		
 }
 	

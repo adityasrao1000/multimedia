@@ -18,9 +18,12 @@ var vm = new Vue({
 		  },
 		  userUploads: function(){
 			     let useremail=localStorage.getItem("useremail");
+			     var config = {
+			    		  headers: {'accept': 'application/json'}
+			    		};
 				 axios.get(`resources/totalUserUploads/${useremail}`, {
 					  
-				  })
+				  },config)
 				  .then(function (response) {
 
 				  })

@@ -29,7 +29,7 @@
     <form  method="post" enctype="multipart/form-data" id="uploadform" style="display:none">
 	    <div id="imageUploadContainer">
 		    <div class="form-group">	
-			  <input type="text" placeholder="Image name" class="form-control" v-model="imageName" name="name" id="name" required>
+			  <input type="text" accept="image/*" placeholder="Image name" class="form-control" v-model="imageName" name="name" id="name" required>
 		    </div>
 		     <button class="btn btn-default btn-sm" type="button" id="selectfile" @click="triggerupload">Select a file</button>
 			 <input id="uploadButton" type="file" style="display:none" name="photo" required @change="uploadImage">

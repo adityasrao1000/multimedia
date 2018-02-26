@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class EmailCheckApi {
 
 	
-    @RequestMapping(value = "/{param:.+}", produces={"application/json"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/{param:.+}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> findOne(@PathVariable("param") String email)  throws IOException, SQLException{
 			

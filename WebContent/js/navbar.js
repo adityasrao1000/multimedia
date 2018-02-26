@@ -1,10 +1,11 @@
 var navbar=Vue.component('my-navbar', {
  data() {
 	  return{
-	    home: `home`,
-		images: `images`,
-		logout: `LogoutSessionInvalidate`,
-		usersettings: `usersettings`,
+	    home: `${contextPath}home`,
+		images: `${contextPath}images`,
+		logout: `${contextPath}LogoutSessionInvalidate`,
+		usersettings: `${contextPath}usersettings`,
+		profile: `${contextPath}profile`,
         isActive: false,
         profile: '',
         email: '',
@@ -15,14 +16,14 @@ var navbar=Vue.component('my-navbar', {
 		loginValidate: function(){
 	    	 let useremail = this.email;
 	    	
-	    	 axios.post(`loginValidation`, "email="+ this.email+"&pwd="+this.pwd,{
+	    	 axios.post(`${contextPath}loginValidation`, "email="+ this.email+"&pwd="+this.pwd,{
 		  		  
 		  	  })
 		  	  .then(function (response) {
 
 		  		if(response.data =="valid"){
 		  			localStorage.setItem("useremail",useremail.trim());
-		  			window.location = `profile`;
+		  			window.location = `${contextPath}profile`;
 		  		}else{
 		  			
 		  		}
@@ -36,7 +37,7 @@ var navbar=Vue.component('my-navbar', {
 		mounted: function () {
 		  console.log('navbar loaded');
              
-		   	  axios.post(`CheckSessionValid`, {
+		   	  axios.post(`${contextPath}CheckSessionValid`, {
 		  		  
 		  	  })
 		  	  .then(function (response) {
@@ -77,7 +78,7 @@ var navbar=Vue.component('my-navbar', {
 	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
 	</a>
 	<div class="dropdown-menu" aria-labelledby="Preview">
-	    <li><a class="dropdown-item" href="profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
+	    <li><a class="dropdown-item" v-bind:href="profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></li>
         <li><a class="dropdown-item" v-bind:href="usersettings">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a></li>
         <li><a class="dropdown-item" v-bind:href="logout">logout <i class="fa fa-sign-out"></i></a></li>
 	</div>
@@ -123,11 +124,11 @@ var nav=new Vue({
   },
   methods:{
 	  getSessionId: function(){
-			axios.post(`getSessionDetails`, {
+			axios.post(`${contextPath}getSessionDetails`, {
 				  
 			  })
 			  .then(function (response) {
-				  nav.profile = `resources/displayProfilePic/` + response.data.email;
+				  nav.profile = `${contextPath}resources/displayProfilePic/` + response.data.email;
 				  document.getElementById("profile").src=nav.profile
 				  
 			  })

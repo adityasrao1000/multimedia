@@ -19,6 +19,8 @@ public class GetSessionDetails extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
 		java.io.PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession(false);
 		if(session!=null) {

@@ -14,7 +14,9 @@ public class CheckSessionValid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
 		java.io.PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession(false);
 		if(session!=null&& session.getAttribute("email")!=null) {

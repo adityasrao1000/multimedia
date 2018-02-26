@@ -1,16 +1,21 @@
 package multimedia.image;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import multimedia.database.InitializeMySqlDb;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -18,21 +23,19 @@ import java.io.InputStream;
 import java.sql.*;
 
 
-
-@Path("/image")
-@Produces("image/png")
+@Controller
+@RequestMapping("/image")
 public class DisplayImage {
 	
-	@Context
-    HttpServletResponse response;
-	
-	@GET
-	@Path("/{param}")
-	public Response getMsg1(@PathParam("param") String id) throws IOException, SQLException{
-		
+	@RequestMapping(value = "/{param}", produces={"image/png"}, method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> findOne(@PathVariable("param") String id, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
+		    
 		    ServletOutputStream out;  
 		    out = response.getOutputStream(); 
-		      	
+		    
+		    final HttpHeaders httpHeaders= new HttpHeaders();
+		    httpHeaders.setContentType(MediaType.IMAGE_PNG);
 			
 		    try {
 
@@ -56,11 +59,8 @@ public class DisplayImage {
 				    
 				    os.close();
 				    ios.close();
-				 
-					
-				      
 				}else {
-					return  Response.status(404).build();
+					return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 				}
 			  
 			    con.close();
@@ -68,19 +68,21 @@ public class DisplayImage {
 					
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(404).build();
+		    	return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 		    }		    
-          return  Response.status(200).build();
+		    return new ResponseEntity<String>("success",httpHeaders,  HttpStatus.OK);
 	  }
 	
-	@GET
-	@Path("/featured/{param}")
-	public Response getMsg(@PathParam("param") String id) throws IOException, SQLException{
+	@RequestMapping(value = "/featured/{param}", produces={"image/png"}, method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> featured(@PathVariable("param") String id, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
 		
 		    ServletOutputStream out;  
 		    out = response.getOutputStream(); 
 		      	
-			
+		    final HttpHeaders httpHeaders= new HttpHeaders();
+		    httpHeaders.setContentType(MediaType.IMAGE_PNG);
+		    
 		    try {
 
 		    	Connection con = new InitializeMySqlDb().mySqlDao();
@@ -97,7 +99,7 @@ public class DisplayImage {
 					
 				      
 				}else {
-					return  Response.status(404).build();
+					return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 				}
 			  
 			    con.close();
@@ -105,9 +107,9 @@ public class DisplayImage {
 					
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(404).build();
+		    	return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 		    }		    
-          return  Response.status(200).build();
+		    return new ResponseEntity<String>("success",httpHeaders, HttpStatus.OK);
 	  }
 }
 	

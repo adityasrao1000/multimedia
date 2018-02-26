@@ -4,24 +4,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import multimedia.database.InitializeMySqlDb;
 
 
-@Path("/verifyPassword")
+@Controller
+@RequestMapping("/verifyPassword")
  public class PasswordVerify {
  		
- 	
- 	@Context private HttpServletRequest request;
- 	
- 	@GET
- 	@Path("/{old_password}")
-	public Response changePassword( @PathParam("old_password") String password){
+ 	@RequestMapping(value = "/{old_password}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> findOne(@PathVariable("old_password") String password, HttpServletRequest request, HttpServletResponse response){
  				 
  			HttpSession session = request.getSession(false);
  			String email = (String)session.getAttribute("email");
@@ -35,18 +38,16 @@ import multimedia.database.InitializeMySqlDb;
  				ResultSet rs=ps.executeQuery();  
  												
  				if(rs.next()){ 
- 					
- 					return  Response.status(200).entity("true").build();
+ 					return new ResponseEntity<String>("true", HttpStatus.OK);
  					
  				}else {
  					
- 					return  Response.status(404).entity("false").build();
+ 					return new ResponseEntity<String>("false", HttpStatus.NOT_FOUND);
  				}
  				
  		    }catch(Exception e) {
  		    	e.printStackTrace();
- 		   
- 		    	return  Response.status(404).entity(false).build();
+ 		    	return new ResponseEntity<String>("false", HttpStatus.NOT_FOUND);
  		    }
 				    
  	  }    	       		

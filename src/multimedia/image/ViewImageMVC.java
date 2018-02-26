@@ -1,27 +1,21 @@
 package multimedia.image;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
+/*
 import multimedia.database.InitializeMySqlDb;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import java.io.IOException;
 import java.sql.*;
+*/
 
-
-@Path("/viewimage")
-@Produces("image/png")
+//@Path("/viewimage")
+//@Produces("image/png")
 public class ViewImageMVC {
 	
 
 	
-	@GET
+	/*@GET
 	@Path("/{param}")
 	public Response getMsg1(@PathParam("param") String id, @Context HttpServletResponse response,@Context HttpServletRequest request) throws IOException, SQLException{
 		      	
@@ -51,5 +45,5 @@ public class ViewImageMVC {
 		    	return  Response.status(404).build();
 		    }		    
 	  }
+*/
 }
-	

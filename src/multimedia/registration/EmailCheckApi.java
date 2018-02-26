@@ -1,38 +1,41 @@
 package multimedia.registration;
 
 import java.io.IOException;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import java.sql.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-
-@Path("/emailcheck")
-@Produces("application/json")
+@Controller
+@RequestMapping("/emailcheck")
 public class EmailCheckApi {
 
 	
-	@GET
-	@Path("/{param}")
-	public Response getMsg(@PathParam("param") String email) throws IOException, SQLException{
+    @RequestMapping(value = "/{param}", produces={"application/json"}, method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> findOne(@PathVariable("param") String email)  throws IOException, SQLException{
 			
+			final HttpHeaders httpHeaders= new HttpHeaders();
+		    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 		    try {
 			
 		    	EmailCheck e = new EmailCheck();
 				if(e.checkIfEmailExists(email))	{ 
-					
-					return  Response.status(200).entity("{\"status\": \"true\"}").build();
+					return new ResponseEntity<String>("{\"status\": \"true\"}", httpHeaders, HttpStatus.OK);
 				     
 				}else {
-					
-					return  Response.status(200).entity("{\"status\": \"false\"}").build();
+					return new ResponseEntity<String>("{\"status\": \"false\"}", httpHeaders, HttpStatus.NOT_FOUND);
 				}			   
 					
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(500).build();
+		    	return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 		    }
 	  }    		
 }

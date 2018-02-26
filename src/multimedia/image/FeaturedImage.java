@@ -1,31 +1,34 @@
 package multimedia.image;
 
 import java.io.IOException;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import multimedia.database.InitializeMySqlDb;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import java.sql.*;
 
 
-@Path("/featuredimage")
+@Controller
+@RequestMapping("/featuredimage")
 public class FeaturedImage {
 		
 	
-	@Context private HttpServletRequest httpRequest;
-	
 	@SuppressWarnings("unchecked")
-	@GET
-	@Produces("application/json")
-	public Response getMsg() throws IOException, SQLException{
-			    
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<String> getMsg() throws IOException, SQLException{
+		
+			final HttpHeaders httpHeaders= new HttpHeaders();
+		    httpHeaders.setContentType(MediaType.APPLICATION_JSON);  
 		    int count=0;
-			 
+			
 		    try {
 		    	Connection con = new InitializeMySqlDb().mySqlDao(); 
 				PreparedStatement ps=con.prepareStatement("select i.id,i.user_email, u.user_name from imagetable i,users u where u.user_email = i.user_email order by RAND() limit 10");  
@@ -54,13 +57,13 @@ public class FeaturedImage {
 				ps.close();
 				con.close();
 				if(count>0) {
-				return  Response.status(200).entity(list.toJSONString()).build();
+					return new ResponseEntity<String>(list.toJSONString(), httpHeaders, HttpStatus.OK);
 				}else {
-					return  Response.status(404).build();
+					return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 				}
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(404).build();
+		    	return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 		    }		    
 	  }    	       		
 }

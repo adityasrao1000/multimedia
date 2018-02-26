@@ -3,20 +3,24 @@ package multimedia.registration;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Random;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import multimedia.database.InitializeMySqlDb;
 import multimedia.registration.SendEmail;
 
-@Path("/forgotPassword")
+@Controller
+@RequestMapping("/forgotPassword")
 public class ForgotPassword {
 
  	
- 	@PUT
- 	@Path("/{email}")
-	public Response changePassword(@PathParam("email") String email){
+	@RequestMapping(value = "/{email}", method = RequestMethod.PUT)
+	@ResponseBody
+	public ResponseEntity<String> findOne(@PathVariable("email") String email){
  		     		    
  		    //generate 4 digit token
  		    int token = token();
@@ -34,15 +38,15 @@ public class ForgotPassword {
  					
  					if(msg.toAddress(email))
  					{
- 					 return Response.status(200).entity("success").build();
+ 						return new ResponseEntity<String>("success",HttpStatus.OK);
  					}
  					
  				}
- 				return  Response.status(500).entity("failed").build();
+ 				return new ResponseEntity<String>("failed",HttpStatus.INTERNAL_SERVER_ERROR);
  				
  		    }catch(Exception e) {
  		    	e.printStackTrace();
- 		    	return  Response.status(500).entity("failed").build();
+ 		    	return new ResponseEntity<String>("failed",HttpStatus.INTERNAL_SERVER_ERROR);
  		    }
 				    
  	  }    	  

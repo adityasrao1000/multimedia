@@ -3,29 +3,33 @@ package multimedia.registration;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import multimedia.database.InitializeMySqlDb;
 
 
 
-@Path("/changePassword")
+@Controller
+@RequestMapping("/changePassword")
 public class ChangePassword {
- 		
  	
- 	@Context private HttpServletRequest request;
- 	
- 	@PUT
- 	@Path("/{old_password}/{new_password}")
-	public Response changePassword(@PathParam("old_password") String password_old, @PathParam("new_password") String password){
+ 	@RequestMapping(value = "/{old_password}/{new_password}", method = RequestMethod.PUT)
+    @ResponseBody
+    public ResponseEntity<String> findOne(@PathVariable("old_password") String password_old, @PathVariable("new_password") String password, HttpServletRequest request, HttpServletResponse response){
+	
  		
  		 
  			if(!PasswordValidate.isValid(password)) {
- 				return  Response.status(404).build();
+ 				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
  			}
  		
  			HttpSession session = request.getSession(false);
@@ -40,17 +44,17 @@ public class ChangePassword {
  				
  								
  				if(i==1){ 
- 					return  Response.status(200).build();
+ 					return new ResponseEntity<String>(HttpStatus.OK);
  					
  				}if(i>1) {
- 					return  Response.status(500).build();
+ 					return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
  				}
  				else {
- 					return  Response.status(404).build();
+ 					return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
  				}
  		    }catch(Exception e) {
  		    	e.printStackTrace();
- 		    	return  Response.status(404).build();
+ 		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
  		    }
 				    
  	  }    	       		

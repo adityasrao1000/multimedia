@@ -1,23 +1,30 @@
 package multimedia.image;
 
 import java.io.IOException;
-import javax.ws.rs.core.Response;
 import multimedia.database.InitializeMySqlDb;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import java.sql.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
-@Path("/totalUserUploads")
-@Produces("application/json")
+
+@Controller
+@RequestMapping("/totalUserUploads")
 public class UserTotalImages {
 		
-	@GET
-	@Path("/{param}")
-	public Response getMsg(@PathParam("param") String username) throws IOException, SQLException{
-				    
+	@RequestMapping(value = "/{param}",produces= {"application/json"},  method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<String> findOne(@PathVariable("param") String username) throws IOException, SQLException{
+		
+			final HttpHeaders httpHeaders= new HttpHeaders();
+		    httpHeaders.setContentType(MediaType.APPLICATION_JSON);  
 					 
 		    try {
 
@@ -31,16 +38,16 @@ public class UserTotalImages {
 					int num = rs.getInt(1);
 					ps.close();
 					con.close();
-					return  Response.status(200).entity("{\"uploads\":"+num+"}").build();
+					return new ResponseEntity<String>("{\"uploads\":"+num+"}", httpHeaders, HttpStatus.OK);
 				}else {
 				
 					ps.close();
 					con.close();
-					return  Response.status(200).entity("{\"uploads\":"+0+"}").build();
+					return new ResponseEntity<String>("{\"uploads\":"+0+"}", httpHeaders, HttpStatus.OK);
 				}
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(404).build();
+		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		    }
 		    
 	  }    

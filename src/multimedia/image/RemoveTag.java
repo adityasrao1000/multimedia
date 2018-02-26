@@ -1,25 +1,27 @@
 package multimedia.image;
 
 import java.io.IOException;
-
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
 import multimedia.database.InitializeMySqlDb;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import java.sql.*;
 
-
-@Path("/deleteTag")
+@Controller
+@RequestMapping("/deleteTag")
 public class RemoveTag {
-	@Context HttpServletRequest request;
 	
-	@DELETE
-	@Path("/{image_id}/{tag}")
-	public Response getMsg(@PathParam("image_id") String id, @PathParam("tag") String tag) throws IOException, SQLException{
+	
+	@RequestMapping(value = "/{image_id}/{tag}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public ResponseEntity<String> findOne(@PathVariable("image_id") String id,@PathVariable("tag") String tag, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
 			
 	    	HttpSession session = request.getSession();
 	    	String email = (String)session.getAttribute("email");
@@ -39,10 +41,10 @@ public class RemoveTag {
 				 System.out.println("more than 1 tag affected");
 				}
 				System.out.println(i+ " tag deleted");
-				return  Response.status(200).entity("success").build();
+				return new ResponseEntity<String>("success", HttpStatus.OK);
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(404).build();
+		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		    }
 		    
 	  }    

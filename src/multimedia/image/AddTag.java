@@ -1,28 +1,30 @@
 package multimedia.image;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
 import multimedia.database.InitializeMySqlDb;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
 import java.sql.*;
 
-
-@Path("/addTag")
+@Controller
+@RequestMapping("/addTag")
 public class AddTag {
-	@Context HttpServletRequest request;
 	
-	@GET
-	@Path("/{id}")
-	public Response getMsg(@PathParam("id") String id,@QueryParam("tag") String tag) throws  SQLException{
-		
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<String> findOne(@PathVariable("id") String id, @RequestParam("tag") String tag, HttpServletRequest request, HttpServletResponse response)  throws  SQLException{
+	
 	    	HttpSession session = request.getSession();
-	    	String email = (String)session.getAttribute("email");
+	     	String email = (String)session.getAttribute("email");
 		    try {
 		    	InitializeMySqlDb db = new InitializeMySqlDb();
 		    	Connection con = db.mySqlDao();
@@ -39,7 +41,7 @@ public class AddTag {
 							tag = tag.replaceAll("\\s"," "); 
 							
 							if(tag.length()>30 && tag.length()>=2) {
-								return  Response.status(400).entity("failed").build();
+								return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 							}
 							
 							ps=con.prepareStatement("insert into tags(id,tag,upload_date) values(?,?,(select upload_date from imagetable where id=?))");
@@ -52,7 +54,7 @@ public class AddTag {
 							if(i==1) {
 								System.out.println(i+" tag added");
 								db .close(ps,rs,con);
-								return  Response.status(200).entity("success").build();
+								return new ResponseEntity<String>("success", HttpStatus.OK);
 							}						
 						
 						}
@@ -61,10 +63,10 @@ public class AddTag {
 				
 				
 				db .close(ps,rs,con);
-				return  Response.status(400).entity("failed").build();
+				return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 		    }catch(Exception e) {
 		    	e.printStackTrace();
-		    	return  Response.status(500).entity("failed").build();
+		    	return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
 		    }
 		    
 	  }    

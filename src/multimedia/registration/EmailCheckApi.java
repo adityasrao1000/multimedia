@@ -30,7 +30,7 @@ public class EmailCheckApi {
 					return new ResponseEntity<String>("{\"status\": \"true\"}", httpHeaders, HttpStatus.OK);
 				     
 				}else {
-					return new ResponseEntity<String>("{\"status\": \"false\"}", httpHeaders, HttpStatus.NOT_FOUND);
+					return new ResponseEntity<String>("{\"status\": \"false\"}", httpHeaders, HttpStatus.OK);
 				}			   
 					
 		    }catch(Exception e) {

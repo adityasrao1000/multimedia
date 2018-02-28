@@ -7,7 +7,6 @@ var navbar=Vue.component('my-navbar', {
 		usersettings: `${contextPath}usersettings`,
 		profile: `${contextPath}profile`,
         isActive: false,
-        profile: '',
         email: '',
         pwd: ''
 	  }

@@ -32,7 +32,6 @@ public class Register extends HttpServlet {
 		final HttpHeaders httpHeaders= new HttpHeaders();
 	    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 		
-		System.out.println(password1+email+username);
 		if(password1.length()< 6 || password2.length()< 6) {
 			
 			return new ResponseEntity<String>("{\"status\": \"failed\"}", httpHeaders, HttpStatus.BAD_REQUEST);

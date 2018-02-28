@@ -34,7 +34,10 @@ var register=new Vue({
 		   }
 	   },
 	   formsubmit(){
-	   
+	       if(this.pwd1!==this.pwd2){
+	    	   alert("passwords should match!");
+	    	   return false;
+	       }
 		   axios.post('resources/Register', `email=${this.email}&pwd1=${this.pwd1}&pwd2=${this.pwd2}&username=${this.username}`, {
 				  
 		      })
@@ -53,6 +56,7 @@ var register=new Vue({
 				  
 			  })
 			  .catch(function (error) {
+				alert("Pleace check the data you have entered and try again");
 			    console.log(error);
 			  });
 	   }

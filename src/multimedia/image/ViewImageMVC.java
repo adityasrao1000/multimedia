@@ -41,7 +41,6 @@ public class ViewImageMVC {
 			}else {
 				db.close(ps, rs, con); 
 				return "404";
-				
 			}
 		  
 				

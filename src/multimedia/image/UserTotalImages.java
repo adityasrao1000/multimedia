@@ -47,11 +47,7 @@ public class UserTotalImages {
 		    	e.printStackTrace();
 		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		    }
-		    
 	  }    
-	
-        
-		
 }
 	
 

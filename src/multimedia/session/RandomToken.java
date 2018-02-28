@@ -16,5 +16,4 @@ public class RandomToken {
 			
 			return builder.toString();
 		}  
-	
 }

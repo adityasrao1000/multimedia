@@ -25,6 +25,7 @@ public class RemoveTag {
 			
 	    	HttpSession session = request.getSession();
 	    	String email = (String)session.getAttribute("email");
+	    	
 		    try {
                
 		    	InitializeMySqlDb db =new InitializeMySqlDb();

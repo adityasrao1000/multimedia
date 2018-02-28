@@ -1,4 +1,4 @@
-package multimedia.image;
+ package multimedia.image;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +22,7 @@ public class UploadImage extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		 java.io.PrintWriter out = response.getWriter();				
+		java.io.PrintWriter out = response.getWriter();				
 				
 		try {
 			

@@ -22,5 +22,4 @@ public class RestrictAccessFilter implements javax.servlet.Filter {
     
   }
 
-  
 }

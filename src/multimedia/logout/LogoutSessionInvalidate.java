@@ -31,5 +31,4 @@ public class LogoutSessionInvalidate extends HttpServlet {
 			response.sendRedirect("login");
 		}
 	}
-
 }

@@ -91,15 +91,16 @@ public class DisplayImage {
 			
 				ResultSet rs=ps.executeQuery();  
 				
-				if(rs.next()) {         
+				if(rs.next()) {     
+   
 					Blob b=rs.getBlob(1);
-				
 				    CompressImage com = new CompressImage();
 				    com.Compress(out,700, b);
-					
 				      
 				}else {
+					
 					return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
+				
 				}
 			  
 			    con.close();

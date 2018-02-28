@@ -49,7 +49,4 @@ public class LoginValidation extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
-
-
 }

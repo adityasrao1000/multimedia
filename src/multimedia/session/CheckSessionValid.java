@@ -25,6 +25,4 @@ public class CheckSessionValid extends HttpServlet {
 			out.print("false");
 		}
 	}
-   
-
 }

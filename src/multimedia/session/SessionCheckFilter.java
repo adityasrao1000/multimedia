@@ -14,6 +14,7 @@ public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain
 	HttpServletRequest request = (HttpServletRequest) req;
     HttpSession session = request.getSession(false);
     HttpServletResponse response = (HttpServletResponse) resp;
+    
     if(session ==null || session.getAttribute("email")==null){  
         
         response.sendRedirect("/multimedia/login");  
@@ -22,10 +23,6 @@ public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain
     else{  
     	chain.doFilter(req, resp);//sends request to next resource 
     }  
-          
 }  
     public void destroy() {}
-
-
-  
 }  

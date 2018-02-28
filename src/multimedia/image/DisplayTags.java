@@ -30,7 +30,8 @@ public class DisplayTags {
 		    int count=0;
 			 
 		    try {
-		    	Connection con = new InitializeMySqlDb().mySqlDao(); 
+		    	InitializeMySqlDb db =new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao(); 
 				PreparedStatement ps=con.prepareStatement("select tag from tags where id=?");  
                 ps.setString(1,id);
 				ResultSet rs=ps.executeQuery();  
@@ -40,8 +41,8 @@ public class DisplayTags {
 					list.add(rs.getString(1));
                     count++;
 				}
-				ps.close();
-				con.close();
+				
+				db.close(ps, rs, con);
 				if(count>0) {
 					return new ResponseEntity<String>(list.toJSONString(), httpHeaders, HttpStatus.OK);
 				}else {

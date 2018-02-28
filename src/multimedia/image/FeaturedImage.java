@@ -30,7 +30,8 @@ public class FeaturedImage {
 		    int count=0;
 			
 		    try {
-		    	Connection con = new InitializeMySqlDb().mySqlDao(); 
+		    	InitializeMySqlDb db = new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao();
 				PreparedStatement ps=con.prepareStatement("select i.id,i.user_email, u.user_name from imagetable i,users u where u.user_email = i.user_email order by RAND() limit 10");  
 				PreparedStatement psTags=con.prepareStatement("select tag from tags where id=?");  
 				ResultSet rs=ps.executeQuery();  
@@ -54,8 +55,7 @@ public class FeaturedImage {
                     count++;
 				}
 				psTags.close();
-				ps.close();
-				con.close();
+				db.close(psTags, rs, con);
 				if(count>0) {
 					return new ResponseEntity<String>(list.toJSONString(), httpHeaders, HttpStatus.OK);
 				}else {

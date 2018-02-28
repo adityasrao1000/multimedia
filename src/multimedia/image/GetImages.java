@@ -32,7 +32,8 @@ public class GetImages {
 		    httpHeaders.setContentType(MediaType.APPLICATION_JSON);    
 		    
 		    try {
-		    	Connection con = new InitializeMySqlDb().mySqlDao();
+		    	InitializeMySqlDb db =new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao(); 
 				PreparedStatement ps=con.prepareStatement("select id from imagetable where user_email=?");  
 				ps.setString(1,username);  
 				ResultSet rs=ps.executeQuery();  
@@ -45,8 +46,7 @@ public class GetImages {
                     count++;
 				}
 				
-				ps.close();
-				con.close();
+				db.close(ps, rs, con);
 				if(count>0) {
 				return new ResponseEntity<String>(list.toJSONString(), httpHeaders, HttpStatus.OK);
 				}else {

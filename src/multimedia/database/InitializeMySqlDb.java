@@ -29,4 +29,15 @@ public class InitializeMySqlDb {
 	  
   }
   
+  public void close(PreparedStatement ps, Connection con) {
+	  try {
+		ps.close();
+		con.close();
+		System.out.println("database connections closed");
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	  
+  }
+  
 }

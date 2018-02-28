@@ -27,7 +27,8 @@ public class RemoveTag {
 	    	String email = (String)session.getAttribute("email");
 		    try {
                
-		    	Connection con = new InitializeMySqlDb().mySqlDao();
+		    	InitializeMySqlDb db =new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao(); 
 				PreparedStatement ps=con.prepareStatement("delete  from tags  where id=? and tag=? and ?=(select user_email from imagetable where id=?)");  
 				ps.setString(1,id);  
 				ps.setString(2,tag);
@@ -35,8 +36,7 @@ public class RemoveTag {
 				ps.setString(4,id); 
 				int i=ps.executeUpdate();  
 		
-				ps.close();
-				con.close();
+				db.close(ps, con);
 				if(i>1) {
 				 System.out.println("more than 1 tag affected");
 				}

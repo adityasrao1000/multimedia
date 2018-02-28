@@ -29,7 +29,8 @@ public class DownloadImage {
 		
 		ServletOutputStream out;  
 		out = response.getOutputStream(); 
-		Connection con = new InitializeMySqlDb().mySqlDao();
+		InitializeMySqlDb db =new InitializeMySqlDb();
+    	Connection con = db.mySqlDao(); 
 		PreparedStatement ps=con.prepareStatement("select photo from imagetable where id=?");  
 		ps.setString(1,id);  
 	
@@ -47,6 +48,7 @@ public class DownloadImage {
 		    System.out.println(getClientIpAddr(request));
 		    os.close();
 		    ios.close();
+		    db.close(ps, rs, con);
 	}	
   } 
 	public static String getClientIpAddr(HttpServletRequest request) {  

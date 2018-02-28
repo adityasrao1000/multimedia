@@ -44,7 +44,8 @@ public class UploadImage extends HttpServlet {
 	            }
 	        // obtains input stream of the upload file
 	        InputStream inputStream = filePart.getInputStream();
-	        Connection con = new InitializeMySqlDb().mySqlDao();		
+	        InitializeMySqlDb db =new InitializeMySqlDb();
+	    	Connection con = db.mySqlDao(); 		
 			HttpSession session = request.getSession();
 			
 			//parse and extract tags
@@ -91,8 +92,7 @@ public class UploadImage extends HttpServlet {
 			}
 			
 			out.print("success");
-			ps.close();
-			con.close();
+			db.close(ps, con);
 	        }
 		}
 		catch(Exception ex) {

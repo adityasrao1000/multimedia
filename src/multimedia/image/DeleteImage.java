@@ -28,14 +28,14 @@ public class DeleteImage {
 	    	String email = (String)session.getAttribute("email");
 		    try {
                
-		    	Connection con = new InitializeMySqlDb().mySqlDao();
+		    	InitializeMySqlDb db = new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao();
 				PreparedStatement ps=con.prepareStatement("delete from imagetable where id=? and user_email=?");  
 				ps.setString(1,id);  
 				ps.setString(2,email); 
 				int i=ps.executeUpdate();  
 		
-				ps.close();
-				con.close();
+				db.close(ps, con);;
 				if(i==1) {
 					return new ResponseEntity<String>("success", HttpStatus.OK);
 				}else {

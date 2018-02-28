@@ -35,7 +35,8 @@ public class DisplayprofilePic {
 		    
 		    try {
 
-		    	Connection con = new InitializeMySqlDb().mySqlDao();
+		    	InitializeMySqlDb db =new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao(); 
 				PreparedStatement ps=con.prepareStatement("select profile_picture from users where user_email=?");  
 				ps.setString(1,id);  
 			
@@ -56,7 +57,7 @@ public class DisplayprofilePic {
 				    ios.close(); 							    
 				}
 			  
-			    con.close();
+			    db.close(ps, rs, con);
 			    out.close();  
 					
 		    }catch(NullPointerException e) {

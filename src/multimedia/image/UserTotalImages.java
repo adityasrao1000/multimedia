@@ -28,7 +28,8 @@ public class UserTotalImages {
 					 
 		    try {
 
-		    	Connection con = new InitializeMySqlDb().mySqlDao();
+		    	InitializeMySqlDb db =new InitializeMySqlDb();
+		    	Connection con = db.mySqlDao(); 
 				PreparedStatement ps=con.prepareStatement("select count(*) from imagetable where user_email=?");  
 				ps.setString(1,username);  
 				ResultSet rs=ps.executeQuery();  
@@ -36,13 +37,10 @@ public class UserTotalImages {
 				
 				if(rs.next()){ 
 					int num = rs.getInt(1);
-					ps.close();
-					con.close();
+					db.close(ps, rs, con);
 					return new ResponseEntity<String>("{\"uploads\":"+num+"}", httpHeaders, HttpStatus.OK);
 				}else {
-				
-					ps.close();
-					con.close();
+					db.close(ps, rs, con);
 					return new ResponseEntity<String>("{\"uploads\":"+0+"}", httpHeaders, HttpStatus.OK);
 				}
 		    }catch(Exception e) {

@@ -110,7 +110,6 @@ var navbar=Vue.component('my-navbar', {
 	</ul>
 </div>
 </nav>
-
 `
 
 })

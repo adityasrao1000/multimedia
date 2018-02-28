@@ -25,14 +25,17 @@ public class ViewImageMVC {
 	    try {
 	    	InitializeMySqlDb db = new InitializeMySqlDb();
 	    	Connection con = db.mySqlDao();
-			PreparedStatement ps=con.prepareStatement("select i.id, u.user_name,i.user_email from imagetable i, users u where i.id=? and i.user_email=u.user_email");  
+			PreparedStatement ps=con.prepareStatement("select i.id, u.user_name,i.user_email, i.upload_date, count(downloads.id) from users u, imagetable i INNER JOIN downloads  ON i.id=downloads.id where i.id=? and i.user_email=u.user_email");  
 			ps.setString(1,id);  
 		
 			ResultSet rs=ps.executeQuery();  
-			if(rs.next()) {   
+			if(rs.next()) { 
+			    String[] date = rs.getString(4).split(" ");
 				model.addAttribute("id", id);
 				model.addAttribute("username", rs.getString(2));
 				model.addAttribute("email", rs.getString(3));
+				model.addAttribute("upload_date", date[0]);
+				model.addAttribute("downloads",rs.getString(5));
 				db.close(ps, rs, con);
 				return "imagedetails";
 			}else {

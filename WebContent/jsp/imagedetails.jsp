@@ -21,7 +21,7 @@
     <img width="100%" src="<%=request.getContextPath()%>/resources/image/${id}">
   </div>
   <div class="col-sm-4">
-      <div class="media" style="margin-top:8px; margin-bottom:-6px;">
+      <div class="media"  style="margin-top:8px; margin-bottom:-6px;">
 	    <div class="media-left">
 	      <img accept="image/png" src="<%=request.getContextPath()%>/resources/displayProfilePic/${email}" class="media-object" style="width:60px; height:60px; border-radius:50%;margin-right:7px">
 	    </div>
@@ -37,7 +37,21 @@
 		    </div>
 		  </div>
 	    </div>
-	    
+	  </div>
+	  <div style="margin-top:20px;">
+	    <button type="button" class="btn btn-primary">like <i class="fa fa-thumbs-o-up"></i></button>  
+	    <button type="button" class="btn btn-danger">dislike <i class="fa fa-thumbs-o-down"></i></button>
+	  </div>
+	  <br>
+	  <div>
+	   <div class="row">
+	     <div class="col-6">
+	      <p><b>Downloads </b><br><b style="color:white; font-weight:500; font-size:.9em">${downloads}</b></p>
+	     </div>
+	     <div class="col-6">
+	      <p><b>Uploaded </b><br><b style="color:white; font-weight:500; font-size:.9em">${upload_date}</b></p>
+	     </div>
+	   </div>
 	  </div>
   </div>
 </div>

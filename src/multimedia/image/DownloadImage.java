@@ -45,7 +45,17 @@ public class DownloadImage {
 
 		    ImageOutputStream ios = ImageIO.createImageOutputStream(bout);
 		    ImageIO.write(image, "png", ios);
-		    System.out.println(getClientIpAddr(request));
+		    
+		    //we are logging the IP address the download request came from and the image id
+		    try {
+			    ps=con.prepareStatement("insert into downloads(id,ip) values(?,?)");  
+				ps.setString(1,id);  
+				ps.setString(2,getClientIpAddr(request));  
+				ps.executeUpdate();
+		    }catch(SQLException e) {
+		    	
+		    }
+
 		    os.close();
 		    ios.close();
 		    db.close(ps, rs, con);

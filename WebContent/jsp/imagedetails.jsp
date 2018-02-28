@@ -12,7 +12,26 @@
   <my-navbar></my-navbar>
 </div>
 <div class="container-fluid" id="imagedetails">
-<img width="100%" src="<%=request.getContextPath()%>/resources/image/${id}">
+<br><br>
+<div class="row">
+  <div class="col-sm-1">
+  
+  </div>
+  <div class="col-sm-7">
+    <img width="100%" src="<%=request.getContextPath()%>/resources/image/${id}">
+  </div>
+  <div class="col-sm-4">
+      <div class="media" style="margin-top:8px; margin-bottom:-6px;">
+	    <div class="media-left">
+	      <img accept="image/png" src="<%=request.getContextPath()%>/resources/displayProfilePic/${email}" class="media-object" style="width:60px; height:60px; border-radius:50%;margin-right:7px">
+	    </div>
+	    <div class="media-body">
+	      <b class="media-heading" style="cursor:pointer; font-size:1.2em">${username}</b>
+	    </div>
+	  </div>
+  </div>
+</div>
+<br><br><br><br>
 </div>
 <div id="footer">
 <my-footer></my-footer>

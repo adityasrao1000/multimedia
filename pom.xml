@@ -6,7 +6,7 @@
   <packaging>war</packaging>
   <properties>
 	<jdk.version>1.8</jdk.version>
-	<spring.version>3.2.13.RELEASE</spring.version>
+	<spring.version>4.3.14.RELEASE</spring.version>
   </properties>
   <dependencies>
 	  <dependency>

@@ -27,7 +27,17 @@
 	    </div>
 	    <div class="media-body">
 	      <b class="media-heading" style="cursor:pointer; font-size:1.2em">${username}</b>
+	      <div class="progress" style="width:70%">
+		    <div class="progress-bar bg-primary" style="width:60%">
+		      60%
+		    </div>
+		    
+		    <div class="progress-bar bg-danger" style="width:40%">
+		      40%
+		    </div>
+		  </div>
 	    </div>
+	    
 	  </div>
   </div>
 </div>

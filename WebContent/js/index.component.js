@@ -73,6 +73,10 @@ var vm = new Vue({
 			
 			let id= image.id.slice(image.id.lastIndexOf("/")+1,image.id.length);			
 	        window.location = `resources/download/${id}`;	      
+		},
+		viewimage: function(url){
+			let id= url.slice(url.lastIndexOf("/")+1,url.length);			
+	        window.location.assign(`resources/viewimage/${id}`);	      
 		}
 	  },
 	  mounted: function(){

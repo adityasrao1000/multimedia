@@ -43,7 +43,7 @@
 	    </div>
 		  
 		  <div class="img-cont">
-		    <img v-bind:src="item.id" type="image" class="img-fluid" style="width:100%;">
+		    <img v-bind:src="item.id" @click="viewimage(item.id)" type="image" class="img-fluid" style="width:100%;">
 		  </div>		 
 		  <ul class="tags">
 			  <li><p v-for="t in item.tags" class="tag"><span class="cut">{{t}}</span></p></li>				  
@@ -74,7 +74,7 @@
 	    </div>
 		  
 		  <div class="img-cont">
-		    <img v-bind:src="item.id" type="image" class="img-fluid" style="width:100%;">
+		    <img v-bind:src="item.id" @click="viewimage(item.id)" type="image" class="img-fluid" style="width:100%;">
 		  </div>		 
 		  <ul class="tags">
 			  <li><p v-for="t in item.tags" class="tag"><span class="cut">{{t}}</span></p></li>				  

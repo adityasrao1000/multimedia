@@ -41,6 +41,9 @@ public class Register extends HttpServlet {
 			return new ResponseEntity<String>("{\"status\": \"failed\"}", httpHeaders, HttpStatus.BAD_REQUEST);
 			
 		}
+		else if(password1.contains("/")) {
+			return new ResponseEntity<String>("{\"status\": \"failed\"}", httpHeaders, HttpStatus.BAD_REQUEST);
+		}
 		else if(username ==null || username.length()<2){
 			
 			return new ResponseEntity<String>("{\"status\": \"failed\"}", httpHeaders, HttpStatus.BAD_REQUEST);

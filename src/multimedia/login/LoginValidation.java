@@ -22,12 +22,13 @@ public class LoginValidation extends HttpServlet {
 		
 		try {
 			java.io.PrintWriter out = response.getWriter();
-			Connection con = new InitializeMySqlDb().mySqlDao();
+			InitializeMySqlDb db =new InitializeMySqlDb();
+	    	Connection con = db.mySqlDao(); 
 	
-			PreparedStatement stmt=con.prepareStatement("select * from users where user_email=? and user_password=?");
-			stmt.setString(1,email);  
-			stmt.setString(2,password);
-			ResultSet rs=stmt.executeQuery(); 
+			PreparedStatement ps=con.prepareStatement("select * from users where user_email=? and user_password=?");
+			ps.setString(1,email);  
+			ps.setString(2,password);
+			ResultSet rs=ps.executeQuery(); 
 			
 			if(rs.next()) {
 				
@@ -40,8 +41,7 @@ public class LoginValidation extends HttpServlet {
 			    out.print("invalid");  
 			 			
 			}
-			stmt.close();
-			con.close();
+			db.close(ps, rs, con);
 		}catch(SQLException e) {			
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

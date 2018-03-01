@@ -42,9 +42,11 @@ public class LoginValidation extends HttpServlet {
 			 			
 			}
 			db.close(ps, rs, con);
-		}catch(SQLException e) {			
+		}
+		catch(SQLException e) {			
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		}
+		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

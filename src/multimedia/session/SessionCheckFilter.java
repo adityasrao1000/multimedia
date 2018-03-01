@@ -17,7 +17,7 @@ public class SessionCheckFilter implements Filter{
 	    
 	    if(session ==null || session.getAttribute("email")==null){  
 	        
-	        response.sendRedirect("login");  
+	        response.sendRedirect(request.getContextPath()+"/login");  
 	                
 	    }  
 	    else{  

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import multimedia.database.InitializeMySqlDb;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.*;
 
 
@@ -18,16 +19,28 @@ import java.sql.*;
 @RequestMapping("/rateImage")
 public class RateImage {
 	
-	@RequestMapping(value = "/{param}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}/{rating}", method = RequestMethod.PUT)
 	@ResponseBody
-	public ResponseEntity<String> findOne(@PathVariable("param") boolean rating, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
+	public ResponseEntity<String> findOne(@PathVariable("id") String id, @PathVariable("rating") boolean rating, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
 			
-	    	
+	    	HttpSession session = request.getSession(false);
+	    	String email = (String)session.getAttribute("email");
 		    try {
-               
+                
 		    	InitializeMySqlDb db = new InitializeMySqlDb();
 		    	Connection con = db.mySqlDao();
-				PreparedStatement ps=con.prepareStatement("insert into rating values(?,?,?)"); 
+				PreparedStatement ps=con.prepareStatement("insert into rating(id,email,rating) values(?,?,?)"); 
+				
+				ps.setString(1,id);  
+				ps.setString(2,email); 
+				
+				if(rating) {
+					ps.setBoolean(3, true);
+				}else if(!rating) {
+					ps.setBoolean(3, false);
+				}else {
+					return new ResponseEntity<String>("failure", HttpStatus.BAD_REQUEST);
+				}
 				
 		        try {
 		        	int i = ps.executeUpdate(); 

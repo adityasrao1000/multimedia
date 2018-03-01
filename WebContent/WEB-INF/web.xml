@@ -122,6 +122,7 @@
     <url-pattern>/resources/verifyPassword/*</url-pattern>
     <url-pattern>/resources/changePassword/*</url-pattern>
     <url-pattern>/resources/addTag/*</url-pattern>
+    <url-pattern>/resources/rateImage/*</url-pattern>
   </filter-mapping>
   <error-page>
     <!-- Missing resource -->

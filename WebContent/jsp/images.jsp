@@ -15,7 +15,7 @@
   <div class="col-sm-10">
    <div class="row">
      <div class="col-7">
-       <input class="form-control input-sm"  id="search" placeholder="search" type="text">
+       <input  type="search" class="form-control input-sm"  id="search" placeholder="search">
      </div>
      <div class="col-2">
        <div class="dropdown">

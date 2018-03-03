@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import multimedia.database.InitializeMySqlDb;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.sql.*;
-
+import static multimedia.session.IPAddress.getClientIpAddr;
 
 @Controller
 @RequestMapping("/rateImage")
@@ -23,8 +22,6 @@ public class RateImage {
 	@ResponseBody
 	public ResponseEntity<String> findOne(@PathVariable("id") String id, @PathVariable("rating") boolean rating, HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException{
 			
-	    	HttpSession session = request.getSession(false);
-	    	String email = (String)session.getAttribute("email");
 		    try {
                 
 		    	InitializeMySqlDb db = new InitializeMySqlDb();
@@ -32,7 +29,7 @@ public class RateImage {
 				PreparedStatement ps=con.prepareStatement("insert into rating(id,email,rating) values(?,?,?)"); 
 				
 				ps.setString(1,id);  
-				ps.setString(2,email); 
+				ps.setString(2,getClientIpAddr(request)); 
 				
 				if(rating) {
 					ps.setBoolean(3, true);

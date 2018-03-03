@@ -12,9 +12,9 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
     
-	int token;
+	String token;
 	
-	SendEmail(int token){
+	SendEmail(String token){
 		this.token = token;
 	}
 	
@@ -42,8 +42,7 @@ public class SendEmail {
 				message.setFrom(new InternetAddress("wallpapersite1@gmail.com"));
 				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiver));
 				message.setSubject("Password Reset");
-				message.setText("your one time token is "+token);
-
+				message.setText("your one time token is "+"http://localhost:8080/multimedia/resources/passwordChangeOtp/email="+receiver+"&token="+token);
 				Transport.send(message);
    
 				return true;

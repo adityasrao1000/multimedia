@@ -3,6 +3,9 @@ package multimedia.registration;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import multimedia.database.InitializeMySqlDb;
 import multimedia.registration.SendEmail;
+import multimedia.session.RandomToken;
 
 @Controller
 @RequestMapping("/forgotPassword")
@@ -20,16 +24,16 @@ public class ForgotPassword {
  	
 	@RequestMapping(value = "/{email:.+}", method = RequestMethod.PUT)
 	@ResponseBody
-	public ResponseEntity<String> findOne(@PathVariable("email") String email){
+	public ResponseEntity<String> findOne(@PathVariable("email") String email, HttpServletRequest request){
  		     		    
- 		    //generate 4 digit token
- 		    int token = token();
+ 		    //generate token
+ 		    String token = RandomToken.getToken(35);
  		    try {
  		    	Connection con = new InitializeMySqlDb().mySqlDao(); 
  				PreparedStatement ps=con.prepareStatement("insert into resetpassword(user_email,token) values(?,?)");  
  				
  				ps.setString(1, email);
- 				ps.setInt(2, token);
+ 				ps.setString(2, token);
  				
  				int i =ps.executeUpdate();  
  			  

@@ -1,7 +1,7 @@
 
 .modal-content {
 	background-color:#424242;
-	color:#E91E63;
+	color: var(--main-color);
 }
 .modal-body{
 	border:none;
@@ -12,7 +12,7 @@
 .card{
 	
 	margin-bottom:10px;
-	background:rgb(33, 33, 33);
+	background: var(--main-background);
 	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
@@ -76,7 +76,7 @@ h2{
 }
 
 .tag .cut{
-  color:#E91E63;
+  color:var(--main-color);
   font-size:.83em;
   cursor:pointer; 
 }

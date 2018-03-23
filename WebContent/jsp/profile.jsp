@@ -18,7 +18,7 @@
 <h5>{{username}}</h5>
 <p>uploads <span style="color:white; font-size:.8em">{{uploads}}</span></p>
 <br><br>
-<button type="button" style="float:right; color:#E91E63; background:#212121; border:none" class="btn btn-default btn-sm" @click="uploadShow">Upload an image <i class="fa fa-plus" style="font-size:15px;  margin-left:5px; margin-top:4px;" aria-hidden="true"></i></button>
+<button type="button" style="float:right; color:#E91E63; background:black; border:none" class="btn btn-default btn-sm" @click="uploadShow">Upload an image <i class="fa fa-plus" style="font-size:15px;  margin-left:5px; margin-top:4px;" aria-hidden="true"></i></button>
 <br><br>
 <div class="row">
   <div class="col-sm-3">

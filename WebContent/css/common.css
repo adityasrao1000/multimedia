@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Tangerine');
 
+:root{
+	--main-color: #E91E63; 
+	--main-background: rgb(33, 33, 33);
+}
 body{
 	font-family: 'Roboto', sans-serif;
-	background-color: #424242;
-	color:#E91E63;
+	background-color: var(--main-background);
+	color: var(--main-color);
 }
 
 button{
@@ -17,14 +21,14 @@ button{
 }
 .navbar{
 	
-	background: rgb(33, 33, 33);
-	border-bottom:4px solid #D50000;
+	background: var(--main-background);
+	border-bottom: 4px solid #D50000;
 	
 }
 .navbar .btn-group button{
-	background: rgb(33, 33, 33);
+	background: var(--main-background);
 	border:none;
-	color: #E91E63;
+	color: var(--main-color);
 }
 
 .navbar .btn-group label{
@@ -32,10 +36,10 @@ button{
 	margin-bottom:0px;
 }
 .navbar-toggler{
-	background-color: #E91E63;
+	background-color: var(--main-color);
 }
 .collapse .nav-item .nav-link{
-	color: #E91E63;
+	color: var(--main-color);
 	
 }
 .navbar .navbar-brand{
@@ -45,16 +49,16 @@ button{
 }
 .dropdown-menu{
 	background-color: #424242;
-	color:#E91E63;
+	color: var(--main-color);
 }
 .dropdown-menu li a{
 	font-size: 1em;
-	color:#E91E63;
+	color: var(--main-color);
 	padding-left:10%;
 }
 .form-control{
 	border:none;
-	border-bottom:2px solid #E91E63;
+	border-bottom:2px solid var(--main-color);
 	background:#616161;
 	color:white;
 	

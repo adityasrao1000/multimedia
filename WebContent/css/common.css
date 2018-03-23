@@ -21,7 +21,7 @@ button{
 }
 .navbar{
 	
-	background: var(--main-background);
+	background: black;
 	border-bottom: 4px solid #D50000;
 	
 }

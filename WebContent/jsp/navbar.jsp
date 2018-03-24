@@ -14,9 +14,9 @@
 	</ul>
 	<ul class="navbar-nav ml-auto">
 	<li class="nav-item dropdown" id="logout">
-	<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" role="button" aria-haspopup="true" aria-expanded="false">
-	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
-	</a>
+	<button class="nav-link dropdown-toggle" style="background:#212223; border:none; border-radius:2em; padding: 0 .5em" data-toggle="dropdown" id="Preview" role="button" aria-haspopup="true" aria-expanded="false">
+	  <img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
+	</button>
 	<div class="dropdown-menu" style="margin-left:-15px;" aria-labelledby="Preview">
 	    <a class="dropdown-item" style="color: var(--main-color)" href="<%= request.getContextPath() %>/profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a>
         <a class="dropdown-item" style="color: var(--main-color)" href="<%= request.getContextPath() %>/usersettings">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a>

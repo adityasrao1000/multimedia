@@ -17,10 +17,10 @@
 	<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="Preview" role="button" aria-haspopup="true" aria-expanded="false">
 	<img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
 	</a>
-	<div class="dropdown-menu" style="padding:6px;" aria-labelledby="Preview">
-	    <div><a class="dropdown-item" href="<%= request.getContextPath() %>/profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a></div>
-        <div><a class="dropdown-item" href="<%= request.getContextPath() %>/usersettings">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a></div>
-        <div><a class="dropdown-item" href="<%= request.getContextPath() %>/logout">logout <i class="fa fa-sign-out"></i></a></div>
+	<div class="dropdown-menu" style="margin-left:-15px;" aria-labelledby="Preview">
+	    <a class="dropdown-item" style="color: var(--main-color)" href="<%= request.getContextPath() %>/profile">profile <i class="fa fa-address-book-o" aria-hidden="true"></i></a>
+        <a class="dropdown-item" style="color: var(--main-color)" href="<%= request.getContextPath() %>/usersettings">settings <i class="fa fa-cog fa-spin  fa-fw"></i></a>
+        <a class="dropdown-item" style="color: var(--main-color)" href="<%= request.getContextPath() %>/logout">logout <i class="fa fa-sign-out"></i></a>
 	</div>
 	</li>
 	<li class="nav-item" id="signup">

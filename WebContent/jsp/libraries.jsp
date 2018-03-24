@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/common.css">
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/footer.css">
   
-  <script src="<%= request.getContextPath() %>/js/config.js"></script>
   <!-- Vuejs library -->  
   <script src="https://unpkg.com/vue@2.5.0/dist/vue.js"></script>
   <!-- Axios library -->

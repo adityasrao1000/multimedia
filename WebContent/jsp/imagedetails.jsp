@@ -6,6 +6,7 @@
 <%@ include file="libraries.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
+<spring:url value="/something" var="url" htmlEscape="true"/>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/imagedetails.css">
 </head>
 <body>
@@ -54,6 +55,30 @@
 	     </div>
 	   </div>
 	  </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-1">
+  
+  </div>
+  <div class="col-sm-7">
+    <br>
+    <div class="form-group">
+	  <label for="comment">Comment:</label>
+	  <textarea class="form-control" rows="4" id="comment"></textarea>
+	  <br>
+	  <button type="button" class="btn btn-sm" style=" display:block; color:#E91E63; background:black; border:none; width:75%; margin:auto; font-size:1.3em">Post Comment <i class="fa fa-comment"></i></button>
+	</div>
+    <div class="media">
+	    <img class="align-self-start mr-3" src="https://www.buira.org/assets/images/shared/default-profile.png" alt="Generic placeholder image">
+	    <div class="media-body">
+	    <h5 class="mt-0">name</h5>
+	    <p>Cras sit amet nibh https://www.facebook.com . in gravida nulla. Nulla ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+	    </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+  
   </div>
 </div>
 <br><br><br><br>

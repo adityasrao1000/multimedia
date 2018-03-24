@@ -102,7 +102,7 @@
 	<div>
 	
 		<div class="modal-body">
-          <h5 class="modal-title" >Change Profile Picture</h5>
+          <h5 class="modal-title" ><b>Change Profile Picture</b></h5>
           <button  type="button" class="close" @click="closeModal" data-dismiss="modal">&times;</button>
           <br>
           <input type="file" accept="image/*" @change="uploaded" id="profilePicUpload" style="display:none; float:left">        

@@ -123,10 +123,8 @@
 }
 
 .img-modal-container{
- width:85%;
  display:block;
  margin:auto;
- /*background-color:white;*/
  padding:15px;
  margin-top:-45px;
  border-radius:5px;
@@ -208,8 +206,8 @@
 /* The Close Button */
 .close {
     position: absolute;
-    top: 15px;
-    right: 35px;
+    top: 10px;
+    right: 16px;
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
@@ -302,11 +300,10 @@
    }
    #ppUploadModal div:first-child{
    max-width:400px;
-   max-height:230px;
    background-color:black;
    display:block;
    position:relative;
-   top:37%;
+   top:15%;
    margin:auto;
    border-radius: 3px;
    

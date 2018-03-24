@@ -105,15 +105,14 @@
           <h5 class="modal-title" >Change Profile Picture</h5>
           <button  type="button" class="close" @click="closeModal" data-dismiss="modal">&times;</button>
           <br>
-          <input type="file" accept="image/*" @change="uploaded" id="profilePicUpload" style="display:none; float:left">
-          <button type="button" style=" display:block; color:#E91E63; background:#212121; border:none; float:left" class="btn btn-sm" onclick="document.getElementById('profilePicUpload').click()">Select <i class="fa fa-picture-o" aria-hidden="true"></i></button>
-          <p style="float:left; margin-left:6px;">{{imagename_profilePic}}</p>
+          <input type="file" accept="image/*" @change="uploaded" id="profilePicUpload" style="display:none; float:left">        
+          <img class="img-fluid" id="pp_preview" onclick="document.getElementById('profilePicUpload').click()" style="width:100%" src="./assets/default_image.jpg">
         </div>
-        <br><br>
         <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-sm" style=" display:block; color:#E91E63; background:#212121; border:none;" @click="uploadProfile">Upload <i class="fa fa-upload" aria-hidden="true"></i></button>
+        <div style="display: flex; justify-content: center;">
+            <button type="button" class="btn btn-sm" style=" display:block; color:#E91E63; background:#212121; border:none; width:75%; font-size:1.3em" @click="uploadProfile">change <i class="fa fa-upload"></i></button>
         </div>
+        <br>
 	</div>
 </div>
 </div>

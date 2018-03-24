@@ -7,7 +7,7 @@ var vm = new Vue({
 		    username:'',
 		    useremail:'',
 		    uploads: '',
-		    imagename_profilePic:'',
+		    file:{},
 		    userImages: [],
 		    tag:'',		    
 		    tags:[],
@@ -53,7 +53,17 @@ var vm = new Vue({
 			  });		
 	    },
 		uploaded: function(){
-			this.imagename_profilePic = document.querySelectorAll('input[type="file"]')[1].files[0].name;
+			this.file = document.querySelectorAll('input[type="file"]')[1].files[0];
+			let preview = document.getElementById("pp_preview");
+			var reader  = new FileReader();
+
+			  reader.addEventListener("load", function () {
+			    preview.src = reader.result;
+			  }, false);
+
+			  if (this.file) {
+			    reader.readAsDataURL(this.file);
+			  }
 		},
 		uploadProfile: function(){
 			let data = new FormData();

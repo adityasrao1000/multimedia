@@ -1,11 +1,9 @@
-
 var vm = new Vue({
 	  el: '#index',
 	  data() {
 		  return{
 	        username: '',
 	        userImages: [],
-	        userImages1: [],
 	        imagename: '',
 	        email:'',
 	        uploads: 0,
@@ -58,11 +56,7 @@ var vm = new Vue({
                     obj.username = response.data[i].username; 
                     obj.tags = response.data[i].tags;
                     obj.profilepic = "resources/displayProfilePic/"+response.data[i].email; 
-                    if(i%2==0){
-                      vm.userImages.push(obj);
-                    }else{
-                      vm.userImages1.push(obj);	
-                    }
+                    vm.userImages.push(obj);
 				  }
 			  })
 			  .catch(function (error) {

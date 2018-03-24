@@ -9,18 +9,29 @@
 .media-heading{
 	color:white;
 }
+.image-container{
+	column-count:2;
+}
+@media  only screen and (max-width: 768px){
+	.image-container{
+	column-count:1;
+}
+}
 .card{
-	
-	margin-bottom:10px;
+	margin-bottom:1em;
 	background: var(--main-background);
 	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-webkit-column-break-inside: avoid; /* Chrome, Safari */
+    page-break-inside: avoid;           /* Theoretically FF 20+ */
+    break-inside: avoid-column; 
 
 }
 .card img{
-	height:280px;
+	height:265px;
 }
+
 .img-options{
   height:35px;
   width:100%; 

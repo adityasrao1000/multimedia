@@ -7,10 +7,10 @@
 <title>Settings</title>
 </head>
 <body>
-<div id="usersettings">
 <div id="nav">
-  <my-navbar></my-navbar>
+<%@ include file="/jsp/navbar.jsp" %>
 </div>
+<div id="usersettings">
 <div class="container-fluid" id="usersettings">
 <br>
 <br>
@@ -90,10 +90,12 @@
 </div>
 </div>
 <div id="footer">
-<my-footer></my-footer>
+<jsp:include page="${request.getContextPath()}/jsp/footer.jsp"></jsp:include>
 </div>
-<script src="./js/navbar.js"></script>
-<script src="./js/footer.component.js"></script>
 <script src="./js/usersettings.component.js"></script>
+<script>
+<%@ include file="/js/navbarMVC.jsp" %>
+<%@ include file="/js/footerMVC.jsp" %>
+</script>
 </body>
 </html>

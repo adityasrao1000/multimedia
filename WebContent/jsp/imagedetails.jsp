@@ -1,17 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html">
 <html>
 <head>
 <%@ include file="libraries.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
-<spring:url value="/something" var="url" htmlEscape="true"/>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/imagedetails.css">
 </head>
 <body>
 <div id="nav">
-  <my-navbar></my-navbar>
+<%@ include file="/jsp/navbar.jsp" %>
 </div>
 <div class="container-fluid" id="imagedetails">
 <br><br>
@@ -84,10 +81,12 @@
 <br><br><br><br>
 </div>
 <div id="footer">
-<my-footer></my-footer>
+<jsp:include page="${request.getContextPath()}/jsp/footer.jsp"></jsp:include>
 </div>
-<script src="<%=request.getContextPath() %>/js/navbar.js"></script>
-<script src="<%=request.getContextPath() %>/js/footer.component.js"></script>
 <script src="<%=request.getContextPath() %>/js/imagedetails.component.js"></script>
+<script>
+<%@ include file="/js/navbarMVC.jsp" %>
+<%@ include file="/js/footerMVC.jsp" %>
+</script>
 </body>
 </html>

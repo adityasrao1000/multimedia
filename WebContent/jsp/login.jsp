@@ -14,10 +14,10 @@
 <%@ include file="libraries.jsp" %>
 </head>
 <body>
-<div id="login-body">
 <div id="nav">
-  <my-navbar></my-navbar>
+<%@ include file="/jsp/navbar.jsp" %>
 </div>
+<div id="login-body">
 <br><br><br><br>
 <div class="container-fluid" id="login">
   <h5 style="color:red; text-align:center">{{status}}</h5>
@@ -57,10 +57,12 @@
 </div>
 </div>
 <div id="footer">
-<my-footer></my-footer>
+<jsp:include page="${request.getContextPath()}/jsp/footer.jsp"></jsp:include>
 </div>
-<script src="./js/navbar.js"></script>
-<script src="./js/footer.component.js"></script>
 <script src="./js/login.component.js"></script>
+<script>
+<%@ include file="/js/navbarMVC.jsp" %>
+<%@ include file="/js/footerMVC.jsp" %>
+</script>
 </body>
 </html>

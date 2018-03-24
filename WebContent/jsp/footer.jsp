@@ -1,16 +1,3 @@
-var footer=Vue.component('my-footer', {
- data(){
-	 return{
-	  facebook: `${contextPath}assets/social/facebook-logo.svg`,
-	  google: `${contextPath}assets/social/google-plus-symbol.svg`,
-	  instagram: `${contextPath}assets/social/instagram.svg`
-	 }
-  },
-	methods: {
-		
-	
-		  	},
-  template: `
 <div class="footer">
  <div id="footer-bar"></div>
 
@@ -32,19 +19,3 @@ var footer=Vue.component('my-footer', {
 <p id="footer-copyrights">&copy; Wallpapers</p>
 
 </div>
-
-`
-
-})
-// create a root instance
-var foot=new Vue({
-  el: '#footer',
-  data:{
-	
-  },
-  methods:{
-	
-  }
-
-
-})

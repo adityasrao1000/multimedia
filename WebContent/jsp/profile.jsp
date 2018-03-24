@@ -9,7 +9,7 @@
 <body>
 <div id="profile">
 <div id="nav">
-  <my-navbar></my-navbar>
+<%@ include file="/jsp/navbar.jsp" %>
 </div>
 <div id="loader" style="display:none;"></div>
 <div class="container-fluid">
@@ -117,10 +117,12 @@
 </div>
 </div>
 <div id="footer">
-<my-footer></my-footer>
+<jsp:include page="${request.getContextPath()}/jsp/footer.jsp"></jsp:include>
 </div>
-<script src="./js/navbar.js"></script>
-<script src="./js/footer.component.js"></script>
+<script>
+<%@ include file="/js/navbarMVC.jsp" %>
+<%@ include file="/js/footerMVC.jsp" %>
+</script>
 <script src="./js/profile.component.js"></script>
 </body>
 </html>

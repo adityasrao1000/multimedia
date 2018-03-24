@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="nav">
-  <my-navbar></my-navbar>
+<%@ include file="/jsp/navbar.jsp" %>
 </div>
 <br><br><br><br>
 <div class="container-fluid" id="register">
@@ -57,12 +57,13 @@
     </div>
   </form>
 </div>
-
 <div id="footer">
-<my-footer></my-footer>
+<jsp:include page="${request.getContextPath()}/jsp/footer.jsp"></jsp:include>
 </div>
-<script src="./js/navbar.js"></script>
-<script src="./js/footer.component.js"></script>
 <script src="./js/register.component.js"></script>
+<script>
+<%@ include file="/js/navbarMVC.jsp" %>
+<%@ include file="/js/footerMVC.jsp" %>
+</script>
 </body>
 </html>

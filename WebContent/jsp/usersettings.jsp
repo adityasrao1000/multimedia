@@ -47,7 +47,7 @@
 	      <div class="card-body">
 	        <input type="text" placeholder="enter your username" class="form-control"  v-model="username" name="username" id="username" required>
 	        <p></p>
-	        <button  type="button" @click="" style="background-color:black; color:#E91E63;"  class="btn btn-sm" id="submitbtn" >Change</button>
+	        <button  type="button" @click="" style="background-color:black; color:var(--main-color);"  class="btn btn-sm" id="submitbtn" >Change</button>
 	      </div>
 	    </div>
 	  </div>
@@ -72,7 +72,7 @@
   </div>
 </div>
 <br>
- <br>
+<br>
 <br>
 <br>
 <br>

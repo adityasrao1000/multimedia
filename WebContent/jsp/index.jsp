@@ -19,12 +19,12 @@
 	</div>
 	<div class="col-sm-8 col-xs-12 image-container">
      <div v-for="item in userImages" class="card">
-	    <div class="row" style="margin-bottom:-62px; width:100%; background: rgba(0, 0, 0, 0.3); z-index:1; margin-left:0px;">
+	    <div class="row" style="margin-bottom:-3.875em; width:100%; background: rgba(0, 0, 0, 0.3); z-index:1; margin-left:0px;">
 	      <div class="col-7">
 		      <!-- Left-aligned media object -->
-			  <div class="media" style="margin-top:8px; margin-bottom:-6px;">
+			  <div class="media" style="margin-top:0.5em; margin-bottom:-0.4em;">
 			    <div class="media-left">
-			      <img accept="image/png" v-bind:src="item.profilepic" class="media-object" style="width:40px; height:40px; border-radius:50%;margin-right:7px">
+			      <img accept="image/png" v-bind:src="item.profilepic" class="media-object" style="width:2.5em; height:2.5em; border-radius:50%;margin-right:7px">
 			    </div>
 			    <div class="media-body">
 			      <b class="media-heading" style="cursor:pointer">{{item.username}}</b>
@@ -51,14 +51,14 @@
 	  <br><br><br>
 	  <nav aria-label="Page navigation example" style="float:left; margin-left:4px">
 		  <ul class="pagination justify-content-end">
-		    <li class="page-item disabled"  style="color:#E91E63; background:black">
-		      <a class="page-link"  style="color:#E91E63; background:black" href="#" tabindex="-1">Previous</a>
+		    <li class="page-item disabled"  style="color:var(--main-color); background:black">
+		      <a class="page-link"  style="color:var(--main-color); background:black" href="#" tabindex="-1">Previous</a>
 		    </li>
-		    <li class="page-item" ><a  style="color:#E91E63; background:black" class="page-link" href="#">1</a></li>
-		    <li class="page-item"><a  style="color:#E91E63; background:black" class="page-link" href="#">2</a></li>
-		    <li class="page-item"><a  style="color:#E91E63; background:black" class="page-link" href="#">3</a></li>
+		    <li class="page-item"><a  style="color:var(--main-color); background:black" class="page-link" href="#">1</a></li>
+		    <li class="page-item"><a  style="color:var(--main-color); background:black" class="page-link" href="#">2</a></li>
+		    <li class="page-item"><a  style="color:var(--main-color); background:black" class="page-link" href="#">3</a></li>
 		    <li class="page-item">
-		      <a class="page-link" href="#"  style="color:#E91E63; background:black">Next</a>
+		      <a class="page-link" href="#"  style="color:var(--main-color); background:black">Next</a>
 		    </li>
 		  </ul>
 	  </nav>

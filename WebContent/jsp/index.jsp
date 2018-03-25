@@ -17,7 +17,8 @@
 	<div class="col-sm-2">
 	
 	</div>
-	<div class="col-sm-8 col-xs-12 image-container">
+	<div class="col-sm-8 col-xs-12">
+	 <div class="image-container">
      <div v-for="item in userImages" class="card">
 	    <div class="row" style="margin-bottom:-3.875em; width:100%; background: rgba(0, 0, 0, 0.3); z-index:1; margin-left:0px;">
 	      <div class="col-7">
@@ -47,9 +48,10 @@
 			  <li><p v-for="t in item.tags" class="tag"><span class="cut">{{t}}</span></p></li>				  
 		  </ul>	
 	  </div>	  
-	
-	  <br><br><br>
-	  <nav aria-label="Page navigation example" style="float:left; margin-left:4px">
+	  </div>
+	  <br><br><br><br>
+	  <div style="width:100%; display:flex; justify-content:center">
+	  <nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-end">
 		    <li class="page-item disabled"  style="color:var(--main-color); background:black">
 		      <a class="page-link"  style="color:var(--main-color); background:black" href="#" tabindex="-1">Previous</a>
@@ -62,7 +64,7 @@
 		    </li>
 		  </ul>
 	  </nav>
-	  
+	  </div>
 	</div>
 	<div class="col-sm-2">
 	

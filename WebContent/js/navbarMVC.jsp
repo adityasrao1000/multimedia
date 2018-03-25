@@ -39,13 +39,18 @@ var nav=new Vue({
 		  			localStorage.setItem("useremail",useremail.trim());
 		  			window.location = `<%= request.getContextPath() %>/profile`;
 		  		}else{
-		  			
+		  			let element = document.getElementById("incorrect-password");
+   					element.classList.toggle("show");
 		  		}
 		  		  
 		  	  })
 		  	  .catch(function (error) {
 		  	    console.log(error);
 		  	  });
+	    },
+	    dismiss: function(){
+	      let element = document.getElementById("incorrect-password");
+   		  element.classList.toggle("show");
 	    }
   },
   mounted:function(){
@@ -69,6 +74,4 @@ var nav=new Vue({
 	  	  });
 	  this.getSessionId()
   }
-
-
 })

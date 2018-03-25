@@ -50,3 +50,7 @@
 	</ul>
 </div>
 </nav>
+<div id="incorrect-password" class="alert alert-danger alert-dismissible fade hide">
+    <button type="button" class="close" @click="dismiss">&times;</button>
+    <strong>Incorrect username or password.</strong>
+</div>

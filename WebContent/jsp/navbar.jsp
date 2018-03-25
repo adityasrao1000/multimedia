@@ -40,8 +40,7 @@
 		  </div>
 		  <button @click="loginValidate" type="submit" class="btn btn-default btn-sm"  style="width:70%; display:block; color:#E91E63; background:#212121; border:none; margin:auto">Log In</button>
 	
-	      <a style="font-size:.75em;display:block;margin-top:10px; margin-left:8px" href="resetpassword">Forgot your password?</a>
-          <a style="font-size:.75em;display:block; margin-left:8px" href="register">Don't have an account?</a>
+	      <a style="font-size:.75em;display:flex; justify-content:center;margin-top:10px;" href="<%= request.getContextPath() %>/resetpassword">Forgot your password?</a>
 	    </div>
 	  </div>
 	  <button type="button" class="btn btn-secondary" onclick="window.location='register'">sign up</button>

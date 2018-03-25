@@ -1,0 +1,13 @@
+button[type="submit"]{
+	width:70%;
+    display:block;
+    color:var(--main-color); 
+    background:black; 
+    border:none; 
+    margin:auto;
+}
+.form-horizontal{
+	max-width:25em;
+	display:block;
+	margin:auto;
+}

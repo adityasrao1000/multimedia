@@ -3,7 +3,7 @@
 <head>
 <title>Sign up</title>
 <%@ include file="libraries.jsp" %>
-
+<link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
 <div id="nav">
@@ -11,12 +11,9 @@
 </div>
 <br><br><br><br>
 <div class="container-fluid" id="register">
-  <div style="max-width:420px; display:block; margin:auto">
-  <h4>Registration Form</h4>
-  <p>Hi there, please fill in the following fields to open your account.</p>
-  </div>
-  <form class="form-horizontal" v-on:submit.prevent="formsubmit" style="max-width:400px; display:block; margin:auto">
-  
+  <form class="form-horizontal" v-on:submit.prevent="formsubmit">
+    <h4>Registration Form</h4>
+    <p>Hi there, please fill in the following fields to open your account.</p>
     <div class="form-group">
       <label class="control-label" for="email">Enter Your Email:</label>
       <div>
@@ -49,7 +46,7 @@
     </div>
     <div class="form-group">        
       <div>
-        <button type="submit" class="btn btn-default" style="width:70%; display:block; color:#E91E63; background:#212121; border:none; margin:auto">Sign up</button>
+        <button type="submit" class="btn btn-default">Sign up</button>
       </div>
     </div>
     <div style="font-size: .9em; text-align:center">

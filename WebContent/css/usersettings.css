@@ -1,5 +1,9 @@
+.card{
+	border:none;
+    border-bottom:.3em solid var(--main-color);
+}
 .card-header{
-	background:rgb(33, 33, 33);
+	background:black;
 }
 
 .card .collapse{

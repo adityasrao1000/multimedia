@@ -101,3 +101,10 @@ button{
   display:none;
   z-index:2;
 }
+
+#logout .dropdown-toggle{
+  background:#212223;
+  border:none; 
+  border-radius:2em; 
+  padding: 0 .5em;
+}

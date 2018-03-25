@@ -3,7 +3,7 @@
 <head>
 <title>Change Password</title>
 <%@ include file="libraries.jsp" %>
-
+<link rel="stylesheet" href="css/resetpassword.css">
 </head>
 <body>
 <div id="nav">
@@ -25,7 +25,7 @@
 	    </div>
 	    <div class="form-group">        
       <div>
-        <button type="submit" @click="generateotp" class="btn btn-default"  style="width:60%; display:block; color:#E91E63; background:#212121; border:none; margin:auto">generate otp</button>
+        <button type="submit" @click="generateotp" class="btn btn-default">generate otp</button>
       </div>
     </div>
       </div>

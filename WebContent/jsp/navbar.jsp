@@ -14,7 +14,7 @@
 	</ul>
 	<ul class="navbar-nav ml-auto">
 	<li class="nav-item dropdown" id="logout">
-	<button class="nav-link dropdown-toggle" style="background:#212223; border:none; border-radius:2em; padding: 0 .5em" data-toggle="dropdown" id="Preview" role="button" aria-haspopup="true" aria-expanded="false">
+	<button class="nav-link dropdown-toggle"  data-toggle="dropdown" id="Preview" role="button" aria-haspopup="true" aria-expanded="false">
 	  <img id="profile" class="img-fluid" style="max-width:30px; max-height:30px; margin-left:4px;"> account 
 	</button>
 	<div class="dropdown-menu" style="margin-left:-15px;" aria-labelledby="Preview">

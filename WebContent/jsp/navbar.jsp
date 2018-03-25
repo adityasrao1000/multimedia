@@ -38,12 +38,12 @@
 			  <label for="pwd">Password:</label>
 			  <input type="password" v-model="pwd" class="form-control-sm" style="width:100%" id="nav-login-pwd">
 		  </div>
-		  <button @click="loginValidate" type="submit" class="btn btn-default btn-sm"  style="width:70%; display:block; color:#E91E63; background:#212121; border:none; margin:auto">Log In</button>
+		  <button @click="loginValidate" type="submit" class="btn btn-default btn-sm"  style="width:70%; display:block; color:var(--main-color); background:var(--main-background); border:none; margin:auto">Log In</button>
 	
 	      <a style="font-size:.75em;display:flex; justify-content:center;margin-top:10px;" href="<%= request.getContextPath() %>/resetpassword">Forgot your password?</a>
 	    </div>
 	  </div>
-	  <button type="button" class="btn btn-secondary" onclick="window.location='register'">sign up</button>
+	  <button type="button" class="btn btn-secondary" onclick="window.location='<%= request.getContextPath() %>/register'">sign up</button>
 	</div>
 	</li>
 	</ul>

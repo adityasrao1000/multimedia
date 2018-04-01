@@ -51,7 +51,7 @@ public class RemoveTag {
 		    	}
 		    	}
 		    	db.close(ps, rs, con);
-		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		    	return new ResponseEntity<String>(HttpStatus.FORBIDDEN);
 		    }catch(Exception e) {
 		    	e.printStackTrace();
 		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);

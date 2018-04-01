@@ -251,11 +251,16 @@ var vm = new Vue({
 				  .then(function (response) {
 					  if(response.status===200){
 						  vm.newtags.splice(index, 1);
+						  console.log("tag removed");
 					  }
-					  console.log("tag removed");
-
+					  if(response.status===403){
+						  window.alert("Image should have atleast one tag.")
+					  }
 				  })
 				  .catch(function (error) {
+					  if(error.response.status===403){
+						  window.alert("Image should have atleast one tag.")
+					  }
 				    console.log(error);
 				  });
 		    },

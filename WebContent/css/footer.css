@@ -2,16 +2,31 @@
 	background:black;
 	float:bottom;
 	display:block;
-	margin-top:70px
+	margin-top:70px;
+	width:100%;
 }
-
+.footer .row{
+	margin:auto;
+}
+.footer a{
+	color:#5dca31;
+}
+.footer .links p:first-child {
+    font-size:1.5em;
+}
+.footer .links {
+    margin-left:1.3em;
+}
+.footer .links p a{
+	white-space:nowrap;
+}
 #footer-bar{
 	height:10px;
-	background:#D50000;
+	background:#c93136;
 }
 
 #footer-social{
-	max-width: 160px;
+	width: 12em;
 	display:block;
 	margin:auto;
 	margin-top:11px;
@@ -23,12 +38,3 @@
 	margin-top:10px;
 	margin-bottom:0px ;
 }
-
-.footer-links{
-	display:flex;
-    justify-content: space-between;
-}
-.footer-links div{
-   min-width:7em;
-}
-	

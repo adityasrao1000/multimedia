@@ -9,7 +9,7 @@
 <div id="nav">
 <%@ include file="/jsp/navbar.jsp" %>
 </div>
-<br><br><br><br>
+<br>
 <div class="container-fluid" id="register">
   <form class="form-horizontal" v-on:submit.prevent="formsubmit">
     <h4>Registration Form</h4>

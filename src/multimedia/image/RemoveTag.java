@@ -29,20 +29,29 @@ public class RemoveTag {
 		    try {
                
 		    	InitializeMySqlDb db =new InitializeMySqlDb();
-		    	Connection con = db.mySqlDao(); 
-				PreparedStatement ps=con.prepareStatement("delete  from tags  where id=? and tag=? and ?=(select user_email from imagetable where id=?)");  
+		    	Connection con = db.mySqlDao();
+		    	PreparedStatement ps=con.prepareStatement("select count(*) from tags where id=?");  
+		    	ps.setString(1,id);
+		    	ResultSet rs = ps.executeQuery();
+		    	if(rs.next()) {
+		    	if(rs.getInt(1)>1) {
+				ps=con.prepareStatement("delete  from tags  where id=? and tag=? and ?=(select user_email from imagetable where id=?)");  
 				ps.setString(1,id);  
 				ps.setString(2,tag);
 				ps.setString(3,email); 
 				ps.setString(4,id); 
 				int i=ps.executeUpdate();  
 		
-				db.close(ps, con);
+				db.close(ps, rs, con);
 				if(i>1) {
 				 System.out.println("more than 1 tag affected");
 				}
 				System.out.println(i+ " tag deleted");
 				return new ResponseEntity<String>("success", HttpStatus.OK);
+		    	}
+		    	}
+		    	db.close(ps, rs, con);
+		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		    }catch(Exception e) {
 		    	e.printStackTrace();
 		    	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);

@@ -29,7 +29,7 @@
 
 }
 .card img{
-	height:265px;
+	max-height:25em;
 }
 
 .img-options{

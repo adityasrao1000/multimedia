@@ -65,8 +65,9 @@
    <br>
    
    <div>
-   <img v-for="item in userImages" v-bind:src="item" @click="imageModal(item)"  accept="image/*" class="rounded float-left" style="width:31%; margin:2px; height:120px; float:left">
-   
+   <div class="images">
+     <img v-for="item in userImages" v-bind:src="item" @click="imageModal(item)"  accept="image/*" class="rounded img-fluid">
+   </div>
    </div>
   </div>
   <div class="col-sm-3">

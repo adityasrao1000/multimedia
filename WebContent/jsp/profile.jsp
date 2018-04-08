@@ -13,7 +13,6 @@
 </div>
 <div id="loader" style="display:none;"></div>
 <div class="container-fluid">
-<br>
 <img data-toggle="modal" data-target="#profilepic"  @click="openModal" style="max-width:100px; float:left; margin-right:12px; cursor:pointer" v-bind:src="pp" class="img-fluid rounded" alt="profile pic">
 <h5>{{username}}</h5>
 <p>uploads <span style="color:white; font-size:.8em">{{uploads}}</span></p>

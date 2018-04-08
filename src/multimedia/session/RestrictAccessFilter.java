@@ -2,15 +2,15 @@ package multimedia.session;
 
 import java.io.IOException;
 
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;  
+import javax.servlet.http.*;
 
-@WebFilter(filterName = "DirectJspAccess", urlPatterns = {"*.jsp"})
-public class RestrictAccessFilter implements javax.servlet.Filter {
+public class RestrictAccessFilter implements Filter {
 
- 
+  public void init(FilterConfig arg0) throws ServletException {} 
+  
   @Override
-  public void doFilter(javax.servlet.ServletRequest request, javax.servlet.ServletResponse response, javax.servlet.FilterChain chain)  {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException  {
 
 	HttpServletResponse resp = (HttpServletResponse) response;
    
@@ -20,6 +20,7 @@ public class RestrictAccessFilter implements javax.servlet.Filter {
 		e.printStackTrace();
 	}
     
+    chain.doFilter(request, response);//sends request to next resource 
   }
 
 }

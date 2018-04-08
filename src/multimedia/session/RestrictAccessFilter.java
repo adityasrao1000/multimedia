@@ -20,7 +20,6 @@ public class RestrictAccessFilter implements Filter {
 		e.printStackTrace();
 	}
     
-    chain.doFilter(request, response);//sends request to next resource 
   }
 
 }

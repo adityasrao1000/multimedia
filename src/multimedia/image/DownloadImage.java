@@ -30,15 +30,15 @@ public class DownloadImage {
 		
 		ServletOutputStream out;  
 		out = response.getOutputStream(); 
-		InitializeMySqlDb db =new InitializeMySqlDb();
+		InitializeMySqlDb db = new InitializeMySqlDb();
     	Connection con = db.mySqlDao(); 
-		PreparedStatement ps=con.prepareStatement("select photo from imagetable where id=?");  
+		PreparedStatement ps = con.prepareStatement("select photo from imagetable where id=?");  
 		ps.setString(1,id);  
 	
-		ResultSet rs=ps.executeQuery();  
+		ResultSet rs = ps.executeQuery();  
 		
 		if(rs.next()) {         
-			Blob b=rs.getBlob(1);
+			Blob b = rs.getBlob(1);
 		
 			BufferedOutputStream bout = new BufferedOutputStream(out);  			
 		    InputStream os = b.getBinaryStream();

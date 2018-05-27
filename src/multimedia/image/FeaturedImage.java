@@ -24,17 +24,22 @@ public class FeaturedImage {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<String> getMsg() throws IOException, SQLException{
-		
+		    
+			InitializeMySqlDb db = new InitializeMySqlDb();
+	    	Connection con = null;
+	    	PreparedStatement ps = null;
+	    	PreparedStatement psTags = null;
+	    	ResultSet rs = null;
+	    	
 			final HttpHeaders httpHeaders= new HttpHeaders();
 		    httpHeaders.setContentType(MediaType.APPLICATION_JSON);  
 		    int count=0;
-			
+		    
 		    try {
-		    	InitializeMySqlDb db = new InitializeMySqlDb();
-		    	Connection con = db.mySqlDao();
-				PreparedStatement ps=con.prepareStatement("select i.id,i.user_email, u.user_name from imagetable i,users u where u.user_email = i.user_email order by RAND() limit 10");  
-				PreparedStatement psTags=con.prepareStatement("select tag from tags where id=?");  
-				ResultSet rs=ps.executeQuery();  
+		    	con = db.mySqlDao();
+				ps = con.prepareStatement("select i.id,i.user_email, u.user_name from imagetable i,users u where u.user_email = i.user_email order by RAND() limit 10");  
+				psTags = con.prepareStatement("select tag from tags where id=?");  
+				rs=ps.executeQuery();  
 				
 				JSONArray list = new JSONArray();				
 				while(rs.next()){  
@@ -54,8 +59,6 @@ public class FeaturedImage {
 					list.add(obj);
                     count++;
 				}
-				psTags.close();
-				db.close(psTags, rs, con);
 				if(count>0) {
 					return new ResponseEntity<String>(list.toJSONString(), httpHeaders, HttpStatus.OK);
 				}else {
@@ -64,7 +67,13 @@ public class FeaturedImage {
 		    }catch(Exception e) {
 		    	e.printStackTrace();
 		    	return new ResponseEntity<String>("failed", HttpStatus.NOT_FOUND);
-		    }		    
+		    }finally {
+		    	ps.close();
+		    	psTags.close();
+		    	rs.close();
+		    	con.close();
+		    	db.close(psTags, rs, con);
+		    }
 	  }    	       		
 }
 	

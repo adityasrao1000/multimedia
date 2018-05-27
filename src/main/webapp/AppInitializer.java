@@ -26,5 +26,4 @@ public class AppInitializer implements WebApplicationInitializer {
         context.setConfigLocation("multimedia");
         return context;
     }
-
 }

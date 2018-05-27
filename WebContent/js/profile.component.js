@@ -15,7 +15,8 @@ var vm = new Vue({
 		    newtag:'',
 		    pp: 'resources/displayProfilePic/',
 		    currentImgId:'',
-		    edit:false
+		    edit:false,
+		    filter:''
 		  }
 	  },
 	  methods: {
@@ -99,6 +100,7 @@ var vm = new Vue({
 				    console.log(error);
 				  });
 		},
+		
 		uploadImage: function(){
 			      var formData = new FormData();
 				  var preview = document.getElementById('uploadPreview');
@@ -222,6 +224,8 @@ var vm = new Vue({
 	              console.log(err.message);
 	            });
 		    },
+		    
+		    /* clicks the real file input button indirectly */
 		    triggerupload: function(){
 		    	document.getElementById('uploadButton').click()
 		    },
@@ -303,6 +307,11 @@ var vm = new Vue({
 		    },
 		    closeModal: function(){
 		    	document.getElementById("ppUploadModal").style.display="none";
+		    },
+		    
+		    /* Filters results from the image array by tags according to input*/
+		    filterImages: function(){
+		    	console.log(this.filter)
 		    }
 		  },
 		  

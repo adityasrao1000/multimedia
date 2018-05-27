@@ -59,7 +59,7 @@
    <!-- iterate all the images -->
   
    <div>
-      <input class="form-control input-sm" style="width:50%" id="search" placeholder="search" type="text">
+      <input class="form-control input-sm" style="width:50%" id="search" v-model="filter" @input="filterImages" placeholder="search" type="text">
    </div>
    <br>
    
